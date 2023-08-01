@@ -2,3 +2,10 @@
 id = "boatblue_boat"
 name = "boatblue_boat"
 version = "0.0.1"
+
+[components]
+boat_vel = { type = "Vec2" }
+# boat_target = { type = "Vec2" } # does not belong on this conceptual layer
+boat_steer = { type = "Vec2" } # max magnitude 1.
+boat_forward = { type = "Vec2" } # norm
+boat_forward_rotvel = { type = "F32" }
