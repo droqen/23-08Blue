@@ -1,0 +1,9 @@
+[ember]
+id = "boat_game_blue"
+name = "BoatGameBlue"
+version = "0.0.1"
+
+[dependencies]
+pin_mouseuv = { path = "embers/broadcast-only/pin_mouseuv" }
+# ccamera = { path = "embers/entity-owning/ccamera" }
+uv_debugger = { path = "embers/subscribe-only/uv_debugger" }

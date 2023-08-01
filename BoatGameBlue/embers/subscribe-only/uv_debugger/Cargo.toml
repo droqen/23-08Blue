@@ -1,0 +1,18 @@
+[package]
+name = "uv_debugger"
+
+edition = "2021"
+publish = false
+version = "0.0.1"
+
+[dependencies]
+ambient_api = { git = "https://github.com/AmbientRun/Ambient.git", rev = "69577e9acf" }
+
+[[bin]]
+name = "client_uv_debugger"
+path = "src/client.rs"
+required-features = ["client"]
+
+[features]
+client = ["ambient_api/client"]
+server = ["ambient_api/server"]

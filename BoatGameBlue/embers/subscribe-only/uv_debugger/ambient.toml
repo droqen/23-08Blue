@@ -1,0 +1,7 @@
+[ember]
+id = "uv_debugger"
+name = "uv_debugger"
+version = "0.0.1"
+
+[dependencies]
+pin_mouseuv = { path = "../../broadcast-only/pin_mouseuv" }

@@ -1,0 +1,8 @@
+[ember]
+id = "pin_mouseuv"
+name = "pin_mouseuv"
+version = "0.0.1"
+
+[messages.PinMouseUv.fields]
+u = "F32"
+v = "F32"
