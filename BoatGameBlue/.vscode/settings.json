@@ -5,6 +5,10 @@
     "server"
   ],
   "rust-analyzer.linkedProjects": [
-    ".\\embers\\pinput\\Cargo.toml"
+    ".\\embers\\boatblue_selfie_camera_demo\\Cargo.toml",
+    ".\\Cargo.toml",
+    ".\\embers\\boatblue_selfie_camera\\Cargo.toml",
+    ".\\embers\\boatblue_selfie_camera_mouse_tilt\\Cargo.toml",
+    ".\\embers\\boatblue_boat\\Cargo.toml"
   ]
 }

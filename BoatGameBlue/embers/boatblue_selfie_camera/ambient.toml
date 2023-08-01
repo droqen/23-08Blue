@@ -1,0 +1,13 @@
+[ember]
+id = "boatblue_selfie_camera"
+name = "boatblue_selfie_camera"
+version = "0.0.1"
+
+[components]
+is_selfie_camera = { type = "Empty" }
+selfie_ground_distance = { type = "F32" }
+selfie_ground_height = { type = "F32" }
+selfie_focus_ent = { type = "EntityId" }
+selfie_focus_offset = { type = "Vec3" }
+selfie_pitch = { type = "F32" }
+selfie_yaw = { type = "F32" }

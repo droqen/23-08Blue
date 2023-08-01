@@ -1,0 +1,10 @@
+[ember]
+id = "boatblue_selfie_camera_mouse_tilt"
+name = "boatblue_selfie_camera_mouse_tilt"
+version = "0.0.1"
+
+[dependencies]
+boatblue_selfie_camera = { path = "../boatblue_selfie_camera" }
+
+[messages.PinCameraTilt.fields]
+tilt = "Vec2"
