@@ -2,7 +2,7 @@ use ambient_api::prelude::*;
 
 use ambient_api::core::model::components::model_from_url;
 
-use boat::components::{image_of_boat};
+use boat::components::image_of_boat;
 
 #[main]
 pub fn main() {
