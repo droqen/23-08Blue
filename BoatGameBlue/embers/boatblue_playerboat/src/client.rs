@@ -4,15 +4,26 @@ use ambient_api::prelude::*;
 
 #[main]
 pub async fn main() {
-    sleep(0.1).await;
+    sleep(0.5).await;
     println!("playerboat uses a 'sleep await' to solve a race condition");
     on_playerboat_spawned_link_camera_and_setup_input();
+    on_boat_spawned_spawn_model();
+}
+
+use boat::components::{image_of_boat};
+use ambient_api::core::model::components::model_from_url;
+fn on_boat_spawned_spawn_model() {
+    spawn_query(image_of_boat()).bind(|images|{
+        for (image, _boat) in images {
+            entity::add_component(image, model_from_url(), asset::url("boatblue_playerboat/assets/MSH_Boat.glb").unwrap());
+        }
+    });
 }
 
 use ambient_api::core::player::components::{user_id, local_user_id};
 use boatblue_playerboat::messages::GotoRay;
 use selfie_camera::components::selfie_focus_ent;
-use boat::components::boat_forward;
+use boat::components::{boat_forward, boat_forward_rotvel};
 
 fn on_playerboat_spawned_link_camera_and_setup_input() {
     let my_uid = entity::get_component(entity::resources(), local_user_id()).unwrap();
