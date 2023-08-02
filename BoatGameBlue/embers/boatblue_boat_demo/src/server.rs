@@ -1,20 +1,11 @@
 use ambient_api::core::physics::components::visualize_collider;
 use ambient_api::prelude::*;
 
-use selfie_camera::components::selfie_focus_ent;
-
 #[main]
 pub fn main() {
     for i in 0..3 {
         let example_boat = spawn_example_boat();
         entity::set_component(example_boat, translation(), vec3(-1.5, -1.5, 0.) + 3. * random::<Vec3>());
-        // if i == 0 { // doesn't work! making a bug report about this.
-        //     spawn_query( selfie_focus_ent() ).bind(move |cameras|{
-        //         for (camera, _) in cameras {
-        //             entity::set_component( camera, selfie_focus_ent(), example_boat );
-        //         }
-        //     });
-        // }
     }
     
     run_async(async {
