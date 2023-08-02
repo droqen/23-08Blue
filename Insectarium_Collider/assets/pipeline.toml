@@ -1,0 +1,9 @@
+[[pipelines]]
+type = "Models"
+sources = ["*.glb"]
+
+# comment out the next two lines, and it runs fine
+# i have tested two independent .glb files, they both do it
+
+[pipelines.collider]
+type = "FromModel"
