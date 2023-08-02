@@ -8,10 +8,11 @@ use ambient_api::core::{
 
 use boatblue_boat::components::{boat_vel, boat_steer, boat_forward, boat_forward_rotvel, };
 
-pub fn setup() {
+#[main]
+pub fn main() {
     
     query((translation(), boat_steer(), boat_vel(), boat_forward(), boat_forward_rotvel())).each_frame(|gliders|{
-        for (glider, (pos, steer_vec, vel, fwd, rotvel)) in gliders {
+        for (glider, (_pos, steer_vec, _vel, fwd, rotvel)) in gliders {
 
             let control = 1.0;//invlerp(0.01, 0.4, sub).clamp(0., 1.);
 
@@ -38,7 +39,7 @@ pub fn setup() {
                 entity::set_component(glider, boat_vel(), linvel.xy());
             });
 
-            if steer_vec.length() > 0.1 {
+            if steer_vec.length_squared() > 0.01 {
                 let angle_to_fwd = fwd.angle_between(steer_vec);
                 // let mut angle_to_fwd = fwd.angle_between(steer_vec);
                 // println!("A{angle_to_fwd}");
@@ -61,8 +62,8 @@ pub fn setup() {
     });
 }
 
-fn lerp(from : f32, to : f32, rel : f32) -> f32 { ((1. - rel) * from) + (rel * to) }
-fn invlerp(from : f32, to : f32, value : f32) -> f32 { (value - from) / (to - from) }
+// fn lerp(from : f32, to : f32, rel : f32) -> f32 { ((1. - rel) * from) + (rel * to) }
+// fn invlerp(from : f32, to : f32, value : f32) -> f32 { (value - from) / (to - from) }
 
 
 // todo- spawn player boat
@@ -103,7 +104,7 @@ fn invlerp(from : f32, to : f32, value : f32) -> f32 { (value - from) / (to - fr
 //             .with(buoy_radius(), 1.)
 //             .with(buoy_water_level(), 0.)
 //             .with(buoy_max_force(), 30.)
-//             .with(buoy_max_friction(), 5.)
+//             .with(buoy_max_drag(), 5.)
 
 //             .spawn();
     
