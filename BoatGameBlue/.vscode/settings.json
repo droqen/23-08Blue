@@ -13,6 +13,8 @@
     ".\\embers\\boatblue_matter\\Cargo.toml",
     ".\\embers\\boatblue_matter_demo\\Cargo.toml",
     ".\\embers\\boatblue_boat_demo\\Cargo.toml",
-    ".\\embers\\boatblue_playerboat\\Cargo.toml"
+    ".\\embers\\boatblue_playerboat\\Cargo.toml",
+    ".\\embers\\boatblue_citygen_simple\\Cargo.toml",
+    ".\\embers\\boatblue_water\\Cargo.toml"
   ]
 }
