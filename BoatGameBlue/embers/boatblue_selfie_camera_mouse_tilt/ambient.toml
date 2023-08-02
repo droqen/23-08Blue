@@ -8,3 +8,6 @@ boatblue_selfie_camera = { path = "../boatblue_selfie_camera" }
 
 [messages.PinCameraTilt.fields]
 tilt = "Vec2"
+
+[messages.RefocusCamera.fields]
+focus_ent = "EntityId"

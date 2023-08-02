@@ -8,3 +8,10 @@ matter = { path = "../boatblue_matter" }
 boat = { path = "../boatblue_boat" }
 selfie_camera = { path = "../boatblue_selfie_camera" }
 camera_mouse_tilt = { path = "../boatblue_selfie_camera_mouse_tilt" }
+
+[messages.GotoRay.fields]
+origin = "Vec3"
+dir = "Vec3"
+
+[components]
+playerboat_goto = { type = "Vec2" }
