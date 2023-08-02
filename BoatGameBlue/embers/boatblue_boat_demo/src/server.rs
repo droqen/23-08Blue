@@ -1,8 +1,11 @@
-use ambient_api::core::physics::components::visualize_collider;
+// use ambient_api::core::physics::components::visualize_collider;
 use ambient_api::prelude::*;
 
 #[main]
 pub fn main() {
+
+    spawn_water_plane();
+
     for _i in 0..3 {
         let example_boat = spawn_example_boat();
         entity::set_component(example_boat, translation(), vec3(-1.5, -1.5, 0.) + 3. * random::<Vec3>());
@@ -34,15 +37,34 @@ use ambient_api::core::{
 };
 
 fn spawn_example_boat() -> EntityId {
-    return Entity::new()
+    Entity::new()
         .with_merge(make_transformable())
         .with(physics_controlled(), ())
         .with(dynamic(), true)
         .with(sphere_collider(), 1.0) // how big?
-        .with(visualize_collider(), ()) // how big?
+        // .with(visualize_collider(), ())
         .with_merge(make_boat())
         .with_merge(make_buoy())
-        .spawn();
+        .spawn()
+}
+
+use ambient_api::core::{
+    transform::{
+        components::scale,
+        // concepts::make_transformable,
+    },
+    primitives::components::quad,
+    rendering::components::{color, transparency_group},
+};
+
+fn spawn_water_plane() -> EntityId {
+    Entity::new()
+        .with_merge(make_transformable())
+        .with(scale(), vec3(999., 999., 1.))
+        .with(color(), vec4(0.5, 0.5, 0.9, 0.5))
+        .with(transparency_group(), 1)
+        .with(quad(), ())
+        .spawn()
 }
 
 use boat::components::{
@@ -65,8 +87,8 @@ fn make_buoy() -> Entity {
     Entity::new()
         .with(matter_gravity(), 9.82)
         .with(matter_local_center(), vec3(0., 0., -2.))
-        .with(buoy_max_force(), 20.0)
-        .with(buoy_max_drag(), 1.0) 
-        .with(buoy_radius(), 0.5)
+        .with(buoy_max_force(), 15.0)
+        .with(buoy_max_drag(), 4.0) 
+        .with(buoy_radius(), 1.0)
         .with(buoy_water_level(), 0.)
 }

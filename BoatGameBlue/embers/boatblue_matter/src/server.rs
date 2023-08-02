@@ -73,11 +73,11 @@ fn add_force_at_position(ent : EntityId, ent_mass_center_pos : Vec3, force : Vec
     entity::mutate_component(ent, angular_velocity(), |angvel|*angvel += (force_point - ent_mass_center_pos).cross(force));
 }
 
+
 // currently assumes object is basically a cube or cylinder.
 // todo - could assume object is sphere?
 // todo - could allow for any arbitrary shape?
 // also todo - use a flexible water plane rather than a rigid water level? not sure
-
 fn get_submerged_percentage(z : f32, radius : f32, water_level : f32) -> f32 {
     if z < water_level-radius { return 1.00; }
     if z > water_level+radius { return 0.00; }
@@ -86,6 +86,7 @@ fn get_submerged_percentage(z : f32, radius : f32, water_level : f32) -> f32 {
     let zero_to_one = minusone_to_one * 0.5 + 0.5;
     return zero_to_one;
 }
+
 
 fn get_submerged_center_point(pos : Vec3, water_level : f32, radius : f32, submerged_percentage : f32) -> Option<Vec3> {
     if submerged_percentage <= 0.0 { return None; }
