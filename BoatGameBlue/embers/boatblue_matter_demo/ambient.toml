@@ -1,0 +1,8 @@
+[ember]
+id = "boatblue_matter_demo"
+name = "boatblue_matter_demo"
+version = "0.0.1"
+
+[dependencies]
+matter = { path = "../boatblue_matter" }
+camera = { path = "../boatblue_selfie_camera_mouse_tilt" }
