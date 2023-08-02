@@ -5,6 +5,7 @@ use ambient_api::prelude::*;
 #[main]
 pub async fn main() {
     sleep(0.1).await;
+    println!("playerboat uses a 'sleep await' to solve a race condition");
     on_playerboat_spawned_link_camera_and_setup_input();
 }
 
