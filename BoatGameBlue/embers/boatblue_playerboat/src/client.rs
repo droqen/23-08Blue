@@ -3,34 +3,19 @@ use ambient_api::prelude::*;
 
 
 #[main]
-pub fn main() {
-
+pub async fn main() {
+    sleep(0.1).await;
     on_playerboat_spawned_link_camera_and_setup_input();
-
-    // camera?
-    // spawn_query((player(), user_id())).bind(|players|{
-    //     for(plr, (_,uid)) in players {
-    //         // get my id. does it match?
-    //         setup_mouse_ray_input_broadcast(
-    //             EntityId::new() // todo!
-    //         );
-    //     }
-    // });
-
-    
-    // GotoRay
 }
 
 use ambient_api::core::player::components::{user_id, local_user_id};
-use ambient_api::core::transform::components::translation;
-use ambient_api::input::Input;
 use boatblue_playerboat::messages::GotoRay;
 use selfie_camera::components::selfie_focus_ent;
-use boat::components::boat_steer;
+use boat::components::boat_forward;
 
 fn on_playerboat_spawned_link_camera_and_setup_input() {
     let my_uid = entity::get_component(entity::resources(), local_user_id()).unwrap();
-    let q = spawn_query((boat_steer(), user_id())).bind(move |playerboats|{
+    spawn_query((boat_forward(), user_id())).bind(move |playerboats|{
         for (playerboat,(_, uid)) in playerboats {
             if uid == my_uid {
                 link_camera_and_setup_input(playerboat);

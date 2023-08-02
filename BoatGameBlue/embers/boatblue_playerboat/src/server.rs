@@ -50,7 +50,6 @@ fn spawn_player_boat(uid : String) -> EntityId {
 }
 fn on_goto_message_set_player_goto() {
     GotoRay::subscribe(|src, msg|{
-        dbg!(&msg);
         if let Some(player_ent) = src.client_entity_id() {
             if let Some(children) = entity::get_component(player_ent, children()) {
                 for child in children {
