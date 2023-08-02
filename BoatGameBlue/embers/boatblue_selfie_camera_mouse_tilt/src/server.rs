@@ -5,10 +5,10 @@ use ambient_api::{
             components::aspect_ratio_from_window,
             concepts::make_perspective_infinite_reverse_camera,
         },
-        primitives::components::quad,
+        // primitives::components::quad,
         transform::{
             components::{lookat_target, translation},
-            concepts::make_transformable,
+            // concepts::make_transformable,
         },
     },
     prelude::*,

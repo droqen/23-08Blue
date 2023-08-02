@@ -3,7 +3,11 @@ use ambient_api::prelude::*;
 use ambient_api::core::app::components::name;
 use ambient_api::core::transform::components::{translation, rotation};
 
-use boatblue_boat::components::{boat_vel, boat_steer, boat_forward, boat_forward_rotvel, image_of_boat};
+use boatblue_boat::components::{
+    boat_forward,
+    //boat_forward_rotvel,
+    image_of_boat,
+};
 
 #[main]
 pub fn main() {

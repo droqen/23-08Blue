@@ -3,7 +3,7 @@ use ambient_api::prelude::*;
 
 #[main]
 pub fn main() {
-    for i in 0..3 {
+    for _i in 0..3 {
         let example_boat = spawn_example_boat();
         entity::set_component(example_boat, translation(), vec3(-1.5, -1.5, 0.) + 3. * random::<Vec3>());
     }
@@ -27,7 +27,7 @@ pub fn main() {
 
 use ambient_api::core::{
     transform::{
-        components::{translation, rotation},
+        components::translation,
         concepts::make_transformable,
     },
     physics::components::{physics_controlled, dynamic, sphere_collider},
