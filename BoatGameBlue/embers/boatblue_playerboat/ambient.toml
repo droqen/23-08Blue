@@ -1,0 +1,10 @@
+[ember]
+id = "boatblue_playerboat"
+name = "boatblue_playerboat"
+version = "0.0.1"
+
+[dependencies]
+matter = { path = "../boatblue_matter" }
+boat = { path = "../boatblue_boat" }
+selfie_camera = { path = "../boatblue_selfie_camera" }
+camera_mouse_tilt = { path = "../boatblue_selfie_camera_mouse_tilt" }

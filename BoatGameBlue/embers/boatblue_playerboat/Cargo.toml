@@ -1,0 +1,23 @@
+[package]
+name = "boatblue_playerboat"
+
+edition = "2021"
+publish = false
+version = "0.0.1"
+
+[dependencies]
+ambient_api = { git = "https://github.com/AmbientRun/Ambient.git", rev = "dfc59e4c33" }
+
+[[bin]]
+name = "client_boatblue_playerboat"
+path = "src/client.rs"
+required-features = ["client"]
+
+[[bin]]
+name = "server_boatblue_playerboat"
+path = "src/server.rs"
+required-features = ["server"]
+
+[features]
+client = ["ambient_api/client"]
+server = ["ambient_api/server"]
