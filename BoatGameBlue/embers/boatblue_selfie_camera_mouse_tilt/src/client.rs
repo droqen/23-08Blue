@@ -18,8 +18,8 @@ pub fn main() {
         .with( main_scene(), () ) // is this needed?
         .with( aspect_ratio_from_window(), entity::resources() )
         
-        .with( selfie_ground_distance(), 4.00 )
-        .with( selfie_ground_height(), 8.00 )
+        .with( selfie_ground_distance(), 14.00 )
+        .with( selfie_ground_height(), 18.00 )
         .with( selfie_focus_ent(), entity_zero )
 
         .with( selfie_focus_offset(), vec3(0., 0., 0.) ) // optional
