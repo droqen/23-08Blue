@@ -4,11 +4,10 @@ name = "BoatGameBlue"
 version = "0.0.1"
 
 [dependencies]
-# pin_mouseuv = { path = "embers/broadcast-only/pin_mouseuv" }
-# # ccamera = { path = "embers/entity-owning/ccamera" }
-# uv_debugger = { path = "embers/subscribe-only/uv_debugger" }
+# main game
+# boatblue_selfie_camera_mouse_tilt = { path = "embers/boatblue_selfie_camera_mouse_tilt" }
+# boatblue_boat = { path = "embers/boatblue_boat" }
 
-# boatblue_selfie_camera = { path = "embers/boatblue_selfie_camera" }
-# boatblue_selfie_camera_default = { path = "embers/boatblue_selfie_camera_default" }
-boatblue_selfie_camera_mouse_tilt = { path = "embers/boatblue_selfie_camera_mouse_tilt" }
-boatblue_boat = { path = "embers/boatblue_boat" }
+# just testing a demo
+# demo = { path = "embers/boatblue_matter_demo" }
+demo = { path = "embers/boatblue_boat_demo" }

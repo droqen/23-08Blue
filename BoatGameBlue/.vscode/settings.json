@@ -11,6 +11,7 @@
     ".\\embers\\boatblue_selfie_camera_mouse_tilt\\Cargo.toml",
     ".\\embers\\boatblue_boat\\Cargo.toml",
     ".\\embers\\boatblue_matter\\Cargo.toml",
-    ".\\embers\\boatblue_matter_demo\\Cargo.toml"
+    ".\\embers\\boatblue_matter_demo\\Cargo.toml",
+    ".\\embers\\boatblue_boat_demo\\Cargo.toml"
   ]
 }
