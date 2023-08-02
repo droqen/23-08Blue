@@ -3,6 +3,7 @@ use std::f32::consts::PI;
 use ambient_api::prelude::*;
 use ambient_api::core::transform::components::translation;
 use ambient_api::core::app::components::{name, main_scene, window_physical_size};
+use ambient_api::core::camera::components::aspect_ratio_from_window;
 use ambient_api::core::camera::concepts::make_perspective_infinite_reverse_camera;
 use boatblue_selfie_camera::components::{selfie_ground_distance, selfie_ground_height, selfie_focus_ent, selfie_focus_offset, selfie_pitch, selfie_yaw};
 use boatblue_selfie_camera_mouse_tilt::messages::PinCameraTilt;
@@ -15,6 +16,7 @@ pub fn main() {
         .with_merge( make_perspective_infinite_reverse_camera() )
         .with( name(), "Example Selfie Camera".to_string() )
         .with( main_scene(), () ) // is this needed?
+        .with( aspect_ratio_from_window(), entity::resources() )
         
         .with( selfie_ground_distance(), 4.00 )
         .with( selfie_ground_height(), 8.00 )

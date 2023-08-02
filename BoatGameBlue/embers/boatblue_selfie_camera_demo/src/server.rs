@@ -17,6 +17,4 @@ pub fn main() {
         .with_merge(make_transformable())
         .with_default(quad())
         .spawn();
-
-    println!("Hello, Default!");
 }

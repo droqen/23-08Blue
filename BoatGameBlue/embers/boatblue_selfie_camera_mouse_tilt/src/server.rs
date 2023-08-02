@@ -23,11 +23,4 @@ pub fn main() {
         .with(translation(), Vec3::ONE * 5.)
         .with(lookat_target(), vec3(0., 0., 0.))
         .spawn();
-
-    Entity::new()
-        .with_merge(make_transformable())
-        .with_default(quad())
-        .spawn();
-
-    println!("Hello, Ambient!");
 }
