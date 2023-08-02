@@ -1,0 +1,11 @@
+[ember]
+id = "boatblue_citygen_simple"
+name = "boatblue_citygen_simple"
+version = "0.0.1"
+
+
+[components]
+# note: these components are unused and don't do anything yet!!!
+proximity_trigger = { type = "F32", attributes = ["Networked", "Debuggable"] }
+prox_is_dropoff = { type = "Empty" }
+prox_is_pickup = { type = "Empty" }
