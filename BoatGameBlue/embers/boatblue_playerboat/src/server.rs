@@ -40,7 +40,7 @@ fn spawn_player_boat(uid : String) -> EntityId {
         .with_merge(make_transformable())
         .with(physics_controlled(), ())
         .with(dynamic(), true)
-        .with(sphere_collider(), 1.0) // how big?
+        .with(sphere_collider(), 2.5 * 0.66) // how big?
         .with(user_id(), uid)
         .with(visualize_collider(), ())
         // .with(playerboat_goto(), Vec3:)
@@ -89,6 +89,7 @@ fn create_plane_for_mouse_ray_to_hit() {
 
 use boat::components::{
     boat_vel, boat_steer, boat_forward, boat_forward_rotvel,
+    boat_stat_speed, boat_stat_accel,
 };
 fn make_boat() -> Entity {
     Entity::new()
@@ -96,6 +97,9 @@ fn make_boat() -> Entity {
         .with(boat_steer(), vec2(0., 0.))
         .with(boat_forward(), vec2(0., 1.))
         .with(boat_forward_rotvel(), 0.)
+
+        .with(boat_stat_speed(), 4.0)
+        .with(boat_stat_accel(), 2.0)
 }
 
 use matter::components::{
@@ -105,7 +109,7 @@ fn make_buoy() -> Entity {
     Entity::new()
         .with(matter_gravity(), 9.82)
         .with(matter_local_center(), vec3(0., 0., -2.))
-        .with(buoy_max_force(), 15.0)
+        .with(buoy_max_force(), 25.0)
         .with(buoy_max_drag(), 4.0) 
         .with(buoy_radius(), 1.0)
         .with(buoy_water_level(), 0.)
