@@ -4,7 +4,7 @@ name = "boatblue_boat"
 version = "0.0.1"
 
 [dependencies]
-matter = { path = "../boatblue_matter" }
+boatblue_matter = { path = "../boatblue_matter" }
 
 [components]
 boat_vel = { type = "Vec2" }
