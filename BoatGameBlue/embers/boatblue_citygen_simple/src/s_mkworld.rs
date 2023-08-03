@@ -63,8 +63,6 @@ pub fn spawn_building_at(base_pos : Vec3) -> EntityId {
         4 | _ => { 0. },
     };
 
-    dbg!(asset_string);
-
     let is_pickup = random::<bool>();
 
     if is_pickup { spawn_pickup(base_pos); }
