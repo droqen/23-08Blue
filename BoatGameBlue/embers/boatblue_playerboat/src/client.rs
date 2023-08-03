@@ -1,16 +1,35 @@
 use ambient_api::prelude::*;
+use ambient_api::core::transform::components::translation;
+use boat::components::boat_steer;
 
-
+mod x_findpair;
 
 #[main]
 pub async fn main() {
-    sleep(0.5).await;
-    println!("playerboat uses a 'sleep await' to solve a race condition");
-    on_playerboat_spawned_link_camera_and_setup_input();
+
+    run_async(async {
+        let get_boats = query((translation(), boat_steer())).build();
+        loop {
+            for (boat, (pos,_)) in get_boats.evaluate() {
+                if pos.length() > 20. {
+                    entity::set_component(boat, boat_steer(),-pos.truncate().normalize());
+                } else {
+                    entity::set_component(boat, boat_steer(),
+                        (random::<Vec2>()-Vec2::splat(0.5)).normalize_or_zero()
+                    );
+                }
+            }
+            sleep(1.).await;
+        }
+    });
+
     on_boat_spawned_spawn_model();
+
+    run_async(on_playerboat_spawned_link_camera_and_setup_input());
+
 }
 
-use boat::components::{image_of_boat};
+use boat::components::image_of_boat;
 use ambient_api::core::model::components::model_from_url;
 fn on_boat_spawned_spawn_model() {
     spawn_query(image_of_boat()).bind(|images|{
@@ -23,26 +42,22 @@ fn on_boat_spawned_spawn_model() {
 use ambient_api::core::player::components::{user_id, local_user_id};
 use boatblue_playerboat::messages::GotoRay;
 use selfie_camera::components::selfie_focus_ent;
-use boat::components::{boat_forward, boat_forward_rotvel};
+use boat::components::{
+    boat_forward,
+    // boat_forward_rotvel,
+};
 
-fn on_playerboat_spawned_link_camera_and_setup_input() {
+async fn on_playerboat_spawned_link_camera_and_setup_input() {
+
     let my_uid = entity::get_component(entity::resources(), local_user_id()).unwrap();
-    spawn_query((boat_forward(), user_id())).bind(move |playerboats|{
-        for (playerboat,(_, uid)) in playerboats {
-            if uid == my_uid {
-                link_camera_and_setup_input(playerboat);
-            }
-        }
-    });
-}
-fn link_camera_and_setup_input(playerboat : EntityId) {
-    if let Some((my_camera, _)) = query(selfie_focus_ent()).build().evaluate().first() {
+    let (playerboat, camera) = x_findpair::find_first_pair_async(
+        spawn_query((boat_forward(), user_id())), move |boat| { entity::get_component(boat, user_id()).unwrap_or_default() == my_uid },
+        spawn_query(selfie_focus_ent()), |_|true,
+    ).await;
 
-        entity::add_component(*my_camera, selfie_focus_ent(), playerboat);
+    entity::add_component(camera, selfie_focus_ent(), playerboat);
+    setup_mouse_ray_input_broadcast(camera);
 
-        setup_mouse_ray_input_broadcast(*my_camera);
-
-    } else { println!("Err - NO CAMERA FOUND, camera link failed"); }
 }
 
 fn setup_mouse_ray_input_broadcast(camera : EntityId) {
