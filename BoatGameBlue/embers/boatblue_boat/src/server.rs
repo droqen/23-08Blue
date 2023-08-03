@@ -7,6 +7,7 @@ use ambient_api::core::{
 };
 
 use boatblue_boat::components::{boat_vel, boat_steer, boat_forward, boat_forward_rotvel, };
+use boatblue_boat::components::{boat_stat_speed, boat_stat_accel, };
 use boatblue_matter::components::buoy_submerged;
 
 #[main]
@@ -20,11 +21,14 @@ pub fn main() {
             let control = match entity::get_component(glider, buoy_submerged()) {
                 None => 0.0,
                 Some(sub) => invlerp(0.01, 0.4, sub).clamp(0., 1.)
-            };
+            }
+                * entity::get_component(glider, boat_stat_accel()).unwrap_or(1.00);
 
             let accellin = 10.0 * delta_time() * control;
             let accellerp = 0.; // 0.01 * control;
-            let desired_landvel : Vec2 = steer_vec * 20.;
+            let desired_landvel : Vec2 = steer_vec
+                * 20.
+                * entity::get_component(glider, boat_stat_speed()).unwrap_or(1.00);
 
             // entity::set_component(glider, glider_forward(), desired_landvel.extend(1.0));
             
@@ -52,11 +56,11 @@ pub fn main() {
                 // if angle_to_fwd > PI * 0.8 { angle_to_fwd = -PI + angle_to_fwd; }
                 // if angle_to_fwd < -PI * 0.8 { angle_to_fwd = PI + angle_to_fwd; }
                 // println!("B{angle_to_fwd}");
-                let desired_rotvel = (angle_to_fwd * 3.0).clamp(-PI, PI);
+                let desired_rotvel = (angle_to_fwd * 5.0).clamp(-PI, PI);
                 let to_desired_rotvel = desired_rotvel - rotvel;
-                entity::mutate_component(glider, boat_forward_rotvel(), |rotvel|*rotvel += to_desired_rotvel*0.5);
+                entity::mutate_component(glider, boat_forward_rotvel(), |rotvel|*rotvel += to_desired_rotvel*0.3);
             } else {
-                entity::mutate_component(glider, boat_forward_rotvel(), |rotvel|*rotvel *= 0.5); // friction i suppose?
+                entity::mutate_component(glider, boat_forward_rotvel(), |rotvel|*rotvel *= 0.7); // friction i suppose?
             }
         }
     });

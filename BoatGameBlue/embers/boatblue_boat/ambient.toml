@@ -13,4 +13,7 @@ boat_steer = { type = "Vec2" } # max magnitude 1.
 boat_forward = { type = "Vec2", attributes = ["Debuggable", "Networked"] } # norm
 boat_forward_rotvel = { type = "F32", attributes = ["Debuggable", "Networked"] }
 
+boat_stat_speed = { type = "F32" }
+boat_stat_accel = { type = "F32" }
+
 image_of_boat = { type = "EntityId" } # clientside, indicates to which boat it belongs
