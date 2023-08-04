@@ -10,6 +10,7 @@ version = "0.0.1"
 
 # player boat & water plane
 playerboat = { path = "embers/boatblue_playerboat" }
+# playerboat_debug = { path = "embers/boatblue_playerboat_debug" }
 # water = { path = "embers/boatblue_water" } # handled by citygen_simple, unneeded
 citygen = { path = "embers/boatblue_citygen_simple" }
 
