@@ -24,15 +24,17 @@ pub fn main() {
             }
                 * entity::get_component(glider, boat_stat_accel()).unwrap_or(1.00);
 
-            let accellin = 10.0 * delta_time() * control;
-            let accellerp = 0.; // 0.01 * control;
+            let accellin = 100.0 * delta_time() * control;
+            let accellerp = 0.00; // 0.01 * control;
             let desired_landvel : Vec2 = steer_vec
-                * 20.
+                * 10.
                 * entity::get_component(glider, boat_stat_speed()).unwrap_or(1.00);
 
             // entity::set_component(glider, glider_forward(), desired_landvel.extend(1.0));
             
+
             entity::mutate_component(glider, linear_velocity(), move |linvel|{
+
                 let to_desired_landvel : Vec2 = desired_landvel - linvel.truncate();
                 if to_desired_landvel.length_squared() < accellin * accellin {
                     *linvel = (

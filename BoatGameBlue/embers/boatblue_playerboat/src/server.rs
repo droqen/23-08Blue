@@ -70,12 +70,12 @@ fn each_frame_set_player_steer_by_goto() {
         for (playerboat, (my_pos, goto_pos)) in playerboats {
             let goal_vec : Vec2 = goto_pos - my_pos.truncate();
             let goal_dist : f32 = goal_vec.length();
-            if goal_dist < 0.05 {
+            if goal_dist < 2.00 {
                 // entity::remove_component(playerboat, playerboat_goto()); // ? should i ?
                 entity::set_component(playerboat, boat_steer(), Vec2::ZERO);
             } else {
-                let steer_power = invlerp(0.00, 4.00, goal_vec.length()).clamp(0.10, 1.00);
-                entity::set_component(playerboat, boat_steer(), goal_vec.normalize() * steer_power);
+                let steer_power = lerp(0.35, 1.00, invlerp(2.00, 20.00, goal_dist).clamp(0., 1.));
+                entity::set_component(playerboat, boat_steer(), goal_vec * (steer_power / goal_dist));
             }
         }
     });
@@ -98,8 +98,8 @@ fn make_boat() -> Entity {
         .with(boat_forward(), vec2(0., 1.))
         .with(boat_forward_rotvel(), 0.)
 
-        .with(boat_stat_speed(), 4.0)
-        .with(boat_stat_accel(), 2.0)
+        .with(boat_stat_speed(), 1.5)
+        .with(boat_stat_accel(), 1.0)
 }
 
 use matter::components::{
@@ -116,5 +116,5 @@ fn make_buoy() -> Entity {
 }
 
 
-// fn lerp(from : f32, to : f32, rel : f32) -> f32 { ((1. - rel) * from) + (rel * to) }
+fn lerp(from : f32, to : f32, rel : f32) -> f32 { ((1. - rel) * from) + (rel * to) }
 fn invlerp(from : f32, to : f32, value : f32) -> f32 { (value - from) / (to - from) }

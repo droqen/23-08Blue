@@ -41,7 +41,8 @@ fn on_boat_spawned_spawn_model() {
 
 use ambient_api::core::player::components::{user_id, local_user_id};
 use boatblue_playerboat::messages::GotoRay;
-use selfie_camera::components::selfie_focus_ent;
+use selfie_camera::components::{selfie_focus_ent, selfie_focus_offset, selfie_ground_distance, selfie_ground_height};
+use selfie_camera_mouse_tilt::messages::PinCameraTilt;
 use boat::components::{
     boat_forward,
     // boat_forward_rotvel,
@@ -56,9 +57,20 @@ async fn on_playerboat_spawned_link_camera_and_setup_input() {
     ).await;
 
     entity::add_component(camera, selfie_focus_ent(), playerboat);
-    setup_mouse_ray_input_broadcast(camera);
+    entity::add_component(camera, selfie_ground_distance(), 12.0);
+    entity::add_component(camera, selfie_ground_height(), 27.0);
+    setup_mouse_ray_input_broadcast(camera.clone());
+
+    PinCameraTilt::subscribe(move |_src, msg|{
+        let bottomness = (msg.tilt.y + 1.) * 0.5;
+        let offset = Vec2::splat( lerp(-1., 3., bottomness.powf(1.5)) )
+            + vec2(1., -1.) * msg.tilt.x;
+        entity::add_component( camera, selfie_focus_offset(), offset.extend(0.) );
+    });
 
 }
+
+fn lerp(from : f32, to : f32, rel : f32) -> f32 { ((1. - rel) * from) + (rel * to) }
 
 fn setup_mouse_ray_input_broadcast(camera : EntityId) {
     ambient_api::core::messages::Frame::subscribe(move |_|{
