@@ -1,0 +1,25 @@
+[ember]
+id = "boatblue_playgrid"
+name = "boatblue_playgrid"
+version = "0.0.1"
+
+[components]
+grid_cell = { type = "Ivec2", attributes = ["Networked", "Debuggable"] }
+
+grid_is_player_spawn = { type = "Empty", attributes = ["Networked"] }
+grid_is_shack = { type = "Empty", attributes = ["Networked"] }
+grid_shack_door_dir = { type = "U8", attributes = ["Networked"] }
+grid_shack_has_boat = { type = "EntityId" }
+
+# door dir values correspond to these directions:
+#
+#           2      3
+#              /\
+#             /  \
+#             \  /
+#              \/
+#           1      0
+#
+# ```````````````````````````````````````````````````````
+
+gridmaster_cellsize = { type = "Vec2", attributes = ["Networked", "Debuggable"] }
