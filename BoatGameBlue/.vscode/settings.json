@@ -21,6 +21,7 @@
     ".\\embers\\boatblue_shackgen\\Cargo.toml",
     ".\\embers\\boatblue_playgrid\\Cargo.toml",
     ".\\embers\\boatblue_playerboat_debug\\Cargo.toml",
-    ".\\embers\\boatblue_playerboat_debug\\Cargo.toml"
+    ".\\embers\\boatblue_playerboat_debug\\Cargo.toml",
+    ".\\embers\\boatblue_playgrid\\Cargo.toml"
   ]
 }
