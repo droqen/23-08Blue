@@ -23,3 +23,6 @@ grid_shack_has_boat = { type = "EntityId" }
 # ```````````````````````````````````````````````````````
 
 gridmaster_cellsize = { type = "Vec2", attributes = ["Networked", "Debuggable"] }
+
+grow_chunk_pos = { type = "Vec3" }
+grow_chunk_height_left = { type = "F32" }
