@@ -54,7 +54,7 @@ pub fn setup_shack_colliders() {
             let radius = 4.5; // whatever
             let height = 10.0; // whatever
             if let Some(door_side) = entity::get_component(id, grid_shack_door_dir()) {
-                spawn_garage_colliders(id, pos, door_side, radius, height, 0.5, true);
+                spawn_garage_colliders(id, pos, door_side, radius, height, 0.5, false);
             } else {
                 entity::add_component(id, cube_collider(), vec3(radius, radius, height * 2.)); // should this be a child ent?
             }
@@ -62,11 +62,11 @@ pub fn setup_shack_colliders() {
     });
 
     // wiggle to make visible
-    query(()).requires((translation(), cube_collider())).each_frame(|cubes|
-        for (cube, _) in cubes {
-            entity::mutate_component(cube, translation(), |pos|pos.z -= 0.00000001);
-        }
-    );
+    // query(()).requires((translation(), cube_collider())).each_frame(|cubes|
+    //     for (cube, _) in cubes {
+    //         entity::mutate_component(cube, translation(), |pos|pos.z -= 0.00000001 );
+    //     }
+    // );
 }
 
 fn spawn_garage_colliders(building_parent : EntityId, base_pos : Vec3, door_side : u8, radius : f32, height : f32, wall_thickness : f32, visualize_walls : bool ) {
