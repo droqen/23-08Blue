@@ -1,5 +1,5 @@
 
-fn lerp(a:f32,b:f32,t:f32) -> f32 { a*(1.-t)+b*t }
+// fn lerp(a:f32,b:f32,t:f32) -> f32 { a*(1.-t)+b*t }
 
 pub fn just_do_it() {
 
@@ -34,6 +34,7 @@ pub fn gen_cells_azoa() -> Vec<IVec2> {
     return cells;
 }
 
+#[allow(dead_code)]
 pub fn spawn_pillar_at(
     base_pos : Vec3,
     width : f32,

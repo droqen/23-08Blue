@@ -134,6 +134,7 @@ pub fn setup_shack_models() {
     );
 }
 
+#[allow(dead_code)]
 #[derive(Clone, Copy)]
 enum ShackChunk {
     Short, Tall, TallWithHole, Rooftop, Separator,

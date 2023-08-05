@@ -3,7 +3,7 @@ use ambient_api::prelude::*;
 #[main]
 pub fn main() {
     spawn_water_plane();
-    for i in 0..100 {
+    for _ in 0..100 {
         spawn_water_grass();
     }
 }
