@@ -2,4 +2,5 @@
 
 members = [
     "saa-physics-momentum-err",
+    "sab-physics-pathfinding",
 ]

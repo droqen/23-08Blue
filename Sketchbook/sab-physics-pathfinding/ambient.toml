@@ -1,0 +1,10 @@
+[ember]
+id = "sab_physics_pathfinding"
+name = "sab-physics-pathfinding"
+version = "0.0.1"
+ 
+[components]
+roller_steer = { type = "Vec2" }
+roller_nextcell = { type = "Ivec2" }
+roller_targetcell = { type = "Ivec2" }
+# path?
