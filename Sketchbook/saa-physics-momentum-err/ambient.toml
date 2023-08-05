@@ -4,4 +4,8 @@ name = "saa-physics-momentum-err"
 version = "0.0.1"
 
 [components]
-driven_power = { type = "F32" }
+driven_power = { type = "F32", attributes = ["Networked", "Debuggable"] }
+
+[dependencies]
+boatblue_selfie_camera = { path = "../../BoatGameBlue/embers/boatblue_selfie_camera" }
+scmt = { path = "../../BoatGameBlue/embers/boatblue_selfie_camera_mouse_tilt" }
