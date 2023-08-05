@@ -9,7 +9,7 @@ use ambient_api::{
             visualize_collider,
         },
         primitives::components::quad, rendering::components::color, model::components::model_from_url,
-    }, entity::mutate_component
+    }
 };
 use crate::boatblue_playgrid::components::{
     grid_cell, grid_is_shack, grid_shack_door_dir,
@@ -69,12 +69,12 @@ pub fn setup_shack_colliders() {
         }
     });
 
-    // wiggle to make visible
-    query(()).requires((translation(), cube_collider())).each_frame(|cubes|
-        for (cube, _) in cubes {
-            entity::mutate_component(cube, translation(), |pos|pos.z -= 0.01 );
-        }
-    );
+    // // wiggle to make visible
+    // query(()).requires((translation(), cube_collider())).each_frame(|cubes|
+    //     for (cube, _) in cubes {
+    //         entity::mutate_component(cube, translation(), |pos|pos.z -= 0.01 );
+    //     }
+    // );
 }
 
 fn spawn_garage_colliders(building_parent : EntityId, base_pos : Vec3, door_side : u8, radius : f32, height : f32, wall_thickness : f32, visualize_walls : bool ) {
