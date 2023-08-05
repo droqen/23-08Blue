@@ -4,4 +4,4 @@ name = "saa-physics-momentum-err"
 version = "0.0.1"
 
 [components]
-is_driven = { type = "Empty" }
+driven_power = { type = "F32" }

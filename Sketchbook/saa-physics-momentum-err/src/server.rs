@@ -15,7 +15,7 @@ use ambient_api::{
     prelude::*,
 };
 
-use saa_physics_momentum_err::components::is_driven;
+use saa_physics_momentum_err::components::driven_power;
 
 #[main]
 pub fn main() {
@@ -31,7 +31,7 @@ pub fn main() {
     Entity::new()
         .with(physics_controlled(), ())
         .with(dynamic(), true)
-        .with(translation(), vec3(0., -2., 4.))
+        .with(translation(), vec3(0., -3., 4.))
         .with(cube(), ())
         .with(cube_collider(), vec3(1., 1., 1.))
         .with(linear_velocity(), vec3(0., 0., 0.))
@@ -40,12 +40,22 @@ pub fn main() {
     Entity::new()
         .with(physics_controlled(), ())
         .with(dynamic(), true)
-        .with(translation(), vec3(0., 2., 4.))
+        .with(translation(), vec3(0., 0., 4.))
         .with(cube(), ())
         .with(cube_collider(), vec3(1., 1., 1.))
         .with(linear_velocity(), vec3(0., 0., 0.))
-        .with(is_driven(), ())
+        .with(driven_power(), 0.10)
         .spawn();
+
+        Entity::new()
+            .with(physics_controlled(), ())
+            .with(dynamic(), true)
+            .with(translation(), vec3(0., 3., 1.))
+            .with(cube(), ())
+            .with(cube_collider(), vec3(1., 1., 1.))
+            .with(linear_velocity(), vec3(0., 0., 0.))
+            .with(driven_power(), 9.81)
+            .spawn();
 
     // floor
     Entity::new()
@@ -65,9 +75,9 @@ pub fn main() {
         .with(color(), vec4(1., 0.5, 0.5, 1.))
         .spawn();
 
-    query(()).requires(is_driven()).each_frame(|driven_bodies|{
-        for (body,_) in driven_bodies {
-            entity::mutate_component(body, linear_velocity(), |linvel|linvel.x -= 0.10 * delta_time());
+    query(driven_power()).each_frame(|driven_bodies|{
+        for (body,power) in driven_bodies {
+            entity::mutate_component(body, linear_velocity(), |linvel|linvel.x -= power * delta_time());
         }
     });
 
