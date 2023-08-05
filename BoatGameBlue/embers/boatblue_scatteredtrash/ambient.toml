@@ -1,0 +1,7 @@
+[ember]
+id = "boatblue_scatteredtrash"
+name = "boatblue_scatteredtrash"
+version = "0.0.1"
+
+[dependencies]
+boatblue_matter = { path = "../boatblue_matter" }

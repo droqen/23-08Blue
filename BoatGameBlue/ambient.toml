@@ -14,6 +14,7 @@ playgrid = { path = "embers/boatblue_playgrid" }
 # playerboat_debug = { path = "embers/boatblue_playerboat_debug" }
 water = { path = "embers/boatblue_water" }
 # citygen = { path = "embers/boatblue_citygen_simple" }
+trash = { path = "embers/boatblue_scatteredtrash" }
 
 # just testing a demo
 # demo = { path = "embers/boatblue_matter_demo" }

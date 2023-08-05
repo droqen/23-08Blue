@@ -19,9 +19,8 @@
     ".\\embers\\flume_test\\Cargo.toml",
     ".\\embers\\boatblue_playerboat\\Cargo.toml",
     ".\\embers\\boatblue_shackgen\\Cargo.toml",
+    ".\\embers\\boatblue_playerboat_debug\\Cargo.toml",
     ".\\embers\\boatblue_playgrid\\Cargo.toml",
-    ".\\embers\\boatblue_playerboat_debug\\Cargo.toml",
-    ".\\embers\\boatblue_playerboat_debug\\Cargo.toml",
-    ".\\embers\\boatblue_playgrid\\Cargo.toml"
+    ".\\embers\\boatblue_scatteredtrash\\Cargo.toml"
   ]
 }
