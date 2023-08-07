@@ -15,7 +15,7 @@ pub fn spawn_random_sky_trash(min : f32, max : f32) -> EntityId {
     Entity::new()
         .with_merge(make_buoy())
         .with(color(), vec4(0.5, 0.5, 0.5, 1.0))
-        .with(model_from_url(), asset::url("boatblue_scatteredtrash/assets/MSH_Prop_Trashbag.glb").unwrap())
+        .with(model_from_url(), crate::boatblue_scatteredtrash::assets::url("MSH_Prop_Trashbag.glb").unwrap())
         .with(physics_controlled(), ())
         .with(dynamic(), true)
         .with(sphere_collider(), 1.)

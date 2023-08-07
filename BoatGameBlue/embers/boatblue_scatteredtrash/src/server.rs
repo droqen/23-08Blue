@@ -1,6 +1,8 @@
 
 use ambient_api::prelude::*;
 
+use boatblue_scatteredtrash::components::*;
+
 mod s_scatter_trash;
 
 #[main]

@@ -5,3 +5,6 @@ version = "0.0.1"
 
 [dependencies]
 boatblue_matter = { path = "../boatblue_matter" }
+
+[components]
+is_trash = { type = "Empty" }
