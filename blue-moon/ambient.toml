@@ -1,0 +1,8 @@
+[ember]
+id = "blue_moon"
+name = "blue-moon"
+description = "The general 'test demo' ember which calls upon other embers as dependencies, and doesn't do too much else."
+version = "0.0.1"
+
+[dependencies]
+a_nice_overhead_camera = { path = "../a_nice_overhead_camera" }
