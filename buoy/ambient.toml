@@ -1,0 +1,14 @@
+[ember]
+id = "buoy"
+name = "buoy"
+description = "Components for creating a floating entity that bobs in water. Work in progress, overly simple/naive version."
+version = "0.0.1"
+
+[components]
+buoy_local_center = { type = "Vec3" }
+buoy_radius = { type = "F32" }
+buoy_water_level = { type = "F32" } # not sure about this one but will do it for now
+buoy_max_force = { type = "F32" } # upward force when fully submerged
+buoy_max_drag = { type = "F32" } # friction force when fully submerged (lerp)
+buoy_submerged = { type = "F32" } # 0-1
+buoy_submerged_center = { type = "Vec3" }
