@@ -1,7 +1,8 @@
 [ember]
-id = "nice_overhead_camera"
-name = "nice_overhead_camera"
-version = "0.0.1"
+id = "a_nice_overhead_camera"
+name = "a_nice_overhead_camera"
+description = "Spawns a nice overhead camera with configurable components"
+version = "0.3.0"
 
 [components]
 head_pitch = { type = "F32" }

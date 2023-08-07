@@ -3,7 +3,7 @@ use ambient_api::core::{
     app::components::{name, window_physical_size},
     transform::components::{translation, lookat_target},
 };
-use crate::nice_overhead_camera::{
+use crate::a_nice_overhead_camera::{
     components::{the_nice_camera, nice_yaw_pitch_tilting, },
     components::{head_pitch, head_yaw, },
     messages::MouseRay
@@ -14,7 +14,7 @@ pub fn setup() {
     let _nicecam = make_fully_functional_head_camera()
         .with(the_nice_camera(), ())
         .with(name(), "The Nice Camera".to_string())
-        .with(nice_yaw_pitch_tilting(), vec2(1., 1.))
+        .with(nice_yaw_pitch_tilting(), vec2(0.25, 0.25))
         .spawn();
     query(the_nice_camera()).requires(lookat_target()).each_frame(|cams|{
         let input = input::get();
@@ -22,8 +22,8 @@ pub fn setup() {
             // set camera pitch/yaw by mouse uv - if nice_yaw_pitch_tilting component exists.
             if let Some(yaw_pitch_tilt) = entity::get_component(cam, nice_yaw_pitch_tilting()) {
                 let [dx,dy] = (get_mouse_uv(input.mouse_position)*2.-1.).to_array();
-                entity::add_component(cam, head_yaw(), yaw_pitch_tilt.x * dx);
-                entity::add_component(cam, head_pitch(), yaw_pitch_tilt.y * dy);
+                entity::add_component(cam, head_yaw(), yaw_pitch_tilt.x * -dx);
+                entity::add_component(cam, head_pitch(), yaw_pitch_tilt.y * -dy);
             }
 
             // broadcast mouse ray position
