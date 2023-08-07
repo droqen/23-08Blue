@@ -1,0 +1,16 @@
+[ember]
+id = "nice_overhead_camera"
+name = "nice_overhead_camera"
+version = "0.0.1"
+
+[components]
+head_pitch = { type = "F32" }
+head_yaw = { type = "F32" }
+head_relpos = { type = "Vec3" }
+
+the_nice_camera = { type = "Empty" }
+nice_yaw_pitch_tilting = { type = "Vec2" }
+
+[messages.MouseRay.fields]
+origin = "Vec3"
+dir = "Vec3"
