@@ -4,4 +4,7 @@ members = [
     "saa-physics-momentum-err",
     "sab-physics-pathfinding",
     "sac-physics-force",
+    # "sad-physics-path-b-real",
+    "sae-model-imp-script",
+    "saf-ember-depender",
 ]

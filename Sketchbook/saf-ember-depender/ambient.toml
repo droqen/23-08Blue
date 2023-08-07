@@ -1,0 +1,7 @@
+[ember]
+id = "saf_ember_depender"
+name = "saf-ember-depender"
+version = "0.0.1"
+
+[dependencies]
+model_imp = { path = "../sae-model-imp-script" }

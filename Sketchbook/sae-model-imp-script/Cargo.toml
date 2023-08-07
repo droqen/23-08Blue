@@ -1,0 +1,23 @@
+[package]
+name = "sae_model_imp_script"
+
+edition = "2021"
+publish = false
+version = "0.0.1"
+
+[dependencies]
+ambient_api = { git = "https://github.com/AmbientRun/Ambient.git", rev = "05a7ae1685" }
+
+[[bin]]
+name = "client_sae_model_imp_script"
+path = "src/client.rs"
+required-features = ["client"]
+
+[[bin]]
+name = "server_sae_model_imp_script"
+path = "src/server.rs"
+required-features = ["server"]
+
+[features]
+client = ["ambient_api/client"]
+server = ["ambient_api/server"]
