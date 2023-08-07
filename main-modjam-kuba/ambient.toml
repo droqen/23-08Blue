@@ -1,0 +1,7 @@
+[ember]
+id = "main_modjam_kuba"
+name = "main-modjam-kuba"
+version = "0.0.1"
+
+[components]
+charge = { type = "F32" }
