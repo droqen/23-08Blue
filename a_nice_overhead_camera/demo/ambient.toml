@@ -1,0 +1,7 @@
+[ember]
+id = "demo"
+name = "demo"
+version = "0.0.1"
+
+[dependencies]
+a_nice_overhead_camera = { path = ".." }
