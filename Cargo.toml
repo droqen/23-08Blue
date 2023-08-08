@@ -2,4 +2,28 @@
 
 members = [
     "a_nice_overhead_camera",
+    "a_nice_overhead_camera/demo",
+    "blue-moon",
+    "buoy",
+    "Insectarium_Collider",
+    "Insectarium_Spawn_Query",
+    "ww_gen",
+
+    "BoatGameBlue",
+    "BoatGameBlue/embers/boatblue_boat_demo",
+    "BoatGameBlue/embers/boatblue_citygen_simple",
+    "BoatGameBlue/embers/boatblue_matter",
+    "BoatGameBlue/embers/boatblue_matter_demo",
+    "BoatGameBlue/embers/boatblue_playerboat",
+    "BoatGameBlue/embers/boatblue_playerboat_debug",
+    "BoatGameBlue/embers/boatblue_playgrid",
+    "BoatGameBlue/embers/boatblue_scatteredtrash",
+    "BoatGameBlue/embers/boatblue_selfie_camera",
+    "BoatGameBlue/embers/boatblue_selfie_camera_demo",
+    "BoatGameBlue/embers/boatblue_selfie_camera_mouse_tilt",
+    "BoatGameBlue/embers/boatblue_water",
+    "BoatGameBlue/embers/boatblue_boat",
+    "BoatGameBlue/embers/broadcast-only/pin_mouseuv",
+    "BoatGameBlue/embers/flume_test",
+    "BoatGameBlue/embers/subscribe-only/uv_debugger",
 ]
