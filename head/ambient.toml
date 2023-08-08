@@ -1,9 +1,0 @@
-[ember]
-id = "head"
-name = "head"
-version = "0.0.1"
-
-[components]
-head_pitch = { type = "F32" }
-head_yaw = { type = "F32" }
-head_relpos = { type = "Vec3" }
