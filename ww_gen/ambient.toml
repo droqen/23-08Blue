@@ -1,0 +1,24 @@
+[ember]
+id = "ww_gen"
+name = "ww_gen"
+description = "Windwaker/Waterworld [world-]Gen"
+version = "0.0.1"
+
+[components]
+
+# block_pos # no need, this is just position
+# block_height # no need? . . . actually, i need.
+
+block_size = { type = "Vec3" }
+
+block_door_side = { type = "U8" }
+
+#side-index directions (seen isometrically):
+#(x-)(y-)
+#  2    3
+#    /\
+#   /  \
+#   \  /
+#    \/
+#  1    0
+#(y+)(x+)
