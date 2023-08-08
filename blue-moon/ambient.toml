@@ -6,3 +6,4 @@ version = "0.0.1"
 
 [dependencies]
 a_nice_overhead_camera = { path = "../a_nice_overhead_camera" }
+ww_gen = { path = "../ww_gen" }

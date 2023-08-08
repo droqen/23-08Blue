@@ -14,6 +14,9 @@ use ambient_api::{
     prelude::*,
 };
 
+use ww_gen::components::block_size;
+use ww_gen::components::block_door_side;
+
 #[main]
 pub fn main() {
 
@@ -26,8 +29,14 @@ pub fn main() {
         .spawn();
 
     Entity::new()
-        .with_merge(make_transformable())
-        .with_default(quad())
+        .with(translation(), vec3(0., 0., 0.))
+        .with(block_size(), vec3(6.0, 6.0, 10.0))
+        .spawn();
+
+    Entity::new()
+        .with(translation(), vec3(6.0, -6.0, 0.))
+        .with(block_size(), vec3(6.0, 6.0, 10.0))
+        .with(block_door_side(), 0)
         .spawn();
 
     println!("Hello, Ambient!");
