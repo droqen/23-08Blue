@@ -16,6 +16,9 @@ use ambient_api::{
 
 use ww_gen::components::block_size;
 use ww_gen::components::block_door_side;
+use blue_moon::components::test_component;
+
+mod s_test;
 
 #[main]
 pub fn main() {
@@ -37,7 +40,10 @@ pub fn main() {
         .with(translation(), vec3(6.0, -6.0, 0.))
         .with(block_size(), vec3(6.0, 6.0, 10.0))
         .with(block_door_side(), 0)
+        .with(test_component(), ())
         .spawn();
 
     println!("Hello, Ambient!");
+
+    s_test::setup();
 }

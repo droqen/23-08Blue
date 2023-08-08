@@ -1,0 +1,5 @@
+{
+    "rust-analyzer.linkedProjects": [
+        ".\\blue-moon\\Cargo.toml"
+    ]
+}
