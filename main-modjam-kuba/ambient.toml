@@ -1,6 +1,6 @@
 [ember]
 id = "main_modjam_kuba"
-name = "main-modjam-kuba"
+name = "main_modjam_kuba"
 version = "0.0.1"
 
 [components]

@@ -1,5 +1,5 @@
 [package]
-name = "main-modjam-kuba"
+name = "main_modjam_kuba"
 
 edition = "2021"
 publish = false
