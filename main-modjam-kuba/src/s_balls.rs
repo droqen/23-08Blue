@@ -12,34 +12,32 @@ use ambient_api::{
 
 use crate::components::charge;
 
-pub fn setup() {
-
-    physics::set_gravity(Vec3::ZERO);
-
-    let mut planets = Vec::new();
-
-    for _ in 0..10 {
+pub fn spawn_planets(n: usize) -> Vec<EntityId> {
+    (0..n).into_iter().map(|_| {
         let planet_radius = random::<f32>() * random::<f32>() * 2. + 0.3;
         let start_pos = vec3(rt(), rt(), rt(),);
-        // let start_pos_coefficient = 10000.0;
-        planets.push(
-            Entity::new()
-                .with_merge(make_transformable())
-                .with(physics_controlled(), ())
-                .with(dynamic(), true)
-                .with(sphere_collider(), 0.5)
-                .with(mass(), planet_radius * planet_radius * planet_radius)
-                .with(charge(), bitflip())
-                .with(translation(), start_pos)
-                .with(scale(), Vec3::splat(planet_radius))
-                // .with(linear_velocity(), Quat::from_rotation_z(0.5 * PI) * start_pos * start_pos_coefficient)
-                .with(color(), random::<Vec3>().extend(1.))
-                .with_merge(make_sphere())
-                .spawn()
-        );
-    }
+        Entity::new()
+            .with_merge(make_transformable())
+            .with(physics_controlled(), ())
+            .with(dynamic(), true)
+            .with(sphere_collider(), 0.5)
+            .with(mass(), planet_radius * planet_radius * planet_radius)
+            .with(charge(), bitflip())
+            .with(translation(), start_pos)
+            .with(scale(), Vec3::splat(planet_radius))
+            // .with(linear_velocity(), Quat::from_rotation_z(0.5 * PI) * start_pos * start_pos_coefficient)
+            .with(color(), random::<Vec3>().extend(1.))
+            .with_merge(make_sphere())
+            .spawn()
+    }).collect()
+}
 
-    ambient_api::messages::Frame::subscribe(move |_|
+pub fn setup() {
+    physics::set_gravity(Vec3::ZERO);
+
+    let mut frame_count = 0;
+    let mut planets = spawn_planets(10);
+    ambient_api::messages::Frame::subscribe(move |_| {
         for i in 0..planets.len()-1 {
             for j in i+1..planets.len() {
                 let chargei = entity::get_component(planets[i], charge()).unwrap();
@@ -62,8 +60,18 @@ pub fn setup() {
                 }
             }
         }
-    );
 
+        frame_count += 1;
+
+        // respawn planets every 10s
+        if frame_count % (60 * 10) == 0 {
+            for planet in planets.iter() {
+                entity::despawn(*planet);
+            }
+            planets.clear();
+            planets = spawn_planets(10);
+        }
+    });
 }
 
 fn r() -> f32 {
