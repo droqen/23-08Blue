@@ -6,7 +6,7 @@ publish = false
 version = "0.0.1"
 
 [dependencies]
-ambient_api = { git = "https://github.com/AmbientRun/Ambient.git", rev = "05a7ae1685" }
+ambient_api = { workspace = true }
 
 [[bin]]
 name = "client_saf_ember_depender"
