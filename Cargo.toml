@@ -1,5 +1,4 @@
 [workspace]
-
 members = [
     "a_nice_overhead_camera",
     "a_nice_overhead_camera/demo",
@@ -27,3 +26,6 @@ members = [
     "BoatGameBlue/embers/flume_test",
     "BoatGameBlue/embers/subscribe-only/uv_debugger",
 ]
+
+[workspace.dependencies]
+ambient_api = { git = "https://github.com/AmbientRun/Ambient.git", branch = "enum-support" }

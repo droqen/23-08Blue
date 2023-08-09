@@ -6,7 +6,7 @@ publish = false
 version = "0.0.1"
 
 [dependencies]
-ambient_api = { git = "https://github.com/AmbientRun/Ambient.git", rev = "69577e9acf" }
+ambient_api = { workspace = true }
 
 [[bin]]
 name = "client_insectarium_collider"
