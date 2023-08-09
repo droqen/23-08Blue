@@ -1,0 +1,14 @@
+UPDATE TO LATEST AMBIENT 'ENUM-SUPPORT'
+
+cargo install --git https://github.com/AmbientRun/Ambient.git ambient --locked --force --branch enum-support
+ambient
+
+UPDATE TO SAFE AMBIENT 'MAIN'
+
+cargo install --git https://github.com/AmbientRun/Ambient.git ambient --tag v0.3.0-dev+20230808 --locked --force
+ambient
+
+UPDATED TO SOME SAFE AMBIENT 'MAIN'
+
+cargo cf install --git-revision 475e0cbf1
+ambient-475e0cbf1
