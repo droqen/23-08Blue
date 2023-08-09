@@ -2,18 +2,20 @@ use ambient_api::{
     core::{
         player::components::{player, user_id},
         transform::components::translation, primitives::components::cube,
-        physics::components::{physics_controlled, dynamic, sphere_collider, }, ecs::components::children,
+        physics::components::{physics_controlled, dynamic, sphere_collider, }, ecs::components::children, app::components::name,
         // 
     },
     prelude::*,
 };
 
-use crate::skatemouse::components::{is_skatemouse, mouse_cheese};
+use crate::skatemouse::components::{is_skatemouse, mouse_cheese, mouse_fwd, mouse_pace};
 use crate::demo::messages::SetMouseCheese;
 
 pub fn setup() {
     spawn_query((player(), user_id())).bind(|plrs|for(plr,(_,uid)) in plrs{
+        entity::add_component(plr, name(), "Player".to_string());
         let skatemouse = Entity::new() 
+            .with(name(), "Skatemouse".to_string())
             .with(user_id(), uid)
             .with(translation(), vec3(0., 0., 0.))
             .with(physics_controlled(), ())
@@ -21,6 +23,8 @@ pub fn setup() {
             .with(sphere_collider(), 1.0)
             .with(is_skatemouse(), ())
             .with(mouse_cheese(), vec3(0., 0., 0.))
+            .with(mouse_fwd(), random::<Quat>() * vec3(0., 1., 0.))
+            .with(mouse_pace(), 0.)
             .spawn();
         entity::add_child(plr, skatemouse);
     });

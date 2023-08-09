@@ -3,9 +3,14 @@ id = "skatemouse"
 name = "skatemouse"
 version = "0.0.1"
 
+# credit:
+# "Low Poly Rat" (https://skfb.ly/ouEyx) by Tyler Lazzareschi is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
+
 [components]
 is_skatemouse = { type = "Empty", attributes = ["Networked"] }
 mouse_cheese = { type = "Vec3" } # where does the mouse want to be? # is this really debuggable??? hmm
+mouse_fwd = { type = "Vec3", attributes = ["Networked"] } # which way is the mouse facing? a mouse can only accelerate 'forward'.
+mouse_pace = { type = "F32", attributes = ["Networked"] } # at low pace, quick turn. at max pace, a more gradual turn...
 
 is_mouse_spr = { type = "Empty" }
 is_cheese_spr = { type = "Empty" }
