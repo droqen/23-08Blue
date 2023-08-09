@@ -10,6 +10,7 @@ members = [
     "ww_gen/demo",
 
     "all_players_boats",
+    "all_players_boats/demo",
 
     "BoatGameBlue",
     "BoatGameBlue/embers/boatblue_boat_demo",
