@@ -12,6 +12,8 @@ members = [
     "all_players_boats",
     "all_players_boats/demo",
 
+    "dans_modeling_agency",
+    
     "BoatGameBlue",
     "BoatGameBlue/embers/boatblue_boat_demo",
     "BoatGameBlue/embers/boatblue_citygen_simple",

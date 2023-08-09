@@ -782,6 +782,13 @@ dependencies = [
 ]
 
 [[package]]
+name = "dans_modeling_agency"
+version = "0.0.1"
+dependencies = [
+ "ambient_api 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?rev=6620f51a00)",
+]
+
+[[package]]
 name = "data-encoding"
 version = "2.4.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
