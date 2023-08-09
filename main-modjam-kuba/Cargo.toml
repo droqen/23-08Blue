@@ -6,7 +6,7 @@ publish = false
 version = "0.0.1"
 
 [dependencies]
-ambient_api = { git = "https://github.com/AmbientRun/Ambient.git", rev = "4b173090a7" }
+ambient_api = { workspace = true }
 
 [[bin]]
 name = "client_main_modjam_kuba"
