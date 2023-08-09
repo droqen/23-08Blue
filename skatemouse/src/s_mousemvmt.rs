@@ -10,7 +10,8 @@ use crate::skatemouse::components::{mouse_cheese, mouse_fwd, mouse_pace};
 
 const GOALPACE_FROM_REACH:(f32,f32)=(1.0, 5.0);
 const TURNSPDMULT_FROM_REACH:(f32, f32)=(1.0, 2.0);
-const TURNSPD_BY_PACE:(f32,f32)=(5.0, 1.0);
+const TURNSPD_BY_PACE:(f32,f32)=(5.0, 2.5);
+const TURNSPD_MAX_LERP : f32 = 0.1;
 const PACE_CHANGE_RATE : f32 = 1.0;
 const FRICTION_BY_PACE:(f32,f32)=(1.0, 0.1);
 const ACCEL_BY_PACE:(f32,f32)=(5.0, 4.0);
@@ -25,11 +26,12 @@ pub fn setup() {
         let dt : f32 = delta_time();
         entity::set_component(mouse, mouse_pace(), tow(pace,goalpace,PACE_CHANGE_RATE*dt));
         if dist_to_cheese > TURNSPDMULT_FROM_REACH.0 {
-            let turnspd : f32 = lerpby(TURNSPD_BY_PACE, pace) * invlerpfrom(TURNSPDMULT_FROM_REACH, dist_to_cheese).clamp(0., 1.);
             let goalfwd : Vec3 = to_cheese.normalize();
             let rota : Quat = Quat::from_rotation_arc(fwd, fwd);
             let rotb : Quat = Quat::from_rotation_arc(fwd, goalfwd);
             let rotdist : f32 = rota.angle_between(rotb);
+            let turnspd : f32 = lerpby(TURNSPD_BY_PACE, pace).min(TURNSPD_MAX_LERP * rotdist / dt)
+                * invlerpfrom(TURNSPDMULT_FROM_REACH, dist_to_cheese).clamp(0., 1.);
             if rotdist > turnspd * dt {
                 entity::set_component(mouse, mouse_fwd(), rota.lerp(rotb, turnspd * dt / rotdist) * fwd);
             } else {

@@ -23,7 +23,7 @@ pub fn setup() {
             .with(sphere_collider(), 1.0)
             .with(is_skatemouse(), ())
             .with(mouse_cheese(), vec3(0., 0., 0.))
-            .with(mouse_fwd(), random::<Quat>() * vec3(0., 1., 0.))
+            .with(mouse_fwd(), vec3(0., 1., 0.))
             .with(mouse_pace(), 0.)
             .spawn();
         entity::add_child(plr, skatemouse);

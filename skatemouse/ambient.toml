@@ -13,5 +13,5 @@ mouse_fwd = { type = "Vec3", attributes = ["Networked"] } # which way is the mou
 mouse_pace = { type = "F32", attributes = ["Networked"] } # at low pace, quick turn. at max pace, a more gradual turn...
 
 is_mouse_spr = { type = "Empty" }
-mouse_spr_rot = { type = "Quat" }
+mouse_spr_fwd = { type = "Vec3" }
 is_cheese_spr = { type = "Empty" }
