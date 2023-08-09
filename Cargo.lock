@@ -3,6 +3,13 @@
 version = 3
 
 [[package]]
+name = "a_nice_overhead_camera__demo"
+version = "0.0.1"
+dependencies = [
+ "ambient_api 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?branch=enum-support)",
+]
+
+[[package]]
 name = "addr2line"
 version = "0.20.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -21,7 +28,14 @@ checksum = "f26201604c87b1e01bd3d98f8d5d9a8fcbb815e8cedb41ffccbeb4bf593a35fe"
 name = "all_players_boats"
 version = "0.0.1"
 dependencies = [
- "ambient_api",
+ "ambient_api 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?branch=enum-support)",
+]
+
+[[package]]
+name = "all_players_boats__demo"
+version = "0.0.1"
+dependencies = [
+ "ambient_api 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?rev=6620f51a00)",
 ]
 
 [[package]]
@@ -29,11 +43,28 @@ name = "ambient_api"
 version = "0.3.0-dev"
 source = "git+https://github.com/AmbientRun/Ambient.git?branch=enum-support#6620f51a00bb5db8d4428ba7e57687e5765ef41b"
 dependencies = [
- "ambient_api_core",
- "ambient_cb",
- "ambient_editor_derive",
- "ambient_element",
- "ambient_ui",
+ "ambient_api_core 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?branch=enum-support)",
+ "ambient_cb 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?branch=enum-support)",
+ "ambient_editor_derive 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?branch=enum-support)",
+ "ambient_element 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?branch=enum-support)",
+ "ambient_ui 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?branch=enum-support)",
+ "anyhow",
+ "futures",
+ "glam",
+ "once_cell",
+ "rand",
+]
+
+[[package]]
+name = "ambient_api"
+version = "0.3.0-dev"
+source = "git+https://github.com/AmbientRun/Ambient.git?rev=6620f51a00#6620f51a00bb5db8d4428ba7e57687e5765ef41b"
+dependencies = [
+ "ambient_api_core 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?rev=6620f51a00)",
+ "ambient_cb 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?rev=6620f51a00)",
+ "ambient_editor_derive 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?rev=6620f51a00)",
+ "ambient_element 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?rev=6620f51a00)",
+ "ambient_ui 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?rev=6620f51a00)",
  "anyhow",
  "futures",
  "glam",
@@ -46,9 +77,32 @@ name = "ambient_api_core"
 version = "0.3.0-dev"
 source = "git+https://github.com/AmbientRun/Ambient.git?branch=enum-support#6620f51a00bb5db8d4428ba7e57687e5765ef41b"
 dependencies = [
- "ambient_api_macros",
- "ambient_project_rt",
- "ambient_shared_types",
+ "ambient_api_macros 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?branch=enum-support)",
+ "ambient_project_rt 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?branch=enum-support)",
+ "ambient_shared_types 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?branch=enum-support)",
+ "anyhow",
+ "byteorder",
+ "data-encoding",
+ "futures",
+ "glam",
+ "indexmap",
+ "once_cell",
+ "paste",
+ "rand",
+ "serde",
+ "thiserror",
+ "ulid",
+ "wit-bindgen",
+]
+
+[[package]]
+name = "ambient_api_core"
+version = "0.3.0-dev"
+source = "git+https://github.com/AmbientRun/Ambient.git?rev=6620f51a00#6620f51a00bb5db8d4428ba7e57687e5765ef41b"
+dependencies = [
+ "ambient_api_macros 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?rev=6620f51a00)",
+ "ambient_project_rt 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?rev=6620f51a00)",
+ "ambient_shared_types 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?rev=6620f51a00)",
  "anyhow",
  "byteorder",
  "data-encoding",
@@ -69,9 +123,23 @@ name = "ambient_api_macros"
 version = "0.3.0-dev"
 source = "git+https://github.com/AmbientRun/Ambient.git?branch=enum-support#6620f51a00bb5db8d4428ba7e57687e5765ef41b"
 dependencies = [
- "ambient_project",
- "ambient_project_macro_common",
- "ambient_schema",
+ "ambient_project 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?branch=enum-support)",
+ "ambient_project_macro_common 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?branch=enum-support)",
+ "ambient_schema 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?branch=enum-support)",
+ "anyhow",
+ "proc-macro2",
+ "quote",
+ "syn 1.0.109",
+]
+
+[[package]]
+name = "ambient_api_macros"
+version = "0.3.0-dev"
+source = "git+https://github.com/AmbientRun/Ambient.git?rev=6620f51a00#6620f51a00bb5db8d4428ba7e57687e5765ef41b"
+dependencies = [
+ "ambient_project 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?rev=6620f51a00)",
+ "ambient_project_macro_common 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?rev=6620f51a00)",
+ "ambient_schema 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?rev=6620f51a00)",
  "anyhow",
  "proc-macro2",
  "quote",
@@ -84,9 +152,25 @@ version = "0.3.0-dev"
 source = "git+https://github.com/AmbientRun/Ambient.git?branch=enum-support#6620f51a00bb5db8d4428ba7e57687e5765ef41b"
 
 [[package]]
+name = "ambient_cb"
+version = "0.3.0-dev"
+source = "git+https://github.com/AmbientRun/Ambient.git?rev=6620f51a00#6620f51a00bb5db8d4428ba7e57687e5765ef41b"
+
+[[package]]
 name = "ambient_color"
 version = "0.3.0-dev"
 source = "git+https://github.com/AmbientRun/Ambient.git?branch=enum-support#6620f51a00bb5db8d4428ba7e57687e5765ef41b"
+dependencies = [
+ "glam",
+ "hex",
+ "serde",
+ "thiserror",
+]
+
+[[package]]
+name = "ambient_color"
+version = "0.3.0-dev"
+source = "git+https://github.com/AmbientRun/Ambient.git?rev=6620f51a00#6620f51a00bb5db8d4428ba7e57687e5765ef41b"
 dependencies = [
  "glam",
  "hex",
@@ -109,14 +193,48 @@ dependencies = [
 ]
 
 [[package]]
+name = "ambient_editor_derive"
+version = "0.3.0-dev"
+source = "git+https://github.com/AmbientRun/Ambient.git?rev=6620f51a00#6620f51a00bb5db8d4428ba7e57687e5765ef41b"
+dependencies = [
+ "convert_case",
+ "itertools",
+ "pretty_assertions",
+ "proc-macro-crate",
+ "proc-macro2",
+ "quote",
+ "syn 1.0.109",
+]
+
+[[package]]
 name = "ambient_element"
 version = "0.3.0-dev"
 source = "git+https://github.com/AmbientRun/Ambient.git?branch=enum-support#6620f51a00bb5db8d4428ba7e57687e5765ef41b"
 dependencies = [
- "ambient_cb",
- "ambient_element_component",
- "ambient_friendly_id",
- "ambient_guest_bridge",
+ "ambient_cb 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?branch=enum-support)",
+ "ambient_element_component 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?branch=enum-support)",
+ "ambient_friendly_id 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?branch=enum-support)",
+ "ambient_guest_bridge 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?branch=enum-support)",
+ "as-any",
+ "atomic_refcell",
+ "derivative",
+ "dyn-clonable",
+ "futures",
+ "itertools",
+ "parking_lot",
+ "profiling",
+ "tracing",
+]
+
+[[package]]
+name = "ambient_element"
+version = "0.3.0-dev"
+source = "git+https://github.com/AmbientRun/Ambient.git?rev=6620f51a00#6620f51a00bb5db8d4428ba7e57687e5765ef41b"
+dependencies = [
+ "ambient_cb 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?rev=6620f51a00)",
+ "ambient_element_component 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?rev=6620f51a00)",
+ "ambient_friendly_id 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?rev=6620f51a00)",
+ "ambient_guest_bridge 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?rev=6620f51a00)",
  "as-any",
  "atomic_refcell",
  "derivative",
@@ -141,9 +259,29 @@ dependencies = [
 ]
 
 [[package]]
+name = "ambient_element_component"
+version = "0.3.0-dev"
+source = "git+https://github.com/AmbientRun/Ambient.git?rev=6620f51a00#6620f51a00bb5db8d4428ba7e57687e5765ef41b"
+dependencies = [
+ "itertools",
+ "proc-macro-crate",
+ "proc-macro2",
+ "quote",
+ "syn 1.0.109",
+]
+
+[[package]]
 name = "ambient_friendly_id"
 version = "0.3.0-dev"
 source = "git+https://github.com/AmbientRun/Ambient.git?branch=enum-support#6620f51a00bb5db8d4428ba7e57687e5765ef41b"
+dependencies = [
+ "rand",
+]
+
+[[package]]
+name = "ambient_friendly_id"
+version = "0.3.0-dev"
+source = "git+https://github.com/AmbientRun/Ambient.git?rev=6620f51a00#6620f51a00bb5db8d4428ba7e57687e5765ef41b"
 dependencies = [
  "rand",
 ]
@@ -153,8 +291,18 @@ name = "ambient_guest_bridge"
 version = "0.3.0-dev"
 source = "git+https://github.com/AmbientRun/Ambient.git?branch=enum-support#6620f51a00bb5db8d4428ba7e57687e5765ef41b"
 dependencies = [
- "ambient_api_core",
- "ambient_shared_types",
+ "ambient_api_core 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?branch=enum-support)",
+ "ambient_shared_types 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?branch=enum-support)",
+ "anyhow",
+]
+
+[[package]]
+name = "ambient_guest_bridge"
+version = "0.3.0-dev"
+source = "git+https://github.com/AmbientRun/Ambient.git?rev=6620f51a00#6620f51a00bb5db8d4428ba7e57687e5765ef41b"
+dependencies = [
+ "ambient_api_core 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?rev=6620f51a00)",
+ "ambient_shared_types 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?rev=6620f51a00)",
  "anyhow",
 ]
 
@@ -162,6 +310,16 @@ dependencies = [
 name = "ambient_math"
 version = "0.3.0-dev"
 source = "git+https://github.com/AmbientRun/Ambient.git?branch=enum-support#6620f51a00bb5db8d4428ba7e57687e5765ef41b"
+dependencies = [
+ "glam",
+ "rand",
+ "serde",
+]
+
+[[package]]
+name = "ambient_math"
+version = "0.3.0-dev"
+source = "git+https://github.com/AmbientRun/Ambient.git?rev=6620f51a00#6620f51a00bb5db8d4428ba7e57687e5765ef41b"
 dependencies = [
  "glam",
  "rand",
@@ -186,13 +344,47 @@ dependencies = [
 ]
 
 [[package]]
+name = "ambient_project"
+version = "0.3.0-dev"
+source = "git+https://github.com/AmbientRun/Ambient.git?rev=6620f51a00#6620f51a00bb5db8d4428ba7e57687e5765ef41b"
+dependencies = [
+ "anyhow",
+ "convert_case",
+ "indexmap",
+ "once_cell",
+ "proc-macro2",
+ "quote",
+ "serde",
+ "syn 1.0.109",
+ "thiserror",
+ "toml",
+]
+
+[[package]]
 name = "ambient_project_macro_common"
 version = "0.3.0-dev"
 source = "git+https://github.com/AmbientRun/Ambient.git?branch=enum-support#6620f51a00bb5db8d4428ba7e57687e5765ef41b"
 dependencies = [
- "ambient_project",
- "ambient_project_semantic",
- "ambient_shared_types",
+ "ambient_project 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?branch=enum-support)",
+ "ambient_project_semantic 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?branch=enum-support)",
+ "ambient_shared_types 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?branch=enum-support)",
+ "anyhow",
+ "proc-macro2",
+ "quote",
+ "serde",
+ "syn 1.0.109",
+ "thiserror",
+ "toml",
+]
+
+[[package]]
+name = "ambient_project_macro_common"
+version = "0.3.0-dev"
+source = "git+https://github.com/AmbientRun/Ambient.git?rev=6620f51a00#6620f51a00bb5db8d4428ba7e57687e5765ef41b"
+dependencies = [
+ "ambient_project 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?rev=6620f51a00)",
+ "ambient_project_semantic 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?rev=6620f51a00)",
+ "ambient_shared_types 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?rev=6620f51a00)",
  "anyhow",
  "proc-macro2",
  "quote",
@@ -213,14 +405,43 @@ dependencies = [
 ]
 
 [[package]]
+name = "ambient_project_rt"
+version = "0.3.0-dev"
+source = "git+https://github.com/AmbientRun/Ambient.git?rev=6620f51a00#6620f51a00bb5db8d4428ba7e57687e5765ef41b"
+dependencies = [
+ "byteorder",
+ "glam",
+ "thiserror",
+]
+
+[[package]]
 name = "ambient_project_semantic"
 version = "0.3.0-dev"
 source = "git+https://github.com/AmbientRun/Ambient.git?branch=enum-support#6620f51a00bb5db8d4428ba7e57687e5765ef41b"
 dependencies = [
- "ambient_project",
- "ambient_schema",
- "ambient_shared_types",
- "ambient_std",
+ "ambient_project 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?branch=enum-support)",
+ "ambient_schema 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?branch=enum-support)",
+ "ambient_shared_types 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?branch=enum-support)",
+ "ambient_std 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?branch=enum-support)",
+ "anyhow",
+ "data-encoding",
+ "glam",
+ "indexmap",
+ "paste",
+ "thiserror",
+ "toml",
+ "ulid",
+]
+
+[[package]]
+name = "ambient_project_semantic"
+version = "0.3.0-dev"
+source = "git+https://github.com/AmbientRun/Ambient.git?rev=6620f51a00#6620f51a00bb5db8d4428ba7e57687e5765ef41b"
+dependencies = [
+ "ambient_project 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?rev=6620f51a00)",
+ "ambient_schema 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?rev=6620f51a00)",
+ "ambient_shared_types 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?rev=6620f51a00)",
+ "ambient_std 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?rev=6620f51a00)",
  "anyhow",
  "data-encoding",
  "glam",
@@ -237,9 +458,27 @@ version = "0.3.0-dev"
 source = "git+https://github.com/AmbientRun/Ambient.git?branch=enum-support#6620f51a00bb5db8d4428ba7e57687e5765ef41b"
 
 [[package]]
+name = "ambient_schema"
+version = "0.3.0-dev"
+source = "git+https://github.com/AmbientRun/Ambient.git?rev=6620f51a00#6620f51a00bb5db8d4428ba7e57687e5765ef41b"
+
+[[package]]
 name = "ambient_shared_types"
 version = "0.3.0-dev"
 source = "git+https://github.com/AmbientRun/Ambient.git?branch=enum-support#6620f51a00bb5db8d4428ba7e57687e5765ef41b"
+dependencies = [
+ "bitflags 1.3.2",
+ "itertools",
+ "paste",
+ "serde",
+ "strum",
+ "ulid",
+]
+
+[[package]]
+name = "ambient_shared_types"
+version = "0.3.0-dev"
+source = "git+https://github.com/AmbientRun/Ambient.git?rev=6620f51a00#6620f51a00bb5db8d4428ba7e57687e5765ef41b"
 dependencies = [
  "bitflags 1.3.2",
  "itertools",
@@ -259,9 +498,27 @@ dependencies = [
 ]
 
 [[package]]
+name = "ambient_std"
+version = "0.3.0-dev"
+source = "git+https://github.com/AmbientRun/Ambient.git?rev=6620f51a00#6620f51a00bb5db8d4428ba7e57687e5765ef41b"
+dependencies = [
+ "itertools",
+ "thiserror",
+]
+
+[[package]]
 name = "ambient_time"
 version = "0.3.0-dev"
 source = "git+https://github.com/AmbientRun/Ambient.git?branch=enum-support#6620f51a00bb5db8d4428ba7e57687e5765ef41b"
+dependencies = [
+ "itertools",
+ "thiserror",
+]
+
+[[package]]
+name = "ambient_time"
+version = "0.3.0-dev"
+source = "git+https://github.com/AmbientRun/Ambient.git?rev=6620f51a00#6620f51a00bb5db8d4428ba7e57687e5765ef41b"
 dependencies = [
  "itertools",
  "thiserror",
@@ -272,13 +529,37 @@ name = "ambient_ui"
 version = "0.3.0-dev"
 source = "git+https://github.com/AmbientRun/Ambient.git?branch=enum-support#6620f51a00bb5db8d4428ba7e57687e5765ef41b"
 dependencies = [
- "ambient_cb",
- "ambient_color",
- "ambient_element",
- "ambient_guest_bridge",
- "ambient_math",
- "ambient_shared_types",
- "ambient_time",
+ "ambient_cb 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?branch=enum-support)",
+ "ambient_color 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?branch=enum-support)",
+ "ambient_element 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?branch=enum-support)",
+ "ambient_guest_bridge 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?branch=enum-support)",
+ "ambient_math 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?branch=enum-support)",
+ "ambient_shared_types 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?branch=enum-support)",
+ "ambient_time 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?branch=enum-support)",
+ "convert_case",
+ "futures",
+ "glam",
+ "indexmap",
+ "itertools",
+ "parking_lot",
+ "rand",
+ "serde",
+ "serde_json",
+ "tracing",
+]
+
+[[package]]
+name = "ambient_ui"
+version = "0.3.0-dev"
+source = "git+https://github.com/AmbientRun/Ambient.git?rev=6620f51a00#6620f51a00bb5db8d4428ba7e57687e5765ef41b"
+dependencies = [
+ "ambient_cb 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?rev=6620f51a00)",
+ "ambient_color 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?rev=6620f51a00)",
+ "ambient_element 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?rev=6620f51a00)",
+ "ambient_guest_bridge 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?rev=6620f51a00)",
+ "ambient_math 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?rev=6620f51a00)",
+ "ambient_shared_types 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?rev=6620f51a00)",
+ "ambient_time 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?rev=6620f51a00)",
  "convert_case",
  "futures",
  "glam",
@@ -349,56 +630,56 @@ checksum = "630be753d4e58660abd17930c71b647fe46c27ea6b63cc59e1e3851406972e42"
 name = "blue_moon"
 version = "0.0.1"
 dependencies = [
- "ambient_api",
+ "ambient_api 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?branch=enum-support)",
 ]
 
 [[package]]
 name = "boat_game_blue"
 version = "0.0.1"
 dependencies = [
- "ambient_api",
+ "ambient_api 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?branch=enum-support)",
 ]
 
 [[package]]
 name = "boatblue_boat"
 version = "0.0.1"
 dependencies = [
- "ambient_api",
+ "ambient_api 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?branch=enum-support)",
 ]
 
 [[package]]
 name = "boatblue_boat_demo"
 version = "0.0.1"
 dependencies = [
- "ambient_api",
+ "ambient_api 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?branch=enum-support)",
 ]
 
 [[package]]
 name = "boatblue_citygen_simple"
 version = "0.0.1"
 dependencies = [
- "ambient_api",
+ "ambient_api 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?branch=enum-support)",
 ]
 
 [[package]]
 name = "boatblue_matter"
 version = "0.0.1"
 dependencies = [
- "ambient_api",
+ "ambient_api 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?branch=enum-support)",
 ]
 
 [[package]]
 name = "boatblue_matter_demo"
 version = "0.0.1"
 dependencies = [
- "ambient_api",
+ "ambient_api 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?branch=enum-support)",
 ]
 
 [[package]]
 name = "boatblue_playerboat"
 version = "0.0.1"
 dependencies = [
- "ambient_api",
+ "ambient_api 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?branch=enum-support)",
  "flume",
 ]
 
@@ -406,49 +687,49 @@ dependencies = [
 name = "boatblue_playerboat_debug"
 version = "0.0.1"
 dependencies = [
- "ambient_api",
+ "ambient_api 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?branch=enum-support)",
 ]
 
 [[package]]
 name = "boatblue_playgrid"
 version = "0.0.1"
 dependencies = [
- "ambient_api",
+ "ambient_api 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?branch=enum-support)",
 ]
 
 [[package]]
 name = "boatblue_scatteredtrash"
 version = "0.0.1"
 dependencies = [
- "ambient_api",
+ "ambient_api 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?branch=enum-support)",
 ]
 
 [[package]]
 name = "boatblue_selfie_camera"
 version = "0.0.1"
 dependencies = [
- "ambient_api",
+ "ambient_api 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?branch=enum-support)",
 ]
 
 [[package]]
 name = "boatblue_selfie_camera_default"
 version = "0.0.1"
 dependencies = [
- "ambient_api",
+ "ambient_api 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?branch=enum-support)",
 ]
 
 [[package]]
 name = "boatblue_selfie_camera_mouse_tilt"
 version = "0.0.1"
 dependencies = [
- "ambient_api",
+ "ambient_api 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?branch=enum-support)",
 ]
 
 [[package]]
 name = "boatblue_water"
 version = "0.0.1"
 dependencies = [
- "ambient_api",
+ "ambient_api 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?branch=enum-support)",
 ]
 
 [[package]]
@@ -461,7 +742,7 @@ checksum = "a3e2c3daef883ecc1b5d58c15adae93470a91d425f3532ba1695849656af3fc1"
 name = "buoy"
 version = "0.0.1"
 dependencies = [
- "ambient_api",
+ "ambient_api 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?branch=enum-support)",
 ]
 
 [[package]]
@@ -505,13 +786,6 @@ name = "data-encoding"
 version = "2.4.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "c2e66c9d817f1720209181c316d28635c050fa304f9c79e47a520882661b7308"
-
-[[package]]
-name = "demo"
-version = "0.0.1"
-dependencies = [
- "ambient_api",
-]
 
 [[package]]
 name = "deprecate-until"
@@ -604,7 +878,7 @@ dependencies = [
 name = "flume_test"
 version = "0.0.1"
 dependencies = [
- "ambient_api",
+ "ambient_api 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?branch=enum-support)",
  "flume",
 ]
 
@@ -788,14 +1062,14 @@ dependencies = [
 name = "insectarium_collider"
 version = "0.0.1"
 dependencies = [
- "ambient_api",
+ "ambient_api 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?branch=enum-support)",
 ]
 
 [[package]]
 name = "insectarium_spawn_query"
 version = "0.0.1"
 dependencies = [
- "ambient_api",
+ "ambient_api 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?branch=enum-support)",
 ]
 
 [[package]]
@@ -897,7 +1171,7 @@ dependencies = [
 name = "nice_overhead_camera"
 version = "0.0.1"
 dependencies = [
- "ambient_api",
+ "ambient_api 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?branch=enum-support)",
 ]
 
 [[package]]
@@ -1013,7 +1287,7 @@ checksum = "8b870d8c151b6f2fb93e84a13146138f05d02ed11c7e7c54f8826aaaf7c9f184"
 name = "pin_mouseuv"
 version = "0.0.1"
 dependencies = [
- "ambient_api",
+ "ambient_api 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?branch=enum-support)",
 ]
 
 [[package]]
@@ -1465,7 +1739,7 @@ dependencies = [
 name = "uv_debugger"
 version = "0.0.1"
 dependencies = [
- "ambient_api",
+ "ambient_api 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?branch=enum-support)",
 ]
 
 [[package]]
@@ -1729,15 +2003,15 @@ dependencies = [
 name = "ww_gen"
 version = "0.0.1"
 dependencies = [
- "ambient_api",
+ "ambient_api 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?branch=enum-support)",
  "pathfinding",
 ]
 
 [[package]]
-name = "ww_gen_demo"
+name = "ww_gen__demo"
 version = "0.0.1"
 dependencies = [
- "ambient_api",
+ "ambient_api 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?branch=enum-support)",
 ]
 
 [[package]]
