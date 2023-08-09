@@ -1,4 +1,5 @@
 use core::panic;
+use std::f32::consts::PI;
 
 use ambient_api::{
     prelude::*,
@@ -10,7 +11,7 @@ use ambient_api::{
     },
 };
 
-use crate::skatemouse::components::{is_skatemouse, mouse_cheese, mouse_fwd, is_mouse_spr, is_cheese_spr, };
+use crate::skatemouse::components::{is_skatemouse, mouse_cheese, mouse_fwd, is_mouse_spr, is_cheese_spr, mouse_spr_rot, };
 
 pub fn setup() {
     spawn_query((translation(), is_skatemouse())).bind(|mice|for(mouse,(pos,cheese)) in mice{
@@ -18,18 +19,20 @@ pub fn setup() {
             .with(is_mouse_spr(), ())
             // .with_merge(make_sphere())
             .with(model_from_url(), crate::skatemouse::assets::url("low_poly_rat.glb"))
+            .with(mouse_spr_rot(), Quat::from_rotation_z(PI * 0.5))
             .spawn();
         entity::add_child(mouse, mouse_spr);
     });
     query((is_mouse_spr(), parent())).each_frame(|sprs|for(spr,(_,mouse))in sprs{
         let pos = entity::get_component(mouse, translation());
         let fwd = entity::get_component(mouse, mouse_fwd());
+        let spr_rot = entity::get_component(spr, mouse_spr_rot()).unwrap_or(Quat::IDENTITY);
 
         if pos.is_some() && fwd.is_some() {
             let pos = pos.unwrap();
             let fwd = fwd.unwrap();
             entity::add_component(spr, translation(), pos);
-            entity::add_component(spr, lookat_target(), pos + fwd);
+            entity::add_component(spr, lookat_target(), pos + spr_rot * fwd);
         } else {
             panic!("bad value for pos/fwd: {:?}/{:?}",pos,fwd);
         }
