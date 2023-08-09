@@ -7,6 +7,9 @@ members = [
     "Insectarium_Collider",
     "Insectarium_Spawn_Query",
     "ww_gen",
+    "ww_gen/demo",
+
+    "all_players_boats",
 
     "BoatGameBlue",
     "BoatGameBlue/embers/boatblue_boat_demo",
