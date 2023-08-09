@@ -1501,6 +1501,20 @@ dependencies = [
 ]
 
 [[package]]
+name = "skatemouse"
+version = "0.0.1"
+dependencies = [
+ "ambient_api 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?rev=6620f51a00)",
+]
+
+[[package]]
+name = "skatemouse_demo"
+version = "0.0.1"
+dependencies = [
+ "ambient_api 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?rev=6620f51a00)",
+]
+
+[[package]]
 name = "slab"
 version = "0.4.8"
 source = "registry+https://github.com/rust-lang/crates.io-index"

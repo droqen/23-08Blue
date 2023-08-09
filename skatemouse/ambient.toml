@@ -1,0 +1,11 @@
+[ember]
+id = "skatemouse"
+name = "skatemouse"
+version = "0.0.1"
+
+[components]
+is_skatemouse = { type = "Empty", attributes = ["Networked"] }
+mouse_cheese = { type = "Vec3" } # where does the mouse want to be? # is this really debuggable??? hmm
+
+is_mouse_spr = { type = "Empty" }
+is_cheese_spr = { type = "Empty" }

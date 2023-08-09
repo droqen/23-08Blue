@@ -1,0 +1,23 @@
+[ember]
+id = "demo"
+name = "demo"
+version = "0.0.1"
+
+[dependencies]
+a_nice_overhead_camera = { path="../../a_nice_overhead_camera"}
+skatemouse = { path=".." }
+
+
+[components]
+the_pointer = { type = "Vec3" }
+pointer_lmb = { type = "Bool" }
+pointer_oob = { type = "Bool" }
+
+[messages.MyPointerClick.fields]
+click = "Vec3"
+
+[messages.MyMousePos.fields]
+pos = "Vec3"
+
+[messages.SetMouseCheese.fields]
+cheese = "Vec3"

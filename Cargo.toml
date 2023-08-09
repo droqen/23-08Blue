@@ -12,6 +12,9 @@ members = [
     "all_players_boats",
     "all_players_boats/demo",
 
+    "skatemouse",
+    "skatemouse/demo",
+
     "dans_modeling_agency",
     
     "BoatGameBlue",
