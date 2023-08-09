@@ -6,7 +6,7 @@ publish = false
 version = "0.0.1"
 
 [dependencies]
-ambient_api = { git = "https://github.com/AmbientRun/Ambient.git", rev = "0bb43b7522" }
+ambient_api = { workspace = true }
 
 [[bin]]
 name = "client_all_players_boats"
