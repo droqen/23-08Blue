@@ -1,0 +1,7 @@
+[ember]
+id = "all_players_boats"
+name = "all_players_boats"
+version = "0.0.1"
+
+[dependencies]
+a_nice_overhead_camera = { path = "../a_nice_overhead_camera" }
