@@ -24,3 +24,4 @@ block_door_side = { type = "U8" }
 #(y+)(x+)
 
 block_decor_cube = { type = "Empty"}
+block_decor_dan1 = { type = "Empty"}
