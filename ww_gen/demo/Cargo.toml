@@ -1,5 +1,5 @@
 [package]
-name = "ww_gen_demo"
+name = "ww_gen__demo"
 
 edition = "2021"
 publish = false

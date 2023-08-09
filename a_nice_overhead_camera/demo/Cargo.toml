@@ -1,5 +1,5 @@
 [package]
-name = "demo"
+name = "a_nice_overhead_camera__demo"
 
 edition = "2021"
 publish = false
