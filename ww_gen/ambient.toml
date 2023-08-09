@@ -22,3 +22,5 @@ block_door_side = { type = "U8" }
 #    \/
 #  1    0
 #(y+)(x+)
+
+block_decor_cube = { type = "Empty"}
