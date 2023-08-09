@@ -7,7 +7,7 @@ use std::f32::consts::PI;
 pub fn setup() {
     spawn_query(the_nice_camera()).bind(|cameras|for(camera, _)in cameras{
         // head_relpos: y = move back, z = move up
-        entity::add_component(camera, head_relpos(), vec3(0., 0., 0.));
+        entity::add_component(camera, head_relpos(), vec3(0., 100., 20.));
         
         // nice_yaw_pitch_tilting_base: x = base yaw, y = base pitch
         entity::add_component(camera, nice_yaw_pitch_tilting_base(), vec2(PI * 0.25, 0.));
