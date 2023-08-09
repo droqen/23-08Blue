@@ -22,6 +22,7 @@ pub fn setup() {
     query(the_nice_camera()).requires(lookat_target()).each_frame(|cams|{
         let input = input::get();
         for (cam,_) in cams {
+
             // set camera pitch/yaw by mouse uv - if nice_yaw_pitch_tilting component exists.
             if let Some(yaw_pitch_tilt) = entity::get_component(cam, nice_yaw_pitch_tilting()) {
                 let [dx,dy] = (get_mouse_uv(input.mouse_position)*2.-1.).to_array();
@@ -37,7 +38,7 @@ pub fn setup() {
             // broadcast mouse ray position
             {
                 let ray = get_mouse_camera_ray(input.mouse_position, cam);
-                MouseRay{origin:ray.origin, dir:ray.origin}.send_local_broadcast(false);
+                MouseRay{origin:ray.origin, dir:ray.dir}.send_local_broadcast(false);
             }
 
         }
