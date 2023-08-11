@@ -10,5 +10,10 @@ ww_gen = { path="../ww_gen" }
 skatemouse_demo = { path="../skatemouse/demo" }
 
 [components]
-mouse_score = { type = "U8" }
 is_dot = { type = "Empty" }
+
+# 'overhead ui'
+score = { type = "U8", attributes = ["Networked", ] }
+scorebob_parent = { type = "EntityId" }
+scorebob_child = { type = "EntityId" }
+scorebob_throb = { type = "F32", attributes = ["Debuggable", ] }
