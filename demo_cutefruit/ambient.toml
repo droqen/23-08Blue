@@ -10,5 +10,5 @@ ww_gen = { path="../ww_gen" }
 skatemouse_demo = { path="../skatemouse/demo" }
 
 [components]
-plrscore = { type = "U8" }
+mouse_score = { type = "U8" }
 is_dot = { type = "Empty" }

@@ -11,7 +11,7 @@ pub fn adjust_camera_params() {
         entity::add_component(the_camera, lookat_target(), vec3(60., 60., 0.));
 
         // head_relpos: y = move back, z = move up
-        entity::add_component(the_camera, head_relpos(), vec3(0., 40., 40.));
+        entity::add_component(the_camera, head_relpos(), vec3(0., 20., 40.));
         
         // nice_yaw_pitch_tilting_base: x = base yaw, y = base pitch
         entity::add_component(the_camera, nice_yaw_pitch_tilting_base(), vec2(PI * 0.25, 0.));
