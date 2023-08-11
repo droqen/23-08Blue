@@ -7,7 +7,7 @@ use ambient_api::core::{
     },
     transform::components::{lookat_target, translation},
 };
-use crate::a_nice_overhead_camera::components::{head_pitch,head_yaw,head_relpos};
+use crate::embers::a_nice_overhead_camera::components::{head_pitch,head_yaw,head_relpos};
 
 pub fn setup() {
     query((lookat_target(), head_pitch(), head_yaw(), head_relpos())).each_frame(|heads|

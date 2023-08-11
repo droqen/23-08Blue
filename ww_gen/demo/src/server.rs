@@ -35,7 +35,7 @@ pub fn main() {
 }
 
 
-use ww_gen::components::{block_size, block_door_side, block_decor_cube, };
+use embers::ww_gen::components::{block_size, block_door_side, block_decor_cube, };
 
 pub fn spawn_blocks() {
     Entity::new()

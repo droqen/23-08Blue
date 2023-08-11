@@ -1,6 +1,6 @@
 use ambient_api::{
     core::{
-        player::components::{player, user_id},
+        player::components::{is_player, user_id},
         transform::components::translation, primitives::components::cube,
         physics::components::{physics_controlled, dynamic, sphere_collider, }, ecs::components::children, app::components::name,
         // 
@@ -8,12 +8,12 @@ use ambient_api::{
     prelude::*,
 };
 
-use crate::skatemouse::components::{is_skatemouse, mouse_cheese, mouse_fwd, mouse_pace};
-use crate::skatemouse::components::{mouse_ref, player_controlled};
-use crate::demo::messages::SetMouseCheese;
+use crate::embers::skatemouse::components::{is_skatemouse, mouse_cheese, mouse_fwd, mouse_pace};
+use crate::embers::skatemouse::components::{mouse_ref, player_controlled};
+use crate::embers::demo::messages::SetMouseCheese;
 
 pub fn setup() {
-    spawn_query((player(), user_id())).bind(|plrs|for(plr,(_,uid)) in plrs{
+    spawn_query((is_player(), user_id())).bind(|plrs|for(plr,(_,uid)) in plrs{
         entity::add_component(plr, name(), "Player".to_string());
         let skatemouse = Entity::new() 
             .with(name(), "Skatemouse".to_string())

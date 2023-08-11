@@ -5,7 +5,7 @@ use ambient_api::core::{
     app::components::{name, window_physical_size},
     transform::components::{translation, lookat_target},
 };
-use crate::a_nice_overhead_camera::{
+use crate::embers::a_nice_overhead_camera::{
     components::{the_nice_camera, nice_yaw_pitch_tilting, nice_yaw_pitch_tilting_base, },
     components::{head_pitch, head_yaw, },
     messages::MouseRay

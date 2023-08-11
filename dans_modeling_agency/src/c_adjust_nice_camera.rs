@@ -1,5 +1,5 @@
 use ambient_api::prelude::*;
-use crate::a_nice_overhead_camera::components::{the_nice_camera, nice_yaw_pitch_tilting, nice_yaw_pitch_tilting_base, head_relpos};
+use crate::embers::a_nice_overhead_camera::components::{the_nice_camera, nice_yaw_pitch_tilting, nice_yaw_pitch_tilting_base, head_relpos};
 // use crate::x_head::make_fully_functional_head_camera;
 
 use std::f32::consts::PI;

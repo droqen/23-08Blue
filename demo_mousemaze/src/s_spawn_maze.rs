@@ -2,7 +2,7 @@ use ambient_api::{
     prelude::*,
     core::transform::components::translation,
 };
-use crate::ww_gen::components::{block_size, block_door_side, block_decor_cube, };
+use crate::embers::ww_gen::components::{block_size, block_door_side, block_decor_cube, };
 use pathfinding::grid::Grid;
 pub fn setup() {
     let mut grid = Grid::new(15, 15);

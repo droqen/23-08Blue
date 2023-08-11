@@ -1,8 +1,8 @@
 use ambient_api::{prelude::*, core::transform::components::translation};
 
-use crate::ww_gen::components::{block_size, block_door_side, block_decor_cube, };
+use crate::embers::ww_gen::components::{block_size, block_door_side, block_decor_cube, };
 
-use crate::demo_cutefruit::components::is_dot;
+use crate::embers::demo_cutefruit::components::is_dot;
 
 pub fn setup() {
     for x in 0..15 { for y in 0..15 {

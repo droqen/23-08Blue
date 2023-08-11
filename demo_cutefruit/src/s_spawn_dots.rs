@@ -5,7 +5,7 @@ use ambient_api::{
     }
 };
 
-use crate::demo_cutefruit::components::is_dot;
+use crate::embers::demo_cutefruit::components::is_dot;
 
 pub fn setup() {
     spawn_query((translation(), is_dot())).bind(|dots|for (dot,(pos,_)) in dots{

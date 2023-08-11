@@ -3,8 +3,8 @@ use ambient_api::{
     core::transform::components::translation,
 };
 
-use crate::skatemouse::components::is_skatemouse;
-use crate::demo_cutefruit::components::{is_dot, score};
+use crate::embers::skatemouse::components::is_skatemouse;
+use crate::embers::demo_cutefruit::components::{is_dot, score};
 
 const COLLECTION_RADIUS : f32 = 2.1;
 

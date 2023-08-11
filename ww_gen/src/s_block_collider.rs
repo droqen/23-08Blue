@@ -8,7 +8,7 @@ use ambient_api::{
     },
     prelude::*,
 };
-use crate::ww_gen::components::{block_size, block_door_side, block_decor_cube};
+use crate::embers::ww_gen::components::{block_size, block_door_side, block_decor_cube};
 
 pub fn setup() {
     let collider_height : f32 = 10.; // fixed.

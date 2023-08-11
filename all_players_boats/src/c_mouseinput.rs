@@ -6,7 +6,7 @@ use ambient_api::{
     prelude::*,
 };
 
-use crate::a_nice_overhead_camera::messages::MouseRay;
+use crate::embers::a_nice_overhead_camera::messages::MouseRay;
 
 pub fn setup() {
     let mouse_cube = Entity::new()

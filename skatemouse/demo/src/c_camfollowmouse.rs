@@ -6,10 +6,10 @@ use ambient_api::{
     prelude::*,
 };
 
-use crate::demo::messages::{MyPointerClick, MyMousePos, SetMouseCheese, };
-use crate::demo::components::{the_pointer, pointer_lmb, pointer_oob};
-use crate::skatemouse::components::{is_skatemouse, mouse_cheese};
-use crate::a_nice_overhead_camera::components::the_nice_camera;
+use crate::embers::demo::messages::{MyPointerClick, MyMousePos, SetMouseCheese, };
+use crate::embers::demo::components::{the_pointer, pointer_lmb, pointer_oob};
+use crate::embers::skatemouse::components::{is_skatemouse, mouse_cheese};
+use crate::embers::a_nice_overhead_camera::components::the_nice_camera;
 
 pub fn setup() {
     query((the_pointer(), pointer_lmb())).each_frame(|pointers|for(the_pointer,(pointer_pos,lmb)) in pointers{

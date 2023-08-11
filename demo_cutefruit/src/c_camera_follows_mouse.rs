@@ -1,9 +1,9 @@
 use std::f32::consts::PI;
 
-use ambient_api::{prelude::*, core::{transform::components::{translation, lookat_target}, player::components::{user_id, player}}, message::Listener};
+use ambient_api::{prelude::*, core::{transform::components::{translation, lookat_target}, player::components::{user_id, is_player}}, message::Listener};
 
-use crate::a_nice_overhead_camera::components::{the_nice_camera, head_relpos, nice_yaw_pitch_tilting, nice_yaw_pitch_tilting_base};
-use crate::skatemouse::components::mouse_ref;
+use crate::embers::a_nice_overhead_camera::components::{the_nice_camera, head_relpos, nice_yaw_pitch_tilting, nice_yaw_pitch_tilting_base};
+use crate::embers::skatemouse::components::mouse_ref;
 
 pub fn adjust_camera_params() {
     spawn_query(()).requires(the_nice_camera()).bind(|cams|for(the_camera, _)in cams{

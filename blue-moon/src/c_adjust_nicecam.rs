@@ -1,6 +1,6 @@
 use ambient_api::prelude::*;
 
-use crate::a_nice_overhead_camera::components::{
+use crate::embers::a_nice_overhead_camera::components::{
     head_relpos,
     the_nice_camera,
     nice_yaw_pitch_tilting,

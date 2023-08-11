@@ -20,13 +20,13 @@ use ambient_api::core::{
         plane_collider,
         visualize_collider,
     },
-    player::components::{player, user_id},
+    player::components::{is_player, user_id},
     ecs::components::children,
 };
 use boatblue_playerboat::components::playerboat_goto;
 use boatblue_playerboat::messages::GotoRay;
 fn on_player_spawned_spawn_playerboat() {
-    spawn_query((player(), user_id())).bind(|players|{
+    spawn_query((is_player(), user_id())).bind(|players|{
         for (player,(_,uid)) in players {
             entity::add_child(
                 player,

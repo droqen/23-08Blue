@@ -2,7 +2,7 @@ use std::f32::consts::PI;
 
 use ambient_api::{prelude::*, core::{transform::components::{translation, spherical_billboard, scale, rotation, mesh_to_world}, text::components::text, app::components::name, primitives::components::cube}};
 
-use crate::demo_cutefruit::components::{score, scorebob_parent, scorebob_child, scorebob_throb};
+use crate::embers::demo_cutefruit::components::{score, scorebob_parent, scorebob_child, scorebob_throb};
 
 const THROB_SCALE_RANGE : (f32, f32) = (0.1, 0.2);
 const THROB_SCALE_LERP : f32 = 0.05;

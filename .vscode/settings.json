@@ -2,5 +2,7 @@
     "rust-analyzer.linkedProjects": [
         ".\\blue-moon\\Cargo.toml",
         ".\\dans_modeling_agency\\Cargo.toml",
+        ".\\demo_mousemaze\\Cargo.toml",
+        ".\\demo_cutefruit\\Cargo.toml"
     ]
 }

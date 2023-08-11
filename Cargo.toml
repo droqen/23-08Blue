@@ -40,4 +40,4 @@ members = [
 ]
 
 [workspace.dependencies]
-ambient_api = { git = "https://github.com/AmbientRun/Ambient.git", branch = "enum-support" }
+ambient_api = { git = "https://github.com/AmbientRun/Ambient.git", branch = "main" }

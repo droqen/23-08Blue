@@ -8,7 +8,7 @@ use ambient_api::{
     prelude::*,
 };
 
-use crate::skatemouse::components::{is_skatemouse, mouse_cheese, mouse_fwd, mouse_pace};
+use crate::embers::skatemouse::components::{is_skatemouse, mouse_cheese, mouse_fwd, mouse_pace};
 
 pub fn setup() {
     let skatemouse = Entity::new() 

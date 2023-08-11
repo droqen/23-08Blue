@@ -8,7 +8,7 @@ use ambient_api::{
     prelude::*,
 };
 
-use crate::skatemouse::components::is_skatemouse;
+use crate::embers::skatemouse::components::is_skatemouse;
 pub fn setup() {
     physics::set_gravity(Vec3::ZERO);
     query((is_skatemouse(), translation(), linear_velocity())).each_frame(|mice|for(mouse,(_,pos,vel))in mice{

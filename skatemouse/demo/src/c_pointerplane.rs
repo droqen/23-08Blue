@@ -1,14 +1,8 @@
-use ambient_api::{
-    core::{
-        physics::components::plane_collider, transform::components::translation, primitives::components::cube,
-        // 
-    },
-    prelude::*,
-};
+use ambient_api::prelude::*;
 
-use crate::a_nice_overhead_camera::messages::MouseRay;
+use crate::embers::a_nice_overhead_camera::messages::MouseRay;
 
-use crate::demo::components::{the_pointer, pointer_lmb, pointer_oob};
+use crate::embers::demo::components::{the_pointer, pointer_lmb, pointer_oob};
 
 pub fn setup() {
     let pointer = Entity::new()

@@ -6,7 +6,7 @@ use ambient_api::{
     prelude::*
 };
 
-use crate::skatemouse::components::{mouse_cheese, mouse_fwd, mouse_pace};
+use crate::embers::skatemouse::components::{mouse_cheese, mouse_fwd, mouse_pace};
 
 const GOALPACE_FROM_REACH:(f32,f32)=(1.0, 5.0);
 const TURNSPDMULT_FROM_REACH:(f32, f32)=(1.0, 2.0);
