@@ -8,7 +8,8 @@ use ambient_api::{
     prelude::*,
 };
 
-use crate::skatemouse::components::{is_skatemouse, mouse_cheese, mouse_fwd, mouse_pace, player_controlled};
+use crate::skatemouse::components::{is_skatemouse, mouse_cheese, mouse_fwd, mouse_pace};
+use crate::skatemouse::components::{mouse_ref, player_controlled};
 use crate::demo::messages::SetMouseCheese;
 
 pub fn setup() {
@@ -27,17 +28,27 @@ pub fn setup() {
             .with(mouse_fwd(), vec3(0., 1., 0.))
             .with(mouse_pace(), 0.)
             .spawn();
-        entity::add_child(plr, skatemouse);
+
+        // entity::add_child(plr, skatemouse);
+
+        entity::add_component(plr, mouse_ref(), skatemouse);
+
     });
     SetMouseCheese::subscribe(|src,msg|{
         if let Some(plrent) = src.client_entity_id() {
-            if let Some(plrchildren) = entity::get_component(plrent, children()) {
-                for child in plrchildren {
-                    if entity::has_component(child, mouse_cheese()) {
-                        entity::set_component(child, mouse_cheese(), msg.cheese);
-                    }
-                }
+
+            // if let Some(plrchildren) = entity::get_component(plrent, children()) {
+            //     for child in plrchildren {
+            //         if entity::has_component(child, mouse_cheese()) {
+            //             entity::set_component(child, mouse_cheese(), msg.cheese);
+            //         }
+            //     }
+            // }
+
+            if let Some(mouse) = entity::get_component(plrent, mouse_ref()) {
+                entity::add_component(mouse, mouse_cheese(), msg.cheese);
             }
+
         }
     });
 }

@@ -12,7 +12,8 @@ mouse_cheese = { type = "Vec3" } # where does the mouse want to be? # is this re
 mouse_fwd = { type = "Vec3", attributes = ["Networked"] } # which way is the mouse facing? a mouse can only accelerate 'forward'.
 mouse_pace = { type = "F32", attributes = ["Networked"] } # at low pace, quick turn. at max pace, a more gradual turn...
 
-player_controlled = { type = "EntityId" } # i don't even know what this is for
+mouse_ref = { type = "EntityId", attributes = ["Networked"] } # hmm. used for camera
+player_controlled = { type = "EntityId" }
 
 is_mouse_spr = { type = "Empty" }
 mouse_spr_fwd = { type = "Vec3" }
