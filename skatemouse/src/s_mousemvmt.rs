@@ -46,12 +46,12 @@ pub fn setup() {
         let goalvel : Vec3 = goalspeed * to_cheese.normalize_or_zero();
         let to_goalvel = goalvel - vel;
         physics::add_force(mouse,
-            accel * to_goalvel
+            accel * to_goalvel // move directly to cheese
             +
-            friction * -vel 
+            friction * -vel // friction applied opposite vel
             +
-            autofwdaccel * fwd
-        ); // dead simple: move from pos to cheese, and add friction opposite vel
+            autofwdaccel * fwd // a force pushes you forward
+        ); 
     });
 }
 
