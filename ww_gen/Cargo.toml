@@ -7,7 +7,6 @@ version = "0.0.1"
 
 [dependencies]
 ambient_api = { workspace = true }
-pathfinding = "4.3.1"
 
 [[bin]]
 name = "client_ww_gen"
