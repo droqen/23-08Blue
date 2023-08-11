@@ -1,8 +1,0 @@
-[ember]
-id = "insectarium_spawn_query"
-name = "Insectarium_Spawn_Query"
-version = "0.0.1"
-
-[dependencies]
-listener = { path = "embers/Entity_Listener" }
-spawner = { path = "embers/Entity_Spawner" }
