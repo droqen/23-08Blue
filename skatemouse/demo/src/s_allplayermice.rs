@@ -8,7 +8,7 @@ use ambient_api::{
     prelude::*,
 };
 
-use crate::skatemouse::components::{is_skatemouse, mouse_cheese, mouse_fwd, mouse_pace};
+use crate::skatemouse::components::{is_skatemouse, mouse_cheese, mouse_fwd, mouse_pace, player_controlled};
 use crate::demo::messages::SetMouseCheese;
 
 pub fn setup() {
@@ -17,6 +17,7 @@ pub fn setup() {
         let skatemouse = Entity::new() 
             .with(name(), "Skatemouse".to_string())
             .with(user_id(), uid)
+            .with(player_controlled(), plr)
             .with(translation(), vec3(0., 0., 0.))
             .with(physics_controlled(), ())
             .with(dynamic(), true)
@@ -39,9 +40,4 @@ pub fn setup() {
             }
         }
     });
-}
-
-fn get_zplane_intersection(origin:Vec3, dir:Vec3, z:f32) -> Vec3 {
-    let dir_mult = (z-origin.z)/dir.z;
-    origin+dir_mult*dir
 }
