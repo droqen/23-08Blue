@@ -1,0 +1,24 @@
+[package]
+name = "demo_cutefruit"
+
+edition = "2021"
+publish = false
+version = "0.0.1"
+
+[dependencies]
+ambient_api = { workspace = true }
+pathfinding = "4.3.1"
+
+[[bin]]
+name = "client_demo_cutefruit"
+path = "src/client.rs"
+required-features = ["client"]
+
+[[bin]]
+name = "server_demo_cutefruit"
+path = "src/server.rs"
+required-features = ["server"]
+
+[features]
+client = ["ambient_api/client"]
+server = ["ambient_api/server"]

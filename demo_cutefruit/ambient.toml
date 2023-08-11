@@ -1,0 +1,14 @@
+[ember]
+id = "demo_cutefruit"
+name = "demo_cutefruit"
+version = "0.0.1"
+
+[dependencies]
+a_nice_overhead_camera = { path="../a_nice_overhead_camera"}
+skatemouse = { path="../skatemouse" }
+ww_gen = { path="../ww_gen" }
+skatemouse_demo = { path="../skatemouse/demo" }
+
+[components]
+plrscore = { type = "U8" }
+is_dot = { type = "Empty" }

@@ -14,6 +14,9 @@ members = [
 
     "skatemouse",
     "skatemouse/demo",
+    
+    "demo_mousemaze",
+    "demo_cutefruit",
 
     "dans_modeling_agency",
     

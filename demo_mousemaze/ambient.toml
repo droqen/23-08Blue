@@ -1,0 +1,9 @@
+[ember]
+id = "demo_mousemaze"
+name = "demo_mousemaze"
+version = "0.0.1"
+
+[dependencies]
+a_nice_overhead_camera = { path="../a_nice_overhead_camera" }
+skatemouse = { path="../skatemouse" }
+ww_gen = { path ="../ww_gen" }
