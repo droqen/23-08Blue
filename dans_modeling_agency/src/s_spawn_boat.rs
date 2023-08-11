@@ -8,6 +8,6 @@ use ambient_api::{
 
 pub fn setup() {
     Entity::new()
-        .with(model_from_url(), crate::dans_modeling_agency::assets::url("MSH_Boat.glb"))
+        .with(model_from_url(), crate::embers::dans_modeling_agency::assets::url("MSH_Boat.glb"))
         .spawn();
 }
