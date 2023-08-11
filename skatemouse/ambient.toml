@@ -12,6 +12,21 @@ mouse_cheese = { type = "Vec3" } # where does the mouse want to be? # is this re
 mouse_fwd = { type = "Vec3", attributes = ["Networked"] } # which way is the mouse facing? a mouse can only accelerate 'forward'.
 mouse_pace = { type = "F32", attributes = ["Networked"] } # at low pace, quick turn. at max pace, a more gradual turn...
 
+player_controlled = { type = "EntityId" } # i don't even know what this is for
+
 is_mouse_spr = { type = "Empty" }
 mouse_spr_fwd = { type = "Vec3" }
 is_cheese_spr = { type = "Empty" }
+
+# the_config = { type = "Empty" }
+# config_auto_player_spawn = { type = "Bool" }
+# config_auto_player_despawn = { type = "Bool" }
+# config_model_url = { type = "String" }
+# config_model_fwd = { type = "Vec3" }
+
+# [concepts.config.components]
+# the_config = []
+# config_auto_player_spawn = true
+# config_auto_player_despawn = true
+# config_model_url = ""
+# config_model_fwd = ""
