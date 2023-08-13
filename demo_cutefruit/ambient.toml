@@ -10,6 +10,10 @@ ww_gen = { path="../ww_gen" }
 skatemouse_demo = { path="../skatemouse/demo" }
 buoy = { path="../buoy" }
 
+# dans = { path = "../dans_modeling_agency" }
+
+all_blocks_decorated_as_shacks = { path = "../all_blocks_decorated_as_shacks" }
+
 [components]
 is_dot = { type = "Empty" }
 
