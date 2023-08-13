@@ -11,6 +11,7 @@ use ambient_api::{
 use crate::embers::skatemouse::components::{is_skatemouse, mouse_cheese, mouse_fwd, mouse_pace};
 use crate::embers::skatemouse::components::{mouse_ref, player_controlled};
 use crate::embers::demo::messages::SetMouseCheese;
+use crate::embers::demo::components::{autofloat_z, autofloat_pwr};
 
 pub fn setup() {
     spawn_query((is_player(), user_id())).bind(|plrs|for(plr,(_,uid)) in plrs{
@@ -27,6 +28,8 @@ pub fn setup() {
             .with(mouse_cheese(), vec3(0., 0., 0.))
             .with(mouse_fwd(), vec3(0., 1., 0.))
             .with(mouse_pace(), 0.)
+            .with(autofloat_z(), 2.)
+            .with(autofloat_pwr(), 20.)
             .spawn();
 
         // entity::add_child(plr, skatemouse);

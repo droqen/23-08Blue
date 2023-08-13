@@ -9,9 +9,9 @@ use ambient_api::{
 };
 
 use crate::embers::skatemouse::components::is_skatemouse;
+use crate::embers::demo::components::{autofloat_z, autofloat_pwr};
 pub fn setup() {
-    physics::set_gravity(Vec3::ZERO);
-    query((is_skatemouse(), translation(), linear_velocity())).each_frame(|mice|for(mouse,(_,pos,vel))in mice{
-        physics::add_force(mouse, vec3(0., 0., -pos.z-vel.z));
+    query((is_skatemouse(), translation(), linear_velocity(), autofloat_z(), autofloat_pwr())).each_frame(|mice|for(mouse,(_,pos,vel,floatz,floatpow))in mice{
+        physics::add_force( mouse, vec3( 0., 0., floatpow * (floatz-pos.z-vel.z) ) );
     });
 }

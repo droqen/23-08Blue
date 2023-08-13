@@ -13,6 +13,9 @@ the_pointer = { type = "Vec3" }
 pointer_lmb = { type = "Bool" }
 pointer_oob = { type = "Bool" }
 
+autofloat_z = { type = "F32" }
+autofloat_pwr = { type = "F32" }
+
 [messages.MyPointerClick.fields]
 click = "Vec3"
 
