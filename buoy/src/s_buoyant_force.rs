@@ -6,7 +6,7 @@ use ambient_api::{
     },
 };
 
-use crate::buoy::components::{buoy_local_center,buoy_max_drag,buoy_max_force,buoy_radius,buoy_submerged,buoy_submerged_center,buoy_water_level};
+use crate::embers::buoy::components::{buoy_local_center,buoy_max_drag,buoy_max_force,buoy_radius,buoy_submerged,buoy_submerged_center,buoy_water_level};
 
 pub fn setup() {
     query((

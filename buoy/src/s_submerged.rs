@@ -1,6 +1,6 @@
 use ambient_api::prelude::*;
 use ambient_api::core::transform::components::translation;
-use crate::buoy::components::{buoy_submerged, buoy_submerged_center, buoy_radius, buoy_water_level};
+use crate::embers::buoy::components::{buoy_submerged, buoy_submerged_center, buoy_radius, buoy_water_level};
 
 pub fn setup() {
     query((translation(), buoy_radius(), buoy_water_level())).each_frame(|buoys|{
