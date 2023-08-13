@@ -9,9 +9,9 @@ version = "0.0.1"
 # block_pos # no need, this is just position
 # block_height # no need? . . . actually, i need.
 
-block_size = { type = "Vec3" }
+block_size = { type = "Vec3", attributes = ["Networked"] }
 
-block_door_side = { type = "U8" }
+block_door_side = { type = "U8", attributes = ["Networked"] }
 
 #side-index directions (seen isometrically):
 #(x-)(y-)
@@ -23,5 +23,5 @@ block_door_side = { type = "U8" }
 #  1    0
 #(y+)(x+)
 
-block_decor_cube = { type = "Empty"}
-block_decor_dan1 = { type = "Empty"}
+block_decor_cube = { type = "Empty", attributes = ["Networked"] }
+block_decor_dan1 = { type = "Empty", attributes = ["Networked"] }
