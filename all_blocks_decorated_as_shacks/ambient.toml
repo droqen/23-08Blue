@@ -1,0 +1,8 @@
+[ember]
+id = "all_blocks_decorated_as_shacks"
+name = "all_blocks_decorated_as_shacks"
+version = "0.0.1"
+
+[dependencies]
+ww_gen = { path = "../ww_gen" }
+dans = { path = "../dans_modeling_agency" }
