@@ -853,20 +853,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "insectarium_collider"
-version = "0.0.1"
-dependencies = [
- "ambient_api",
-]
-
-[[package]]
-name = "insectarium_spawn_query"
-version = "0.0.1"
-dependencies = [
- "ambient_api",
-]
-
-[[package]]
 name = "instant"
 version = "0.1.12"
 source = "registry+https://github.com/rust-lang/crates.io-index"

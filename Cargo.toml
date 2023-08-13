@@ -4,8 +4,6 @@ members = [
     "a_nice_overhead_camera/demo",
     "blue-moon",
     "buoy",
-    "Insectarium_Collider",
-    "Insectarium_Spawn_Query",
     "ww_gen",
     "ww_gen/demo",
 
