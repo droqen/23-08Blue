@@ -6,7 +6,7 @@ use ambient_api::core::{
     transform::components::{translation, lookat_target},
 };
 use crate::embers::a_nice_overhead_camera::{
-    components::{the_nice_camera, nice_yaw_pitch_tilting, nice_yaw_pitch_tilting_base, },
+    components::{the_nice_camera, nice_input_tilt, nice_yaw_pitch_tilting, nice_yaw_pitch_tilting_base, },
     components::{head_pitch, head_yaw, },
     messages::MouseRay
 };
@@ -16,31 +16,31 @@ pub fn setup() {
     let _nicecam = make_fully_functional_head_camera()
         .with(the_nice_camera(), ())
         .with(name(), "The Nice Camera".to_string())
+        .with(nice_input_tilt(), vec2(0., 0.))
         .with(nice_yaw_pitch_tilting_base(), vec2(PI * 0.25, 0.00))
         .with(nice_yaw_pitch_tilting(), vec2(0.25, 0.25))
         .spawn();
-    query(the_nice_camera()).requires(lookat_target()).each_frame(|cams|{
-        let input = input::get();
-        for (cam,_) in cams {
 
-            // set camera pitch/yaw by mouse uv - if nice_yaw_pitch_tilting component exists.
-            if let Some(yaw_pitch_tilt) = entity::get_component(cam, nice_yaw_pitch_tilting()) {
-                let [dx,dy] = (get_mouse_uv(input.mouse_position)*2.-1.).to_array();
-                if let Some(yaw_pitch_base) = entity::get_component(cam, nice_yaw_pitch_tilting_base()) {
-                    entity::add_component(cam, head_yaw(), yaw_pitch_base.x + yaw_pitch_tilt.x * -dx);
-                    entity::add_component(cam, head_pitch(), yaw_pitch_base.y + yaw_pitch_tilt.y * -dy);
-                } else {
-                    entity::add_component(cam, head_yaw(), yaw_pitch_tilt.x * -dx);
-                    entity::add_component(cam, head_pitch(), yaw_pitch_tilt.y * -dy);
-                }
-            }
+    // input
+    query(()).requires((the_nice_camera(), lookat_target())).each_frame(|cams|{
+        let input = input::get();
+        let input_tilt = get_mouse_uv(input.mouse_position)*2.-1.;
+        for (cam,_) in cams {
+            entity::add_component(cam, nice_input_tilt(), input_tilt);
 
             // broadcast mouse ray position
             {
                 let ray = get_mouse_camera_ray(input.mouse_position, cam);
                 MouseRay{origin:ray.origin, dir:ray.dir}.send_local_broadcast(false);
             }
+        }
+    });
 
+    // applying tilt
+    query((nice_input_tilt(), nice_yaw_pitch_tilting(), nice_yaw_pitch_tilting_base())).each_frame(|cams|{
+        for (cam,(input_tilt,yaw_pitch_tilt,yaw_pitch_base)) in cams {
+            entity::add_component(cam, head_yaw(), yaw_pitch_base.x + yaw_pitch_tilt.x * -input_tilt.x);
+            entity::add_component(cam, head_pitch(), yaw_pitch_base.y + yaw_pitch_tilt.y * -input_tilt.y);
         }
     });
 }

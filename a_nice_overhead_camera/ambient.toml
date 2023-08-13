@@ -9,7 +9,12 @@ head_pitch = { type = "F32" }
 head_yaw = { type = "F32" }
 head_relpos = { type = "Vec3" }
 
+ # optional-ish? these automatically set 'lookat_target'
+head_target = { type = "EntityId" }
+target_relpos = { type = "Vec3" }
+
 the_nice_camera = { type = "Empty" }
+nice_input_tilt = { type = "Vec2" }
 nice_yaw_pitch_tilting = { type = "Vec2" }
 nice_yaw_pitch_tilting_base = { type = "Vec2" }
 
