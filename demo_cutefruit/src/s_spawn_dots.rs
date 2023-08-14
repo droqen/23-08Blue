@@ -13,20 +13,20 @@ use crate::embers::buoy::components::buoy_local_center;
 
 pub fn setup() {
     spawn_query((translation(), is_dot())).bind(move|dots|for(dot,(pos,_))in dots{
-        let pos = pos + vec3(0., 0., random::<f32>()*10.);
-        entity::add_child(dot,
+        let pos = pos + vec3(0., 0., random::<f32>()*-10.);
+        let down = (random::<Vec2>()-0.5).extend(-random::<f32>()) * 0.05;
+        entity::add_components(dot,
             Entity::new()
                 .with(physics_controlled(), ())
                 .with(dynamic(), true)
                 .with(cube_collider(), Vec3::splat(1.0))
                 .with(translation(), pos)
-                .with(rotation(), random::<Quat>())
+                // .with(rotation(), random::<Quat>())
                 // .with(angular_velocity(), random::<Quat>() * random::<Vec3>())
                 .with(model_from_url(), crate::embers::demo_cutefruit::assets::url("MSH_Prop_Crate.glb"))
-                .with(buoy_local_center(),random::<Vec3>()-0.5)
+                .with(buoy_local_center(),down)
                 .with_merge(make_sphere())
-                .with_merge(make_buoy())
-                .spawn()
+                .with_merge(make_buoy()).with(buoy_radius(), 0.25)
         );
     });
 }
