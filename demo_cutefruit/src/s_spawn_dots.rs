@@ -26,7 +26,7 @@ pub fn setup() {
                 .with(model_from_url(), crate::embers::demo_cutefruit::assets::url("MSH_Prop_Crate.glb"))
                 .with(buoy_local_center(),down)
                 .with_merge(make_sphere())
-                .with_merge(make_buoy()).with(buoy_radius(), 0.25)
+                .with_merge(make_buoy())
         );
     });
 }
@@ -36,8 +36,8 @@ use crate::embers::buoy::components::{buoy_max_drag,buoy_max_force,buoy_radius,b
 // use crate::embers::buoy::components::{buoy_local_center,buoy_max_drag,buoy_max_force,buoy_radius,buoy_submerged,buoy_submerged_center,buoy_water_level};
 pub fn make_buoy() -> Entity {
     Entity::new()
-        .with(buoy_max_drag(), 1.0)
-        .with(buoy_max_force(), 9.81 * 2.)
-        .with(buoy_radius(), 0.5)
+        .with(buoy_max_drag(), 0.5)
+        .with(buoy_max_force(), 13.)
+        .with(buoy_radius(), 0.7)
         .with(buoy_water_level(), 0.)
 }
