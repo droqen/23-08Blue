@@ -13,7 +13,7 @@ pub fn setup() {
                 entity::add_component(buoy, buoy_submerged_center(),
                     subcenter);
                 let vel = physics::get_velocity_at_position(buoy, subcenter);
-                physics::add_force_at_position(buoy, -vel * submerged, subcenter);
+                physics::add_force_at_position(buoy, -vel * submerged * 0.1, subcenter);
             } else {
                 entity::remove_component(buoy, buoy_submerged());
                 entity::remove_component(buoy, buoy_submerged_center());
