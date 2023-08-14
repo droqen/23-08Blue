@@ -33,19 +33,20 @@ pub fn setup() {
                 let b_friction_linvel_force = linvel * (-1.) * b_friction;
                 match entity::get_component(floaty_ent, buoy_local_center()) {
                     Some(m_center) => add_force_at_position(
-                        floaty_ent, pos + rot * m_center, b_force + b_friction_linvel_force, submerged_center),
+                        floaty_ent, rot * m_center, b_force + b_friction_linvel_force, submerged_center),
                     None => add_force_at_position(
-                        floaty_ent, pos, b_force + b_friction_linvel_force, submerged_center),
+                        floaty_ent, Vec3::ZERO, b_force + b_friction_linvel_force, submerged_center),
                 };
                 // let b_friction_angvel_force = angvel * (-1.) * b_friction;
-                entity::mutate_component(floaty_ent, angular_velocity(), |angvel|*angvel *= 1.0 - b_friction); //?
+                // entity::mutate_component(floaty_ent, angular_velocity(), |angvel|*angvel *= 1.0 - b_friction); //?
             }
         }
     });
 }
 
-pub fn add_force_at_position(ent : EntityId, ent_mass_center_pos : Vec3, force : Vec3, force_point : Vec3) {
-    physics::add_force_at_position(ent, force, force_point - ent_mass_center_pos);
+pub fn add_force_at_position(ent : EntityId, ent_mass_center_offset : Vec3, force : Vec3, force_point : Vec3) {
+    physics::add_force_at_position(ent, force, force_point - ent_mass_center_offset);
+    // physics::add_force_at_position(ent, force, force_point);
     // entity::mutate_component(ent, linear_velocity(), |linvel|*linvel += force);
     // entity::mutate_component(ent, angular_velocity(), |angvel|*angvel += (force_point - ent_mass_center_pos).cross(force));
 }

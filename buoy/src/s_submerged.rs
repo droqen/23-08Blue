@@ -7,10 +7,13 @@ pub fn setup() {
         for (buoy,(pos,b_radius,b_water_level)) in buoys {
             let submerged = calc_submerged_percentage(pos.z, b_radius, b_water_level);
             if submerged > 0. {
+                let subcenter = calc_submerged_center_point(pos, b_water_level, b_radius, submerged).unwrap();
                 entity::add_component(buoy, buoy_submerged(),
                     submerged);
                 entity::add_component(buoy, buoy_submerged_center(),
-                    calc_submerged_center_point(pos, b_water_level, b_radius, submerged).unwrap());
+                    subcenter);
+                let vel = physics::get_velocity_at_position(buoy, subcenter);
+                physics::add_force_at_position(buoy, -vel * submerged, subcenter);
             } else {
                 entity::remove_component(buoy, buoy_submerged());
                 entity::remove_component(buoy, buoy_submerged_center());
