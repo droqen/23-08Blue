@@ -1,0 +1,14 @@
+[ember]
+id = "defenders_jamgame"
+name = "defenders_jamgame"
+version = "0.0.1"
+
+# [dependencies]
+# nicecam = { path = "../a_nice_overhead_camera" }
+
+[components]
+is_walker = { type = "Empty", attributes = ["Networked"] }
+global_score = { type = "U32" }
+
+[messages.DeleteGuy.fields]
+guy = "EntityId"

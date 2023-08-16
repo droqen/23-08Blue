@@ -20,6 +20,8 @@ members = [
 
     "dans_modeling_agency",
     
+    "defenders_jamgame",
+
     "BoatGameBlue",
     "BoatGameBlue/embers/boatblue_boat_demo",
     "BoatGameBlue/embers/boatblue_citygen_simple",
