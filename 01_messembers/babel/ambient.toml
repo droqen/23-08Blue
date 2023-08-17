@@ -1,0 +1,17 @@
+[ember]
+content = {type = "Playable"}
+id = "babel"
+name = "babel"
+version = "0.0.1"
+
+[messages.RegisterCamera.fields]
+entity = "EntityId"
+
+[messages.OneCameraRegistered.fields]
+camera = "EntityId"
+
+[messages.RegisterPlayer.fields]
+entity = "EntityId"
+
+[messages.OnePlayerRegistered.fields]
+player = "EntityId"

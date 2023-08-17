@@ -1,0 +1,26 @@
+[ember]
+content = {type = "Playable"}
+id = "uphill"
+name = "uphill"
+version = "0.0.1"
+
+[dependencies]
+cam = {path = "../cam"}
+
+[components.rock_progress]
+attributes = ["Networked", "Debuggable"]
+description = "How far up the hill has the rock gone?"
+type = "F32"
+
+[components.rock_radius]
+attributes = ["Networked", "Debuggable"]
+description = "How big is the rock? (radius)"
+type = "F32"
+
+[components.rock_true_velocity]
+description = "How fast is the rock moving? (Serverside only)"
+type = "F32"
+
+[components.rock_estimated_velocity]
+description = "How fast is the rock moving? (Clientside only, used for estimating progress)"
+type = "F32"

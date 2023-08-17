@@ -1,24 +1,46 @@
 [ember]
+content = {type = "Playable"}
 id = "cam"
 name = "cam"
 version = "0.0.1"
-content = { type = "Playable" }
 
-[components]
+[dependencies]
+babel = {path = "../babel"}
 
-head_key = { type = "U8" }
-head_pitch = { type = "F32" }
-head_yaw = { type = "F32" }
-head_relpos = { type = "Vec3" }
-head_targetent = { type = "EntityId" }
-head_target_relpos = { type = "Vec3" }
+[components.head_key]
+description = "Key - used for spawn identification"
+type = "U8"
+[components.head_pitch]
+description = "Pitch - How much to pitch camera while looking at lookat_target"
+type = "F32"
+[components.head_relpos]
+description = "Position of head, relative to lookat_target. y+ moves camera 'backwards' away from target. z+ moves camera up."
+type = "Vec3"
+[components.head_yaw]
+description = "Yaw - How much to yaw camera while looking at lookat_target"
+type = "F32"
 
-cam_key = { type = "U8" }
-cam_tilt = { type = "Vec2" }
+[components.head_targetent]
+description = "Sets camera's lookat_target value every frame to targetent's position"
+type = "EntityId"
+[components.head_target_relpos]
+description = "Offsets lookat_target in facing-space. z+ focuses on a point further above targetent. x+, right. y+, back."
+type = "Vec3"
 
+[components.cam_key]
+description = "Key - used for spawn identification"
+type = "U8"
+[components.cam_tilt]
+description = "How much to yaw (tilt.x) and pitch (tilt.y) the camera. Smoothed."
+type = "Vec2"
+
+[messages.MouseRay]
+description = "Player's local mouse ray. Broadcasted to client each frame."
 [messages.MouseRay.fields]
-origin = "Vec3"
 dir = "Vec3"
+origin = "Vec3"
 
+[messages.NewCam]
+description = "Instantiation command message"
 [messages.NewCam.fields]
 key = "U8"
