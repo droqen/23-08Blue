@@ -36,7 +36,7 @@ mod query_skater_movement {
     const GOALSPEED_BY_PACE: (f32, f32) = (0.5, 10.0);
     const AUTOFWDACCEL_BY_PACE: (f32, f32) = (0.0, 2.0);
 
-    pub fn setup() -> Listener {
+    pub fn init() -> Listener {
         query((
             translation(),
             skater_target(),
