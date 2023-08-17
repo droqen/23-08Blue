@@ -7,13 +7,27 @@ version = "0.0.1"
 [messages.NewSkater.fields]
 key = "U8"
 pos = "Vec3"
-# [messages.RemoveSkaterLogic.fields]
 
-# [[messages]]
-# RemoveSkaterLogic = { fields = { } }
+[components.skater_key]
+attributes = ["Networked", "Debuggable"]
+description = "Identifies an ent as a Skater; U8 value used for spawn identification purposes if necessary, otherwise does nothing"
+name = "Skater Key"
+type = "U8"
 
-[components]
-skater_key = { type = "U8" }
-skater_target = { type = "Vec3" }
-skater_fwd = { type = "Vec3" }
-skater_pace = { type = "F32" }
+[components.skater_target]
+attributes = ["Networked", "Debuggable"]
+description = "World position where the skater is going"
+name = "Skater Target"
+type = "Vec3"
+
+[components.skater_fwd]
+attributes = ["Networked", "Debuggable"]
+description = "Forward vector: Where is the skater facing? Does not affect movement, is for visual only"
+name = "Skater Fwd"
+type = "Vec3"
+
+[components.skater_pace]
+attributes = ["Networked", "Debuggable"]
+description = "Value 0-1, indicates whether skater is moving at slowest pace, or fastest pace"
+name = "Skater Pace"
+type = "F32"
