@@ -1,0 +1,10 @@
+[ember]
+id = "demo"
+name = "demo"
+version = "0.0.1"
+content = { type = "Playable" }
+
+[dependencies]
+cam = { path = "../cam" }
+skater = { path = "../skater" }
+shouter = { path = "../shouter" }

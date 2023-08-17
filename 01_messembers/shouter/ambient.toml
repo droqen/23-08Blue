@@ -1,0 +1,16 @@
+[ember]
+id = "shouter"
+name = "shouter"
+version = "0.0.1"
+content = { type = "Playable" }
+
+[messages.NewShout.fields]
+key = "U8"
+pos = "Vec3"
+txtmsg = "String"
+
+[components]
+shout_key = { type = "U8" }
+shout_prog = { type = "F32" }
+shout_base_pos = { type = "Vec3" }
+shout_text_center = { type = "Vec3" }

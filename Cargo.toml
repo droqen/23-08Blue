@@ -1,5 +1,10 @@
 [workspace]
 members = [
+    "01_messembers/cam",
+    "01_messembers/demo",
+    "01_messembers/skater",
+    "01_messembers/shouter",
+
     "a_nice_overhead_camera",
     "a_nice_overhead_camera/demo",
     "blue-moon",

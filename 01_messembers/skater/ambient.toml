@@ -1,0 +1,19 @@
+[ember]
+id = "skater"
+name = "skater"
+version = "0.0.1"
+# content = { type = "Playable" }
+
+[messages.NewSkater.fields]
+key = "U8"
+pos = "Vec3"
+# [messages.RemoveSkaterLogic.fields]
+
+# [[messages]]
+# RemoveSkaterLogic = { fields = { } }
+
+[components]
+skater_key = { type = "U8" }
+skater_target = { type = "Vec3" }
+skater_fwd = { type = "Vec3" }
+skater_pace = { type = "F32" }

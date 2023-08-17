@@ -1,0 +1,24 @@
+[ember]
+id = "cam"
+name = "cam"
+version = "0.0.1"
+content = { type = "Playable" }
+
+[components]
+
+head_key = { type = "U8" }
+head_pitch = { type = "F32" }
+head_yaw = { type = "F32" }
+head_relpos = { type = "Vec3" }
+head_targetent = { type = "EntityId" }
+head_target_relpos = { type = "Vec3" }
+
+cam_key = { type = "U8" }
+cam_tilt = { type = "Vec2" }
+
+[messages.MouseRay.fields]
+origin = "Vec3"
+dir = "Vec3"
+
+[messages.NewCam.fields]
+key = "U8"
