@@ -8,6 +8,10 @@ pub fn main() {
 
 mod rcvmsg_NewSkater {
 
+    use ambient_api::{core::transform::components::translation, message::Listener, prelude::*};
+
+    use crate::embers::skater::components::{skater_fwd, skater_key, skater_pace, skater_target};
+
     pub fn init() -> Listener {
         crate::embers::skater::messages::NewSkater::subscribe(|_src, msg| {
             Entity::new()
@@ -19,13 +23,18 @@ mod rcvmsg_NewSkater {
                 .spawn();
         })
     }
-
-    use ambient_api::{core::transform::components::translation, message::Listener, prelude::*};
-
-    use crate::embers::skater::components::{skater_fwd, skater_key, skater_pace, skater_target};
 }
 
 mod query_skater_movement {
+
+    use ambient_api::{
+        core::{physics::components::linear_velocity, transform::components::translation},
+        message::Listener,
+        prelude::*,
+    };
+
+    use crate::embers::skater::components::{skater_fwd, skater_pace, skater_target};
+
     const GOALPACE_FROM_REACH: (f32, f32) = (1.0, 5.0);
     const TURNSPDMULT_FROM_REACH: (f32, f32) = (1.0, 2.0);
     const TURNSPD_BY_PACE: (f32, f32) = (5.0, 2.5);
@@ -113,12 +122,4 @@ mod query_skater_movement {
     fn invlerpfrom(range: (f32, f32), value: f32) -> f32 {
         invlerp(range.0, range.1, value)
     }
-
-    use ambient_api::{
-        core::{physics::components::linear_velocity, transform::components::translation},
-        message::Listener,
-        prelude::*,
-    };
-
-    use crate::embers::skater::components::{skater_fwd, skater_pace, skater_target};
 }
