@@ -1,16 +1,38 @@
 [ember]
+content = {type = "Playable"}
 id = "shouter"
 name = "shouter"
 version = "0.0.1"
-content = { type = "Playable" }
+
+[messages.NewShout]
+description = "Instantiate a new shout"
+name = "New Shout"
 
 [messages.NewShout.fields]
 key = "U8"
 pos = "Vec3"
 txtmsg = "String"
 
-[components]
-shout_key = { type = "U8" }
-shout_prog = { type = "F32" }
-shout_base_pos = { type = "Vec3" }
-shout_text_center = { type = "Vec3" }
+[components.shout_base_pos]
+attributes = ["Networked", "Debuggable"]
+description = "Where was the shout spawned? The shout's placement in the world"
+name = "Shout Base Position"
+type = "Vec3"
+
+[components.shout_key]
+attributes = ["Networked", "Debuggable"]
+description = "(Key)"
+name = "Shout Key"
+type = "U8"
+
+[components.shout_prog]
+attributes = ["Networked", "Debuggable"]
+description = "Progress of shout animation"
+name = "Shout Progress"
+type = "F32"
+
+[components.shout_text_center]
+attributes = ["Networked", "Debuggable"]
+description = "Local center of the shout text, as text() is notoriously off-center"
+name = "Shout Text Center"
+type = "Vec3"

@@ -4,6 +4,9 @@ name = "skater"
 version = "0.0.1"
 # content = { type = "Playable" }
 
+[messages.NewSkater]
+name = "New Skater"
+description = "Creates new skater"
 [messages.NewSkater.fields]
 key = "U8"
 pos = "Vec3"
