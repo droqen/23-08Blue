@@ -9,6 +9,14 @@ Experimenting with using messages for triggering ember functionality, rather tha
 I regard this as a very successful experiment.
 `ambient run 01_messembers/demo`
 
+### desert_minigame (1%)
+-> The idea with this one was using something like Fredrik & Tobias' click-to-move jam game, but with a sort of abstract "desert sandstorm" environment to navigate. I haven't done much work on it yet, just the very beginnings of a sandstorm particle effect.
+### earth_minigame (1%)
+-> I wanted to add some camera controls to the "click and shoot" defenders_jamgame, but I haven't done much work on it yet.
+### uphill_minigame (50%)
+-> You can push the rock up the hill, though it becomes mostly impossible with one person as it gets steep enough.
+Too much code to be the frontpage example.
+
 ## defenders_jamgame
 A quick demo put together on call with Mithun and Magda for the frontpage game idea jam.
 `ambient run defenders_jamgame`
