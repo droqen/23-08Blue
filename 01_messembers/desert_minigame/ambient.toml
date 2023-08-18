@@ -1,0 +1,5 @@
+[ember]
+id = "desert_minigame"
+name = "desert_minigame"
+version = "0.0.1"
+content = { type = "Playable" }
