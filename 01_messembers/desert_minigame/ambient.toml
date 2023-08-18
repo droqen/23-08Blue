@@ -1,5 +1,12 @@
 [ember]
+content = {type = "Playable"}
 id = "desert_minigame"
 name = "desert_minigame"
 version = "0.0.1"
-content = { type = "Playable" }
+
+[dependencies]
+cam = {path = "../cam"}
+
+[components.sand_reset]
+description = "Time to sand particle being reset"
+type = "F32"
