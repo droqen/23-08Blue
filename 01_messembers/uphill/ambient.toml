@@ -24,3 +24,8 @@ type = "F32"
 [components.rock_estimated_velocity]
 description = "How fast is the rock moving? (Clientside only, used for estimating progress)"
 type = "F32"
+
+[messages.PushRock]
+description = "A mouse click from a player that pushes the rock slightly"
+[messages.PushRock.fields]
+force = "F32" # max 1

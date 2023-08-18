@@ -127,7 +127,7 @@ mod query_mouse_sets_tilt {
                 entity::add_component(
                     cam,
                     cam_tilt(),
-                    PI * (input_tilt * vec2(0.1, 0.1) + vec2(0.25, 0.0)),
+                    PI * (input_tilt * vec2(0.25, 0.25) + vec2(0.25, 0.0)),
                 );
 
                 // broadcast mouse ray position

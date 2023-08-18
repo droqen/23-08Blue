@@ -31,7 +31,7 @@ pub async fn main() {
             }
             ambient_api::core::messages::Frame::subscribe(move |_| {
                 if let Some(serv_rock_prog) = entity::get_component(rock, rock_progress()) {
-                    let pos = rock::rock_progress_to_position(serv_rock_prog);
+                    let pos = rock::rock_progress_to_position_smoothed(serv_rock_prog);
                     entity::add_component(rock_spr, translation(), pos);
                 }
             });
@@ -52,4 +52,31 @@ pub async fn main() {
     // } else {
     //     panic!("No rock found :( (spr)");
     // }
+
+    mouse_click_sends_push_message::init();
 }
+
+mod mouse_click_sends_push_message {
+    use ambient_api::prelude::*;
+    pub fn init() {
+        ambient_api::core::messages::Frame::subscribe(move |_| {
+            let (delta, input) = input::get_delta();
+            if (delta.mouse_buttons.contains(&MouseButton::Left)) {
+                crate::embers::uphill::messages::PushRock { force: 1.0 }.send_server_reliable();
+            }
+        });
+    }
+}
+
+// mod mouse_click_moves_cursor_cube {
+//     use ambient_api::prelude::*;
+//     pub fn init() {
+//         ambient_api::core::messages::Frame::subscribe(move |_| {
+//             let (delta, input) = input::get_delta();
+//             if (delta.mouse_buttons.contains(&MouseButton::Left)) {
+//                 crate::rock::get_nearest_prog(delta.mouse_position)
+//                 crate::embers::uphill::messages::PushRock { force: 1.0 }.send_server_reliable();
+//             }
+//         });
+//     }
+// }

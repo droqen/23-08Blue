@@ -7,6 +7,7 @@ pub fn main() {
     there_is_a_rock::init();
     the_rock_rolls_downhill::init();
     there_are_trees::init();
+    the_rock_can_be_pushed::init();
 }
 
 mod there_is_a_rock {
@@ -20,8 +21,8 @@ mod there_is_a_rock {
         Entity::new()
             // .with_merge(make_sphere())
             .with(name(), "Sside Rock".to_string())
-            .with(rock_progress(), 1.0)
-            .with(rock_true_velocity(), 0.0)
+            .with(rock_progress(), 0.0)
+            .with(rock_true_velocity(), 0.1)
             .spawn();
     }
 }
@@ -34,8 +35,14 @@ mod the_rock_rolls_downhill {
     pub fn init() {
         query((rock_progress(), rock_true_velocity())).each_frame(|rocks| {
             for (rock, (prog, vel)) in rocks {
-                let mut vel2 = vel * 0.90 - rock::rock_progress_to_grade(prog) * delta_time();
+                let mut vel2 = vel - 0.1 * rock::rock_progress_to_grade(prog) * delta_time();
                 let mut prog2 = prog + vel2 * delta_time();
+                if prog2 > 1.0 {
+                    prog2 = 1.0;
+                    if vel2 > 0.0 {
+                        vel2 = vel2 * -0.35;
+                    }
+                }
                 if prog2 < 0.0 {
                     prog2 = 0.0;
                     if vel2 < 0.0 {
@@ -63,7 +70,7 @@ mod there_are_trees {
     use crate::rock;
 
     pub fn init() {
-        for _ in 0..100 {
+        for _ in 0..200 {
             let prog = random::<f32>();
             let pos = rock::rock_progress_to_position(prog);
             let pos_back = rock::rock_progress_to_position(prog - 0.15);
@@ -86,5 +93,23 @@ mod there_are_trees {
                 .with(scale(), vec3(0.1, 0.1, 2.0))
                 .spawn();
         }
+    }
+}
+
+mod the_rock_can_be_pushed {
+    use crate::embers::uphill::components::rock_true_velocity;
+    use ambient_api::prelude::*;
+    pub fn init() {
+        let rock_query = query(rock_true_velocity()).build();
+        crate::embers::uphill::messages::PushRock::subscribe(move |_src, msg| {
+            // don't use force
+            for (rock, truevel) in rock_query.evaluate() {
+                if truevel > 0.00 {
+                    entity::set_component(rock, rock_true_velocity(), truevel * 0.95 + 0.01)
+                } else {
+                    entity::set_component(rock, rock_true_velocity(), truevel + 0.01)
+                }
+            }
+        });
     }
 }
