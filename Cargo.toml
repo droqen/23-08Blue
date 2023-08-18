@@ -4,6 +4,7 @@ members = [
   "01_messembers/cam",
   "01_messembers/demo",
   "01_messembers/desert_minigame",
+  "01_messembers/earth_minigame",
   "01_messembers/uphill_minigame",
   "01_messembers/skater",
   "01_messembers/shouter",
