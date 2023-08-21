@@ -3,7 +3,7 @@ use crate::packages::slowmover_ptt::components::{
 };
 use ambient_api::prelude::*;
 
-const MOVER_SPEED: f32 = 1.0;
+const MOVER_SPEED: f32 = 3.0;
 
 pub fn get_mover_pos2(mover: EntityId, time_offset: f32) -> Vec2 {
     try_calculate_mover_position(mover, time_offset).unwrap_or_default()
