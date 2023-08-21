@@ -30,3 +30,7 @@ I need to do a test prototype, let's call it slowmover_ptt
 [working on this now]
 
 * I spent an hour or so on this. It looks and feels good, let's move on soon.
+
+* I spent 10-20 minutes cleaning up the project a little.
+
+## Raycast movement - can it possibly feel good, or will it feel awkward and weird...? Let's find out.

@@ -9,7 +9,10 @@ pub fn main() {
 
 mod predictive_model_movement {
     use ambient_api::{
-        core::{primitives::components::cube, transform::components::translation},
+        core::{
+            primitives::{components::cube, concepts::make_capsule},
+            transform::components::{scale, translation},
+        },
         prelude::*,
     };
 
@@ -23,7 +26,9 @@ mod predictive_model_movement {
         spawn_query(mover_pos_end()).bind(|movers| {
             for (mover, pos) in movers {
                 Entity::new()
-                    .with(cube(), ())
+                    // .with(cube(), ())
+                    .with_merge(make_capsule())
+                    .with(scale(), vec3(0.5, 0.5, 0.5))
                     .with(translation(), pos.extend(0.5))
                     .with(c_mover_model(), mover)
                     .with(c_model_velocity(), Vec2::ZERO)
@@ -70,7 +75,7 @@ mod camera_factory {
             .with_merge(make_perspective_infinite_reverse_camera())
             .with(aspect_ratio_from_window(), EntityId::resources())
             .with(main_scene(), ())
-            .with(translation(), Vec3::ONE * 5.)
+            .with(translation(), vec3(2.0, 5.0, 20.0))
             .with(lookat_target(), vec3(0., 0., 0.))
             .spawn()
     }
