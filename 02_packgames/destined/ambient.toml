@@ -1,0 +1,21 @@
+[package]
+content = {type = "Playable"}
+description = "Defines a set of components for a 'destined' entity which has only an *interpreted* position based on parameters. On the clientside we may visualize such an entity's destiny."
+id = "destined"
+name = "destined"
+version = "0.0.1"
+
+[components.linmove_pos_start]
+attributes = ["Networked", "Debuggable"]
+description = "Where a destined is at the start of its linear movement"
+type = "Vec3"
+
+[components.linmove_pos_end]
+attributes = ["Networked", "Debuggable"]
+description = "Where a destined is at the end of its linear movement"
+type = "Vec2"
+
+[components.linmove_time_start]
+attributes = ["Networked", "Debuggable"]
+description = "Game-time float indicating when linear movement was started"
+type = "Duration"
