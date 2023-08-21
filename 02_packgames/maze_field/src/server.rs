@@ -5,7 +5,8 @@ use ambient_api::{
             components::aspect_ratio_from_window,
             concepts::make_perspective_infinite_reverse_camera,
         },
-        primitives::components::quad,
+        physics::components::cube_collider,
+        primitives::components::{cube, quad},
         transform::{
             components::{lookat_target, translation},
             concepts::make_transformable,
@@ -29,5 +30,16 @@ pub fn main() {
         .with(quad(), ())
         .spawn();
 
-    println!("Hello, Ambient!");
+    // spawn maze
+    for x in -10..10 {
+        for y in -10..10 {
+            if random::<f32>() < 0.5 {
+                Entity::new()
+                    .with(cube(), ())
+                    .with(cube_collider(), Vec3::splat(1.))
+                    .with(translation(), ivec2(x, y).as_vec2().extend(0.5))
+                    .spawn()
+            }
+        }
+    }
 }

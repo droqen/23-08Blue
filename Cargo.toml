@@ -8,6 +8,8 @@ members = [
   "01_messembers/uphill_minigame",
   "01_messembers/skater",
   "01_messembers/shouter",
+  "02_packgames/maze_field",
+  "02_packgames/slowmover_ptt",
   "a_nice_overhead_camera",
   "a_nice_overhead_camera/demo",
   "blue-moon",

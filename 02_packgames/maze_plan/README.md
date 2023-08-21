@@ -28,3 +28,5 @@ i prefer way 1, as it is always better to do as much as possible on the client -
 
 I need to do a test prototype, let's call it slowmover_ptt
 [working on this now]
+
+* I spent an hour or so on this. It looks and feels good, let's move on soon.
