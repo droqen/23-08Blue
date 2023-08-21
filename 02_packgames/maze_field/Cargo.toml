@@ -1,0 +1,23 @@
+[package]
+name = "maze_field"
+
+edition = "2021"
+publish = false
+version = "0.0.1"
+
+[dependencies]
+ambient_api = { git = "https://github.com/AmbientRun/Ambient.git", rev = "581af6e556" }
+
+[[bin]]
+name = "client_maze_field"
+path = "src/client.rs"
+required-features = ["client"]
+
+[[bin]]
+name = "server_maze_field"
+path = "src/server.rs"
+required-features = ["server"]
+
+[features]
+client = ["ambient_api/client"]
+server = ["ambient_api/server"]

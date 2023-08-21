@@ -1,0 +1,5 @@
+[package]
+id = "maze_field"
+name = "maze_field"
+version = "0.0.1"
+content = { type = "Playable" }
