@@ -39,3 +39,5 @@ i already have a hook for this in the server.
 i'm now spawning a collidery cube map... let's start raycasting
 
 * It only took about 15 minutes to get this working! It's not the best, the feedback is a bit weird. But hey, it *does* work.
+
+See `mazemovement.gif`: This is movement working! There's no feedback on a bad move.
