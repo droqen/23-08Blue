@@ -31,6 +31,11 @@ I need to do a test prototype, let's call it slowmover_ptt
 
 * I spent an hour or so on this. It looks and feels good, let's move on soon.
 
-* I spent 10-20 minutes cleaning up the project a little.
+* I spent 10-20 minutes cleaning up the project a little, and spawning a cube map
 
 ## Raycast movement - can it possibly feel good, or will it feel awkward and weird...? Let's find out.
+
+i already have a hook for this in the server.
+i'm now spawning a collidery cube map... let's start raycasting
+
+* It only took about 15 minutes to get this working! It's not the best, the feedback is a bit weird. But hey, it *does* work.

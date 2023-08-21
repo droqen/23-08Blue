@@ -37,12 +37,14 @@ mod floor_spawning {
             .with_merge(make_transformable())
             .with(quad(), ())
             .with(color(), vec4(0.5, 0.5, 0.5, 1.0))
-            .with(scale(), Vec3::splat(20.0))
+            .with(scale(), Vec3::splat(21.0))
             .spawn();
     }
 }
 
 mod mover_prediction;
+
+const BODY_HIT_RADIUS: f32 = 0.25;
 
 mod move_message {
     use crate::{
@@ -51,6 +53,7 @@ mod move_message {
             slowmover_ptt::components::{mover_pos_end, mover_pos_start, mover_time_start},
             slowmover_ptt::messages::PlayerMove,
         },
+        BODY_HIT_RADIUS,
     };
     use ambient_api::prelude::*;
     pub fn setup() {
@@ -59,9 +62,26 @@ mod move_message {
             if let Some(player_mover) = src.client_entity_id() {
                 let start = mover_prediction::get_mover_pos2(player_mover, 0.0);
                 let target = msg.target;
+                let to_target = target - start;
 
                 // use raycast to determine where the actual end-of-movement is
-                let end = target;
+                let hit_option =
+                    physics::raycast_first(start.extend(0.), (target - start).extend(0.));
+                let end = match hit_option {
+                    Some(hit) => {
+                        let to_hit: Vec3 = hit.position - start.extend(0.);
+                        let to_hit_dist: f32 = to_hit.length();
+                        if hit.distance <= BODY_HIT_RADIUS {
+                            start
+                        } else {
+                            start
+                                + (to_hit.normalize()
+                                    * to_target.length().min(to_hit_dist - BODY_HIT_RADIUS))
+                                .truncate()
+                        }
+                    }
+                    _ => target,
+                };
 
                 println!("PlayerMove received");
 
@@ -90,8 +110,8 @@ mod cube_maze_spawning {
     };
     pub fn setup() {
         // spawn maze
-        for x in -10..10 {
-            for y in -10..10 {
+        for x in -10..10 + 1 {
+            for y in -10..10 + 1 {
                 if random::<f32>() < 0.5 && ((x as i32).abs() + (y as i32).abs() > 2) {
                     Entity::new()
                         .with(cube(), ())
