@@ -8,6 +8,7 @@ members = [
   "01_messembers/uphill_minigame",
   "01_messembers/skater",
   "01_messembers/shouter",
+  "02_packgames/defender_ptt",
   "02_packgames/destined",
   "02_packgames/maze_field",
   "02_packgames/slowmover_ptt",
