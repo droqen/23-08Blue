@@ -75,7 +75,7 @@ mod camera_factory {
             .with_merge(make_perspective_infinite_reverse_camera())
             .with(aspect_ratio_from_window(), EntityId::resources())
             .with(main_scene(), ())
-            .with(translation(), vec3(1.0, 7.0, 20.0))
+            .with(translation(), vec3(0.1, 2.0, 25.0))
             .with(lookat_target(), vec3(0., 0., 0.))
             .spawn()
     }
