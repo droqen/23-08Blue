@@ -12,6 +12,8 @@ members = [
   "02_packgames/destined",
   "02_packgames/maze_field",
   "02_packgames/slowmover_ptt",
+  "03_packthis/test",
+  "03_packthis/mover_this",
   "a_nice_overhead_camera",
   "a_nice_overhead_camera/demo",
   "blue-moon",

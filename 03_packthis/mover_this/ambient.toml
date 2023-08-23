@@ -1,0 +1,46 @@
+[package]
+content = {type = "Playable"}
+id = "mover_this"
+name = "mover_this"
+version = "0.0.1"
+
+[components.mover_pos_end]
+attributes = ["Networked", "Debuggable"]
+description = "Where a mover is at the end of their movement"
+type = "Vec2"
+
+[components.mover_pos_start]
+attributes = ["Networked", "Debuggable"]
+description = "Where a mover is (was) at the start of their movement"
+type = "Vec2"
+
+[components.mover_time_start]
+attributes = ["Networked", "Debuggable"]
+description = "Game-time float indicating when movement was started. Actual position can always be calculated from these three mover_ components"
+type = "F32"
+
+[concepts.slowmover]
+description = "Its position is not defined, but interpreted based on lerp start/end, and the game's current timestamp."
+name = "Slow Mover"
+
+[concepts.slowmover.components]
+mover_pos_end = [0.0, 0.0]
+mover_pos_start = [0.0, 0.0]
+mover_time_start = 0.0
+
+[components.c_mover_model]
+description = "Clientside 'mover model' EntityId link"
+type = "EntityId"
+
+[components.c_model_velocity]
+description = "Clientside 'mover model' keeps an internal velocity to keep its movement looking natural."
+type = "Vec2"
+
+[messages.PlayerMove]
+description = "Player sends a message if they want to move to a target position."
+[messages.PlayerMove.fields]
+target = "Vec2"
+
+[components.mover_calculated_translation]
+description = "Real-time calculated translation - calculated on serverside and clientside separately"
+type = "Vec3"

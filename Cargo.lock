@@ -59,7 +59,7 @@ dependencies = [
  "futures",
  "glam",
  "once_cell",
- "rand",
+ "rand 0.8.5",
 ]
 
 [[package]]
@@ -76,7 +76,24 @@ dependencies = [
  "futures",
  "glam",
  "once_cell",
- "rand",
+ "rand 0.8.5",
+]
+
+[[package]]
+name = "ambient_api"
+version = "0.3.0-dev"
+source = "git+https://github.com/AmbientRun/Ambient.git?rev=bbfae69a93#bbfae69a9315f6443287c836dabb09ccea22e4c0"
+dependencies = [
+ "ambient_api_core 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?rev=bbfae69a93)",
+ "ambient_cb 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?rev=bbfae69a93)",
+ "ambient_editor_derive 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?rev=bbfae69a93)",
+ "ambient_element 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?rev=bbfae69a93)",
+ "ambient_ui 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?rev=bbfae69a93)",
+ "anyhow",
+ "futures",
+ "glam",
+ "once_cell",
+ "rand 0.8.5",
 ]
 
 [[package]]
@@ -93,7 +110,7 @@ dependencies = [
  "futures",
  "glam",
  "once_cell",
- "rand",
+ "rand 0.8.5",
 ]
 
 [[package]]
@@ -109,10 +126,10 @@ dependencies = [
  "data-encoding",
  "futures",
  "glam",
- "indexmap",
+ "indexmap 2.0.0",
  "once_cell",
  "paste",
- "rand",
+ "rand 0.8.5",
  "serde",
  "thiserror",
  "ulid",
@@ -125,17 +142,40 @@ version = "0.3.0-dev"
 source = "git+https://github.com/AmbientRun/Ambient.git?rev=581af6e556#581af6e55632f57dfa7d1354dd0189abfc4522f5"
 dependencies = [
  "ambient_api_macros 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?rev=581af6e556)",
- "ambient_package_rt",
+ "ambient_package_rt 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?rev=581af6e556)",
  "ambient_shared_types 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?rev=581af6e556)",
  "anyhow",
  "byteorder",
  "data-encoding",
  "futures",
  "glam",
- "indexmap",
+ "indexmap 2.0.0",
  "once_cell",
  "paste",
- "rand",
+ "rand 0.8.5",
+ "serde",
+ "thiserror",
+ "ulid",
+ "wit-bindgen",
+]
+
+[[package]]
+name = "ambient_api_core"
+version = "0.3.0-dev"
+source = "git+https://github.com/AmbientRun/Ambient.git?rev=bbfae69a93#bbfae69a9315f6443287c836dabb09ccea22e4c0"
+dependencies = [
+ "ambient_api_macros 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?rev=bbfae69a93)",
+ "ambient_package_rt 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?rev=bbfae69a93)",
+ "ambient_shared_types 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?rev=bbfae69a93)",
+ "anyhow",
+ "byteorder",
+ "data-encoding",
+ "futures",
+ "glam",
+ "indexmap 2.0.0",
+ "once_cell",
+ "paste",
+ "rand 0.8.5",
  "serde",
  "thiserror",
  "ulid",
@@ -155,10 +195,10 @@ dependencies = [
  "data-encoding",
  "futures",
  "glam",
- "indexmap",
+ "indexmap 2.0.0",
  "once_cell",
  "paste",
- "rand",
+ "rand 0.8.5",
  "serde",
  "thiserror",
  "ulid",
@@ -185,9 +225,24 @@ name = "ambient_api_macros"
 version = "0.3.0-dev"
 source = "git+https://github.com/AmbientRun/Ambient.git?rev=581af6e556#581af6e55632f57dfa7d1354dd0189abfc4522f5"
 dependencies = [
- "ambient_package",
- "ambient_package_macro_common",
+ "ambient_package 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?rev=581af6e556)",
+ "ambient_package_macro_common 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?rev=581af6e556)",
  "ambient_schema 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?rev=581af6e556)",
+ "anyhow",
+ "proc-macro2",
+ "quote",
+ "syn 1.0.109",
+ "tokio",
+]
+
+[[package]]
+name = "ambient_api_macros"
+version = "0.3.0-dev"
+source = "git+https://github.com/AmbientRun/Ambient.git?rev=bbfae69a93#bbfae69a9315f6443287c836dabb09ccea22e4c0"
+dependencies = [
+ "ambient_package 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?rev=bbfae69a93)",
+ "ambient_package_macro_common 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?rev=bbfae69a93)",
+ "ambient_schema 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?rev=bbfae69a93)",
  "anyhow",
  "proc-macro2",
  "quote",
@@ -223,6 +278,11 @@ source = "git+https://github.com/AmbientRun/Ambient.git?rev=581af6e556#581af6e55
 [[package]]
 name = "ambient_cb"
 version = "0.3.0-dev"
+source = "git+https://github.com/AmbientRun/Ambient.git?rev=bbfae69a93#bbfae69a9315f6443287c836dabb09ccea22e4c0"
+
+[[package]]
+name = "ambient_cb"
+version = "0.3.0-dev"
 source = "git+https://github.com/AmbientRun/Ambient.git?rev=c8d1204cb2#c8d1204cb2a642333ce549445f54990e10d3bb4d"
 
 [[package]]
@@ -240,6 +300,17 @@ dependencies = [
 name = "ambient_color"
 version = "0.3.0-dev"
 source = "git+https://github.com/AmbientRun/Ambient.git?rev=581af6e556#581af6e55632f57dfa7d1354dd0189abfc4522f5"
+dependencies = [
+ "glam",
+ "hex",
+ "serde",
+ "thiserror",
+]
+
+[[package]]
+name = "ambient_color"
+version = "0.3.0-dev"
+source = "git+https://github.com/AmbientRun/Ambient.git?rev=bbfae69a93#bbfae69a9315f6443287c836dabb09ccea22e4c0"
 dependencies = [
  "glam",
  "hex",
@@ -276,6 +347,20 @@ dependencies = [
 name = "ambient_editor_derive"
 version = "0.3.0-dev"
 source = "git+https://github.com/AmbientRun/Ambient.git?rev=581af6e556#581af6e55632f57dfa7d1354dd0189abfc4522f5"
+dependencies = [
+ "convert_case",
+ "itertools",
+ "pretty_assertions",
+ "proc-macro-crate",
+ "proc-macro2",
+ "quote",
+ "syn 1.0.109",
+]
+
+[[package]]
+name = "ambient_editor_derive"
+version = "0.3.0-dev"
+source = "git+https://github.com/AmbientRun/Ambient.git?rev=bbfae69a93#bbfae69a9315f6443287c836dabb09ccea22e4c0"
 dependencies = [
  "convert_case",
  "itertools",
@@ -343,6 +428,26 @@ dependencies = [
 [[package]]
 name = "ambient_element"
 version = "0.3.0-dev"
+source = "git+https://github.com/AmbientRun/Ambient.git?rev=bbfae69a93#bbfae69a9315f6443287c836dabb09ccea22e4c0"
+dependencies = [
+ "ambient_cb 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?rev=bbfae69a93)",
+ "ambient_element_component 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?rev=bbfae69a93)",
+ "ambient_friendly_id 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?rev=bbfae69a93)",
+ "ambient_guest_bridge 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?rev=bbfae69a93)",
+ "as-any",
+ "atomic_refcell",
+ "derivative",
+ "dyn-clonable",
+ "futures",
+ "itertools",
+ "parking_lot",
+ "profiling",
+ "tracing",
+]
+
+[[package]]
+name = "ambient_element"
+version = "0.3.0-dev"
 source = "git+https://github.com/AmbientRun/Ambient.git?rev=c8d1204cb2#c8d1204cb2a642333ce549445f54990e10d3bb4d"
 dependencies = [
  "ambient_cb 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?rev=c8d1204cb2)",
@@ -387,6 +492,18 @@ dependencies = [
 [[package]]
 name = "ambient_element_component"
 version = "0.3.0-dev"
+source = "git+https://github.com/AmbientRun/Ambient.git?rev=bbfae69a93#bbfae69a9315f6443287c836dabb09ccea22e4c0"
+dependencies = [
+ "itertools",
+ "proc-macro-crate",
+ "proc-macro2",
+ "quote",
+ "syn 1.0.109",
+]
+
+[[package]]
+name = "ambient_element_component"
+version = "0.3.0-dev"
 source = "git+https://github.com/AmbientRun/Ambient.git?rev=c8d1204cb2#c8d1204cb2a642333ce549445f54990e10d3bb4d"
 dependencies = [
  "itertools",
@@ -401,7 +518,7 @@ name = "ambient_friendly_id"
 version = "0.3.0-dev"
 source = "git+https://github.com/AmbientRun/Ambient.git?branch=main#a6ecb3e52dfc5a3a7f9cd6962bbf1bbfd8cbc798"
 dependencies = [
- "rand",
+ "rand 0.8.5",
 ]
 
 [[package]]
@@ -409,7 +526,15 @@ name = "ambient_friendly_id"
 version = "0.3.0-dev"
 source = "git+https://github.com/AmbientRun/Ambient.git?rev=581af6e556#581af6e55632f57dfa7d1354dd0189abfc4522f5"
 dependencies = [
- "rand",
+ "rand 0.8.5",
+]
+
+[[package]]
+name = "ambient_friendly_id"
+version = "0.3.0-dev"
+source = "git+https://github.com/AmbientRun/Ambient.git?rev=bbfae69a93#bbfae69a9315f6443287c836dabb09ccea22e4c0"
+dependencies = [
+ "rand 0.8.5",
 ]
 
 [[package]]
@@ -417,7 +542,7 @@ name = "ambient_friendly_id"
 version = "0.3.0-dev"
 source = "git+https://github.com/AmbientRun/Ambient.git?rev=c8d1204cb2#c8d1204cb2a642333ce549445f54990e10d3bb4d"
 dependencies = [
- "rand",
+ "rand 0.8.5",
 ]
 
 [[package]]
@@ -443,6 +568,16 @@ dependencies = [
 [[package]]
 name = "ambient_guest_bridge"
 version = "0.3.0-dev"
+source = "git+https://github.com/AmbientRun/Ambient.git?rev=bbfae69a93#bbfae69a9315f6443287c836dabb09ccea22e4c0"
+dependencies = [
+ "ambient_api_core 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?rev=bbfae69a93)",
+ "ambient_shared_types 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?rev=bbfae69a93)",
+ "anyhow",
+]
+
+[[package]]
+name = "ambient_guest_bridge"
+version = "0.3.0-dev"
 source = "git+https://github.com/AmbientRun/Ambient.git?rev=c8d1204cb2#c8d1204cb2a642333ce549445f54990e10d3bb4d"
 dependencies = [
  "ambient_api_core 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?rev=c8d1204cb2)",
@@ -456,7 +591,7 @@ version = "0.3.0-dev"
 source = "git+https://github.com/AmbientRun/Ambient.git?branch=main#a6ecb3e52dfc5a3a7f9cd6962bbf1bbfd8cbc798"
 dependencies = [
  "glam",
- "rand",
+ "rand 0.8.5",
  "serde",
 ]
 
@@ -466,7 +601,17 @@ version = "0.3.0-dev"
 source = "git+https://github.com/AmbientRun/Ambient.git?rev=581af6e556#581af6e55632f57dfa7d1354dd0189abfc4522f5"
 dependencies = [
  "glam",
- "rand",
+ "rand 0.8.5",
+ "serde",
+]
+
+[[package]]
+name = "ambient_math"
+version = "0.3.0-dev"
+source = "git+https://github.com/AmbientRun/Ambient.git?rev=bbfae69a93#bbfae69a9315f6443287c836dabb09ccea22e4c0"
+dependencies = [
+ "glam",
+ "rand 0.8.5",
  "serde",
 ]
 
@@ -476,7 +621,7 @@ version = "0.3.0-dev"
 source = "git+https://github.com/AmbientRun/Ambient.git?rev=c8d1204cb2#c8d1204cb2a642333ce549445f54990e10d3bb4d"
 dependencies = [
  "glam",
- "rand",
+ "rand 0.8.5",
  "serde",
 ]
 
@@ -487,7 +632,7 @@ source = "git+https://github.com/AmbientRun/Ambient.git?rev=581af6e556#581af6e55
 dependencies = [
  "anyhow",
  "convert_case",
- "indexmap",
+ "indexmap 2.0.0",
  "once_cell",
  "proc-macro2",
  "quote",
@@ -498,13 +643,49 @@ dependencies = [
 ]
 
 [[package]]
+name = "ambient_package"
+version = "0.3.0-dev"
+source = "git+https://github.com/AmbientRun/Ambient.git?rev=bbfae69a93#bbfae69a9315f6443287c836dabb09ccea22e4c0"
+dependencies = [
+ "convert_case",
+ "indexmap 2.0.0",
+ "once_cell",
+ "proc-macro2",
+ "quote",
+ "serde",
+ "syn 1.0.109",
+ "thiserror",
+ "toml",
+ "url",
+]
+
+[[package]]
 name = "ambient_package_macro_common"
 version = "0.3.0-dev"
 source = "git+https://github.com/AmbientRun/Ambient.git?rev=581af6e556#581af6e55632f57dfa7d1354dd0189abfc4522f5"
 dependencies = [
- "ambient_package",
- "ambient_package_semantic",
+ "ambient_package 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?rev=581af6e556)",
+ "ambient_package_semantic 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?rev=581af6e556)",
  "ambient_shared_types 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?rev=581af6e556)",
+ "anyhow",
+ "glam",
+ "proc-macro2",
+ "quote",
+ "serde",
+ "syn 1.0.109",
+ "thiserror",
+ "tokio",
+ "toml",
+]
+
+[[package]]
+name = "ambient_package_macro_common"
+version = "0.3.0-dev"
+source = "git+https://github.com/AmbientRun/Ambient.git?rev=bbfae69a93#bbfae69a9315f6443287c836dabb09ccea22e4c0"
+dependencies = [
+ "ambient_package 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?rev=bbfae69a93)",
+ "ambient_package_semantic 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?rev=bbfae69a93)",
+ "ambient_shared_types 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?rev=bbfae69a93)",
  "anyhow",
  "glam",
  "proc-macro2",
@@ -527,11 +708,21 @@ dependencies = [
 ]
 
 [[package]]
+name = "ambient_package_rt"
+version = "0.3.0-dev"
+source = "git+https://github.com/AmbientRun/Ambient.git?rev=bbfae69a93#bbfae69a9315f6443287c836dabb09ccea22e4c0"
+dependencies = [
+ "byteorder",
+ "glam",
+ "thiserror",
+]
+
+[[package]]
 name = "ambient_package_semantic"
 version = "0.3.0-dev"
 source = "git+https://github.com/AmbientRun/Ambient.git?rev=581af6e556#581af6e55632f57dfa7d1354dd0189abfc4522f5"
 dependencies = [
- "ambient_package",
+ "ambient_package 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?rev=581af6e556)",
  "ambient_schema 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?rev=581af6e556)",
  "ambient_shared_types 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?rev=581af6e556)",
  "ambient_std 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?rev=581af6e556)",
@@ -540,11 +731,34 @@ dependencies = [
  "async-trait",
  "data-encoding",
  "glam",
- "indexmap",
+ "indexmap 2.0.0",
  "paste",
  "thiserror",
  "toml",
  "ulid",
+]
+
+[[package]]
+name = "ambient_package_semantic"
+version = "0.3.0-dev"
+source = "git+https://github.com/AmbientRun/Ambient.git?rev=bbfae69a93#bbfae69a9315f6443287c836dabb09ccea22e4c0"
+dependencies = [
+ "ambient_package 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?rev=bbfae69a93)",
+ "ambient_schema 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?rev=bbfae69a93)",
+ "ambient_shared_types 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?rev=bbfae69a93)",
+ "ambient_std 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?rev=bbfae69a93)",
+ "anyhow",
+ "async-recursion",
+ "async-trait",
+ "data-encoding",
+ "glam",
+ "indexmap 2.0.0",
+ "paste",
+ "reqwest",
+ "thiserror",
+ "toml",
+ "ulid",
+ "url",
 ]
 
 [[package]]
@@ -554,7 +768,7 @@ source = "git+https://github.com/AmbientRun/Ambient.git?branch=main#a6ecb3e52dfc
 dependencies = [
  "anyhow",
  "convert_case",
- "indexmap",
+ "indexmap 2.0.0",
  "once_cell",
  "proc-macro2",
  "quote",
@@ -571,7 +785,7 @@ source = "git+https://github.com/AmbientRun/Ambient.git?rev=c8d1204cb2#c8d1204cb
 dependencies = [
  "anyhow",
  "convert_case",
- "indexmap",
+ "indexmap 2.0.0",
  "once_cell",
  "proc-macro2",
  "quote",
@@ -651,7 +865,7 @@ dependencies = [
  "async-trait",
  "data-encoding",
  "glam",
- "indexmap",
+ "indexmap 2.0.0",
  "paste",
  "thiserror",
  "toml",
@@ -672,7 +886,7 @@ dependencies = [
  "async-trait",
  "data-encoding",
  "glam",
- "indexmap",
+ "indexmap 2.0.0",
  "paste",
  "thiserror",
  "toml",
@@ -692,6 +906,11 @@ source = "git+https://github.com/AmbientRun/Ambient.git?rev=581af6e556#581af6e55
 [[package]]
 name = "ambient_schema"
 version = "0.3.0-dev"
+source = "git+https://github.com/AmbientRun/Ambient.git?rev=bbfae69a93#bbfae69a9315f6443287c836dabb09ccea22e4c0"
+
+[[package]]
+name = "ambient_schema"
+version = "0.3.0-dev"
 source = "git+https://github.com/AmbientRun/Ambient.git?rev=c8d1204cb2#c8d1204cb2a642333ce549445f54990e10d3bb4d"
 
 [[package]]
@@ -711,6 +930,19 @@ dependencies = [
 name = "ambient_shared_types"
 version = "0.3.0-dev"
 source = "git+https://github.com/AmbientRun/Ambient.git?rev=581af6e556#581af6e55632f57dfa7d1354dd0189abfc4522f5"
+dependencies = [
+ "bitflags 1.3.2",
+ "itertools",
+ "paste",
+ "serde",
+ "strum",
+ "ulid",
+]
+
+[[package]]
+name = "ambient_shared_types"
+version = "0.3.0-dev"
+source = "git+https://github.com/AmbientRun/Ambient.git?rev=bbfae69a93#bbfae69a9315f6443287c836dabb09ccea22e4c0"
 dependencies = [
  "bitflags 1.3.2",
  "itertools",
@@ -746,6 +978,15 @@ dependencies = [
 name = "ambient_std"
 version = "0.3.0-dev"
 source = "git+https://github.com/AmbientRun/Ambient.git?rev=581af6e556#581af6e55632f57dfa7d1354dd0189abfc4522f5"
+dependencies = [
+ "itertools",
+ "thiserror",
+]
+
+[[package]]
+name = "ambient_std"
+version = "0.3.0-dev"
+source = "git+https://github.com/AmbientRun/Ambient.git?rev=bbfae69a93#bbfae69a9315f6443287c836dabb09ccea22e4c0"
 dependencies = [
  "itertools",
  "thiserror",
@@ -773,6 +1014,15 @@ dependencies = [
 name = "ambient_time"
 version = "0.3.0-dev"
 source = "git+https://github.com/AmbientRun/Ambient.git?rev=581af6e556#581af6e55632f57dfa7d1354dd0189abfc4522f5"
+dependencies = [
+ "itertools",
+ "thiserror",
+]
+
+[[package]]
+name = "ambient_time"
+version = "0.3.0-dev"
+source = "git+https://github.com/AmbientRun/Ambient.git?rev=bbfae69a93#bbfae69a9315f6443287c836dabb09ccea22e4c0"
 dependencies = [
  "itertools",
  "thiserror",
@@ -802,10 +1052,10 @@ dependencies = [
  "convert_case",
  "futures",
  "glam",
- "indexmap",
+ "indexmap 2.0.0",
  "itertools",
  "parking_lot",
- "rand",
+ "rand 0.8.5",
  "serde",
  "serde_json",
  "tracing",
@@ -826,10 +1076,34 @@ dependencies = [
  "convert_case",
  "futures",
  "glam",
- "indexmap",
+ "indexmap 2.0.0",
  "itertools",
  "parking_lot",
- "rand",
+ "rand 0.8.5",
+ "serde",
+ "serde_json",
+ "tracing",
+]
+
+[[package]]
+name = "ambient_ui"
+version = "0.3.0-dev"
+source = "git+https://github.com/AmbientRun/Ambient.git?rev=bbfae69a93#bbfae69a9315f6443287c836dabb09ccea22e4c0"
+dependencies = [
+ "ambient_cb 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?rev=bbfae69a93)",
+ "ambient_color 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?rev=bbfae69a93)",
+ "ambient_element 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?rev=bbfae69a93)",
+ "ambient_guest_bridge 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?rev=bbfae69a93)",
+ "ambient_math 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?rev=bbfae69a93)",
+ "ambient_shared_types 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?rev=bbfae69a93)",
+ "ambient_time 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?rev=bbfae69a93)",
+ "convert_case",
+ "futures",
+ "glam",
+ "indexmap 2.0.0",
+ "itertools",
+ "parking_lot",
+ "rand 0.8.5",
  "serde",
  "serde_json",
  "tracing",
@@ -850,10 +1124,10 @@ dependencies = [
  "convert_case",
  "futures",
  "glam",
- "indexmap",
+ "indexmap 2.0.0",
  "itertools",
  "parking_lot",
- "rand",
+ "rand 0.8.5",
  "serde",
  "serde_json",
  "tracing",
@@ -929,6 +1203,12 @@ dependencies = [
  "object",
  "rustc-demangle",
 ]
+
+[[package]]
+name = "base64"
+version = "0.21.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "604178f6c5c21f02dc555784810edfb88d34ac2c73b2eae109655649ee73ce3d"
 
 [[package]]
 name = "bitflags"
@@ -1244,10 +1524,25 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "a26ae43d7bcc3b814de94796a5e736d4029efb0ee900c12e2d54c993ad1a1e07"
 
 [[package]]
+name = "encoding_rs"
+version = "0.8.33"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "7268b386296a025e474d5140678f75d6de9493ae55a5d709eeb9dd08149945e1"
+dependencies = [
+ "cfg-if",
+]
+
+[[package]]
 name = "equivalent"
 version = "1.0.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "5443807d6dff69373d433ab9ef5378ad8df50ca6298caf15de6e52e24aaf54d5"
+
+[[package]]
+name = "fixedbitset"
+version = "0.2.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "37ab347416e802de484e4d03c7316c48f1ecb56574dfd4a46a80f173ce1de04d"
 
 [[package]]
 name = "fixedbitset"
@@ -1265,7 +1560,7 @@ dependencies = [
  "futures-sink",
  "nanorand",
  "pin-project",
- "spin",
+ "spin 0.9.8",
 ]
 
 [[package]]
@@ -1275,6 +1570,12 @@ dependencies = [
  "ambient_api 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?branch=main)",
  "flume",
 ]
+
+[[package]]
+name = "fnv"
+version = "1.0.7"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "3f9eec918d3f24069decb9af1554cad7c880e2da24a9afd88aca000531ab82c1"
 
 [[package]]
 name = "form_urlencoded"
@@ -1376,6 +1677,17 @@ dependencies = [
 
 [[package]]
 name = "getrandom"
+version = "0.1.16"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "8fc3cb4d91f53b50155bdcfd23f6a4c39ae1969c2ae85982b135750cccaf5fce"
+dependencies = [
+ "cfg-if",
+ "libc",
+ "wasi 0.9.0+wasi-snapshot-preview1",
+]
+
+[[package]]
+name = "getrandom"
 version = "0.2.10"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "be4136b2a15dd319360be1c07d9933517ccf0be8f16bf62a3bee4f0d618df427"
@@ -1383,7 +1695,7 @@ dependencies = [
  "cfg-if",
  "js-sys",
  "libc",
- "wasi",
+ "wasi 0.11.0+wasi-snapshot-preview1",
  "wasm-bindgen",
 ]
 
@@ -1400,9 +1712,34 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "42218cb640844e3872cc3c153dc975229e080a6c4733b34709ef445610550226"
 dependencies = [
  "bytemuck",
- "rand",
+ "rand 0.8.5",
  "serde",
 ]
+
+[[package]]
+name = "h2"
+version = "0.3.21"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "91fc23aa11be92976ef4729127f1a74adf36d8436f7816b185d18df956790833"
+dependencies = [
+ "bytes",
+ "fnv",
+ "futures-core",
+ "futures-sink",
+ "futures-util",
+ "http",
+ "indexmap 1.9.3",
+ "slab",
+ "tokio",
+ "tokio-util",
+ "tracing",
+]
+
+[[package]]
+name = "hashbrown"
+version = "0.12.3"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "8a9ee70c43aaf417c914396645a0fa852624801b24ebb7ae78fe8272889ac888"
 
 [[package]]
 name = "hashbrown"
@@ -1432,6 +1769,78 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "7f24254aa9a54b5c858eaee2f5bccdb46aaf0e486a595ed5fd8f86ba55232a70"
 
 [[package]]
+name = "http"
+version = "0.2.9"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "bd6effc99afb63425aff9b05836f029929e345a6148a14b7ecd5ab67af944482"
+dependencies = [
+ "bytes",
+ "fnv",
+ "itoa",
+]
+
+[[package]]
+name = "http-body"
+version = "0.4.5"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "d5f38f16d184e36f2408a55281cd658ecbd3ca05cce6d6510a176eca393e26d1"
+dependencies = [
+ "bytes",
+ "http",
+ "pin-project-lite",
+]
+
+[[package]]
+name = "httparse"
+version = "1.8.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "d897f394bad6a705d5f4104762e116a75639e470d80901eed05a860a95cb1904"
+
+[[package]]
+name = "httpdate"
+version = "1.0.3"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "df3b46402a9d5adb4c86a0cf463f42e19994e3ee891101b1841f30a545cb49a9"
+
+[[package]]
+name = "hyper"
+version = "0.14.27"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "ffb1cfd654a8219eaef89881fdb3bb3b1cdc5fa75ded05d6933b2b382e395468"
+dependencies = [
+ "bytes",
+ "futures-channel",
+ "futures-core",
+ "futures-util",
+ "h2",
+ "http",
+ "http-body",
+ "httparse",
+ "httpdate",
+ "itoa",
+ "pin-project-lite",
+ "socket2 0.4.9",
+ "tokio",
+ "tower-service",
+ "tracing",
+ "want",
+]
+
+[[package]]
+name = "hyper-rustls"
+version = "0.24.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "8d78e1e73ec14cf7375674f74d7dde185c8206fd9dea6fb6295e8a98098aaa97"
+dependencies = [
+ "futures-util",
+ "http",
+ "hyper",
+ "rustls",
+ "tokio",
+ "tokio-rustls",
+]
+
+[[package]]
 name = "id-arena"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1449,12 +1858,22 @@ dependencies = [
 
 [[package]]
 name = "indexmap"
+version = "1.9.3"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "bd070e393353796e801d209ad339e89596eb4c8d430d18ede6a1cced8fafbd99"
+dependencies = [
+ "autocfg",
+ "hashbrown 0.12.3",
+]
+
+[[package]]
+name = "indexmap"
 version = "2.0.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "d5477fe2230a79769d8dc68e0eabf5437907c0457a5614a9e8dddb67f65eb65d"
 dependencies = [
  "equivalent",
- "hashbrown",
+ "hashbrown 0.14.0",
  "serde",
 ]
 
@@ -1475,6 +1894,12 @@ checksum = "276ec31bcb4a9ee45f58bec6f9ec700ae4cf4f4f8f2fa7e06cb406bd5ffdd770"
 dependencies = [
  "num-traits",
 ]
+
+[[package]]
+name = "ipnet"
+version = "2.8.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "28b29a3cd74f0f4598934efe3aeba42bae0eb4680554128851ebbecb02af14e6"
 
 [[package]]
 name = "itertools"
@@ -1537,10 +1962,29 @@ dependencies = [
 ]
 
 [[package]]
+name = "maze_generator"
+version = "2.0.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "a458fa8b54f6962fc1ef1c1edc5f074762ee9e73bed75f82b23c5ab9401ded60"
+dependencies = [
+ "anyhow",
+ "petgraph",
+ "rand 0.7.3",
+ "rand_chacha 0.2.2",
+ "thiserror",
+]
+
+[[package]]
 name = "memchr"
 version = "2.5.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "2dffe52ecf27772e601905b7522cb4ef790d2cc203488bbd0e2fe85fcb74566d"
+
+[[package]]
+name = "mime"
+version = "0.3.17"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "6877bb514081ee2a7ff5ef9de3281f14a4dd4bceac4c09388074a6b5df8a139a"
 
 [[package]]
 name = "miniz_oxide"
@@ -1558,8 +2002,16 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "927a765cd3fc26206e66b296465fa9d3e5ab003e651c1b3c060e7956d96b19d2"
 dependencies = [
  "libc",
- "wasi",
+ "wasi 0.11.0+wasi-snapshot-preview1",
  "windows-sys",
+]
+
+[[package]]
+name = "mover_this"
+version = "0.0.1"
+dependencies = [
+ "ambient_api 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?rev=bbfae69a93)",
+ "maze_generator",
 ]
 
 [[package]]
@@ -1568,7 +2020,7 @@ version = "0.7.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "6a51313c5820b0b02bd422f4b44776fbf47961755c74ce64afc73bfad10226c3"
 dependencies = [
- "getrandom",
+ "getrandom 0.2.10",
 ]
 
 [[package]]
@@ -1651,8 +2103,8 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "c246434cbaa32c6430ea09b0a7dd28c0f954143f7866cf551e42f2390d8a65ae"
 dependencies = [
  "deprecate-until",
- "fixedbitset",
- "indexmap",
+ "fixedbitset 0.4.2",
+ "indexmap 2.0.0",
  "integer-sqrt",
  "num-traits",
  "rustc-hash",
@@ -1664,6 +2116,16 @@ name = "percent-encoding"
 version = "2.3.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "9b2a4787296e9989611394c33f193f676704af1686e70b8f8033ab5ba9a35a94"
+
+[[package]]
+name = "petgraph"
+version = "0.5.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "467d164a6de56270bd7c4d070df81d07beace25012d5103ced4e9ff08d6afdb7"
+dependencies = [
+ "fixedbitset 0.2.0",
+ "indexmap 1.9.3",
+]
 
 [[package]]
 name = "pin-project"
@@ -1794,13 +2256,36 @@ dependencies = [
 
 [[package]]
 name = "rand"
+version = "0.7.3"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "6a6b1679d49b24bbfe0c803429aa1874472f50d9b363131f0e89fc356b544d03"
+dependencies = [
+ "getrandom 0.1.16",
+ "libc",
+ "rand_chacha 0.2.2",
+ "rand_core 0.5.1",
+ "rand_hc",
+]
+
+[[package]]
+name = "rand"
 version = "0.8.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "34af8d1a0e25924bc5b7c43c079c942339d8f0a8b57c39049bef581b46327404"
 dependencies = [
  "libc",
- "rand_chacha",
- "rand_core",
+ "rand_chacha 0.3.1",
+ "rand_core 0.6.4",
+]
+
+[[package]]
+name = "rand_chacha"
+version = "0.2.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "f4c8ed856279c9737206bf725bf36935d8666ead7aa69b52be55af369d193402"
+dependencies = [
+ "ppv-lite86",
+ "rand_core 0.5.1",
 ]
 
 [[package]]
@@ -1810,7 +2295,16 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "e6c10a63a0fa32252be49d21e7709d4d4baf8d231c2dbce1eaa8141b9b127d88"
 dependencies = [
  "ppv-lite86",
- "rand_core",
+ "rand_core 0.6.4",
+]
+
+[[package]]
+name = "rand_core"
+version = "0.5.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "90bde5296fc891b0cef12a6d03ddccc162ce7b2aff54160af9338f8d40df6d19"
+dependencies = [
+ "getrandom 0.1.16",
 ]
 
 [[package]]
@@ -1819,7 +2313,16 @@ version = "0.6.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "ec0be4795e2f6a28069bec0b5ff3e2ac9bafc99e6a9a7dc3547996c5c816922c"
 dependencies = [
- "getrandom",
+ "getrandom 0.2.10",
+]
+
+[[package]]
+name = "rand_hc"
+version = "0.2.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "ca3129af7b92a17112d59ad498c6f81eaf463253766b90396d39ea7a39d6613c"
+dependencies = [
+ "rand_core 0.5.1",
 ]
 
 [[package]]
@@ -1829,6 +2332,60 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "567664f262709473930a4bf9e51bf2ebf3348f2e748ccc50dea20646858f8f29"
 dependencies = [
  "bitflags 1.3.2",
+]
+
+[[package]]
+name = "reqwest"
+version = "0.11.19"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "20b9b67e2ca7dd9e9f9285b759de30ff538aab981abaaf7bc9bd90b84a0126c3"
+dependencies = [
+ "base64",
+ "bytes",
+ "encoding_rs",
+ "futures-core",
+ "futures-util",
+ "h2",
+ "http",
+ "http-body",
+ "hyper",
+ "hyper-rustls",
+ "ipnet",
+ "js-sys",
+ "log",
+ "mime",
+ "once_cell",
+ "percent-encoding",
+ "pin-project-lite",
+ "rustls",
+ "rustls-pemfile",
+ "serde",
+ "serde_json",
+ "serde_urlencoded",
+ "tokio",
+ "tokio-rustls",
+ "tower-service",
+ "url",
+ "wasm-bindgen",
+ "wasm-bindgen-futures",
+ "web-sys",
+ "webpki-roots",
+ "winreg",
+]
+
+[[package]]
+name = "ring"
+version = "0.16.20"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "3053cf52e236a3ed746dfc745aa9cacf1b791d846bdaf412f60a8d7d6e17c8fc"
+dependencies = [
+ "cc",
+ "libc",
+ "once_cell",
+ "spin 0.5.2",
+ "untrusted",
+ "web-sys",
+ "winapi",
 ]
 
 [[package]]
@@ -1842,6 +2399,37 @@ name = "rustc-hash"
 version = "1.1.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "08d43f7aa6b08d49f382cde6a7982047c3426db949b1424bc4b7ec9ae12c6ce2"
+
+[[package]]
+name = "rustls"
+version = "0.21.6"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "1d1feddffcfcc0b33f5c6ce9a29e341e4cd59c3f78e7ee45f4a40c038b1d6cbb"
+dependencies = [
+ "log",
+ "ring",
+ "rustls-webpki",
+ "sct",
+]
+
+[[package]]
+name = "rustls-pemfile"
+version = "1.0.3"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "2d3987094b1d07b653b7dfdc3f70ce9a1da9c51ac18c1b06b662e4f9a0e9f4b2"
+dependencies = [
+ "base64",
+]
+
+[[package]]
+name = "rustls-webpki"
+version = "0.101.4"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "7d93931baf2d282fff8d3a532bbfd7653f734643161b87e3e01e59a04439bf0d"
+dependencies = [
+ "ring",
+ "untrusted",
+]
 
 [[package]]
 name = "rustversion"
@@ -1860,6 +2448,16 @@ name = "scopeguard"
 version = "1.2.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "94143f37725109f92c262ed2cf5e59bce7498c01bcc1502d7b9afe439a4e9f49"
+
+[[package]]
+name = "sct"
+version = "0.7.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "d53dcdb7c9f8158937a7981b48accfd39a43af418591a5d008c7b22b5e1b7ca4"
+dependencies = [
+ "ring",
+ "untrusted",
+]
 
 [[package]]
 name = "semver"
@@ -1904,6 +2502,18 @@ version = "0.6.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "96426c9936fd7a0124915f9185ea1d20aa9445cc9821142f0a73bc9207a2e186"
 dependencies = [
+ "serde",
+]
+
+[[package]]
+name = "serde_urlencoded"
+version = "0.7.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "d3491c14715ca2294c4d6a88f15e84739788c1d030eed8c110436aafdaa2f3fd"
+dependencies = [
+ "form_urlencoded",
+ "itoa",
+ "ryu",
  "serde",
 ]
 
@@ -1968,6 +2578,16 @@ checksum = "62bb4feee49fdd9f707ef802e22365a35de4b7b299de4763d44bfea899442ff9"
 
 [[package]]
 name = "socket2"
+version = "0.4.9"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "64a4a911eed85daf18834cfaa86a79b7d266ff93ff5ba14005426219480ed662"
+dependencies = [
+ "libc",
+ "winapi",
+]
+
+[[package]]
+name = "socket2"
 version = "0.5.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "2538b18701741680e0322a2302176d3253a35388e2e62f172f64f4f16605f877"
@@ -1984,6 +2604,12 @@ checksum = "b19b32ed6d899ab23174302ff105c1577e45a06b08d4fe0a9dd13ce804bbbf71"
 dependencies = [
  "smallvec",
 ]
+
+[[package]]
+name = "spin"
+version = "0.5.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "6e63cff320ae2c57904679ba7cb63280a3dc4613885beafb148ee7bf9aa9042d"
 
 [[package]]
 name = "spin"
@@ -2039,6 +2665,13 @@ dependencies = [
 ]
 
 [[package]]
+name = "test"
+version = "0.0.1"
+dependencies = [
+ "ambient_api 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?rev=bbfae69a93)",
+]
+
+[[package]]
 name = "thiserror"
 version = "1.0.44"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -2087,7 +2720,7 @@ dependencies = [
  "parking_lot",
  "pin-project-lite",
  "signal-hook-registry",
- "socket2",
+ "socket2 0.5.3",
  "tokio-macros",
  "windows-sys",
 ]
@@ -2104,12 +2737,36 @@ dependencies = [
 ]
 
 [[package]]
+name = "tokio-rustls"
+version = "0.24.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "c28327cf380ac148141087fbfb9de9d7bd4e84ab5d2c28fbc911d753de8a7081"
+dependencies = [
+ "rustls",
+ "tokio",
+]
+
+[[package]]
+name = "tokio-util"
+version = "0.7.8"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "806fe8c2c87eccc8b3267cbae29ed3ab2d0bd37fca70ab622e46aaa9375ddb7d"
+dependencies = [
+ "bytes",
+ "futures-core",
+ "futures-sink",
+ "pin-project-lite",
+ "tokio",
+ "tracing",
+]
+
+[[package]]
 name = "toml"
 version = "0.7.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "c17e963a819c331dcacd7ab957d80bc2b9a9c1e71c804826d2f283dd65306542"
 dependencies = [
- "indexmap",
+ "indexmap 2.0.0",
  "serde",
  "serde_spanned",
  "toml_datetime",
@@ -2131,12 +2788,18 @@ version = "0.19.14"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "f8123f27e969974a3dfba720fdb560be359f57b44302d280ba72e76a74480e8a"
 dependencies = [
- "indexmap",
+ "indexmap 2.0.0",
  "serde",
  "serde_spanned",
  "toml_datetime",
  "winnow",
 ]
+
+[[package]]
+name = "tower-service"
+version = "0.3.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "b6bc1c9ce2b5135ac7f93c72918fc37feb872bdc6a5533a8b85eb4b86bfdae52"
 
 [[package]]
 name = "tracing"
@@ -2171,12 +2834,18 @@ dependencies = [
 ]
 
 [[package]]
+name = "try-lock"
+version = "0.2.4"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "3528ecfd12c466c6f163363caf2d02a71161dd5e1cc6ae7b34207ea2d42d81ed"
+
+[[package]]
 name = "ulid"
 version = "1.0.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "13a3aaa69b04e5b66cc27309710a569ea23593612387d67daaf102e73aa974fd"
 dependencies = [
- "rand",
+ "rand 0.8.5",
  "serde",
 ]
 
@@ -2223,6 +2892,12 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "f962df74c8c05a667b5ee8bcf162993134c104e96440b663c8daa176dc772d8c"
 
 [[package]]
+name = "untrusted"
+version = "0.7.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "a156c684c91ea7d62626509bce3cb4e1d9ed5c4d978f7b4352658f96a4c26b4a"
+
+[[package]]
 name = "uphill"
 version = "0.0.1"
 dependencies = [
@@ -2238,6 +2913,7 @@ dependencies = [
  "form_urlencoded",
  "idna",
  "percent-encoding",
+ "serde",
 ]
 
 [[package]]
@@ -2252,6 +2928,21 @@ name = "version_check"
 version = "0.9.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "49874b5167b65d7193b8aba1567f5c7d93d001cafc34600cee003eda787e483f"
+
+[[package]]
+name = "want"
+version = "0.3.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "bfa7760aed19e106de2c7c0b581b509f2f25d3dacaf737cb82ac61bc6d760b0e"
+dependencies = [
+ "try-lock",
+]
+
+[[package]]
+name = "wasi"
+version = "0.9.0+wasi-snapshot-preview1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "cccddf32554fecc6acb585f82a32a72e28b48f8c4c1883ddfeeeaa96f7d8e519"
 
 [[package]]
 name = "wasi"
@@ -2282,6 +2973,18 @@ dependencies = [
  "quote",
  "syn 2.0.28",
  "wasm-bindgen-shared",
+]
+
+[[package]]
+name = "wasm-bindgen-futures"
+version = "0.4.37"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "c02dbc21516f9f1f04f187958890d7e6026df8d16540b7ad9492bc34a67cea03"
+dependencies = [
+ "cfg-if",
+ "js-sys",
+ "wasm-bindgen",
+ "web-sys",
 ]
 
 [[package]]
@@ -2329,7 +3032,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "d51db59397fc650b5f2fc778e4a5c4456cd856bed7fc1ec15f8d3e28229dc463"
 dependencies = [
  "anyhow",
- "indexmap",
+ "indexmap 2.0.0",
  "serde",
  "serde_json",
  "spdx",
@@ -2343,9 +3046,47 @@ version = "0.108.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "76c956109dcb41436a39391139d9b6e2d0a5e0b158e1293ef352ec977e5e36c5"
 dependencies = [
- "indexmap",
+ "indexmap 2.0.0",
  "semver",
 ]
+
+[[package]]
+name = "web-sys"
+version = "0.3.64"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "9b85cbef8c220a6abc02aefd892dfc0fc23afb1c6a426316ec33253a3877249b"
+dependencies = [
+ "js-sys",
+ "wasm-bindgen",
+]
+
+[[package]]
+name = "webpki-roots"
+version = "0.25.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "14247bb57be4f377dfb94c72830b8ce8fc6beac03cf4bf7b9732eadd414123fc"
+
+[[package]]
+name = "winapi"
+version = "0.3.9"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "5c839a674fcd7a98952e593242ea400abe93992746761e38641405d28b00f419"
+dependencies = [
+ "winapi-i686-pc-windows-gnu",
+ "winapi-x86_64-pc-windows-gnu",
+]
+
+[[package]]
+name = "winapi-i686-pc-windows-gnu"
+version = "0.4.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "ac3b87c63620426dd9b991e5ce0329eff545bccbbb34f3be09ff6fb6ab51b7b6"
+
+[[package]]
+name = "winapi-x86_64-pc-windows-gnu"
+version = "0.4.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "712e227841d057c1ee1cd2fb22fa7e5a5461ae8e48fa2ca79ec42cfc1931183f"
 
 [[package]]
 name = "windows-sys"
@@ -2423,6 +3164,16 @@ dependencies = [
 ]
 
 [[package]]
+name = "winreg"
+version = "0.50.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "524e57b2c537c0f9b1e69f1965311ec12182b4122e45035b1508cd24d2adadb1"
+dependencies = [
+ "cfg-if",
+ "windows-sys",
+]
+
+[[package]]
 name = "wit-bindgen"
 version = "0.9.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -2489,7 +3240,7 @@ checksum = "253bd426c532f1cae8c633c517c63719920535f3a7fada3589de40c5b734e393"
 dependencies = [
  "anyhow",
  "bitflags 1.3.2",
- "indexmap",
+ "indexmap 2.0.0",
  "log",
  "wasm-encoder",
  "wasm-metadata",
@@ -2505,7 +3256,7 @@ checksum = "541efa2046e544de53a9da1e2f6299e63079840360c9e106f1f8275a97771318"
 dependencies = [
  "anyhow",
  "id-arena",
- "indexmap",
+ "indexmap 2.0.0",
  "log",
  "pulldown-cmark",
  "semver",
