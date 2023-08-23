@@ -1,0 +1,10 @@
+[package]
+content = {type = "Playable"}
+id = "test"
+name = "test"
+version = "0.0.1"
+
+[components.test_comp]
+attributes = ["Debuggable"]
+description = "For testing crate::this"
+type = "String"
