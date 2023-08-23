@@ -148,7 +148,7 @@ mod cube_maze_spawning_v2_maze_generator {
         let maze = generator
             .generate(crate::MAZE_WIDTH, crate::MAZE_HEIGHT)
             .unwrap();
-        println!("{:?}", maze);
+        println!("maze:\n{:?}", maze);
         // spawn maze
         for x in -1..2 * maze.size.0 {
             for y in -1..2 * maze.size.1 {

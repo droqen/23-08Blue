@@ -1441,6 +1441,13 @@ dependencies = [
 ]
 
 [[package]]
+name = "deploy_test"
+version = "0.0.1"
+dependencies = [
+ "ambient_api 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?rev=bbfae69a93)",
+]
+
+[[package]]
 name = "deprecate-until"
 version = "0.1.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
