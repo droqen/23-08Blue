@@ -5,6 +5,8 @@ mod mover_prediction;
 pub fn main() {
     screen_input::setup(camera_factory::spawn_camera());
     predictive_model_movement::setup();
+
+    println!("Hello! Client mover_this says hello.");
 }
 
 mod predictive_model_movement {
