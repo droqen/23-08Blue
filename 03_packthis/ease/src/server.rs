@@ -4,8 +4,53 @@ use ambient_api::prelude::*;
 pub fn main() {
     default_camera::setup();
     // ease_demo::setup();
-    ease_demo_2_cancellation::setup();
+    // ease_demo_2_cancellation::setup();
+    ease_demo_3_cancellation_in_messages::setup();
     ease_components::setup();
+}
+
+mod ease_demo_3_cancellation_in_messages {
+    use ambient_api::{
+        core::{
+            app::components::name, primitives::components::cube, transform::components::translation,
+        },
+        prelude::*,
+    };
+
+    use crate::packages::this::components::*;
+
+    pub fn setup() {
+        let cube = Entity::new()
+            .with(name(), "Cube".into())
+            .with(translation(), Vec3::ZERO)
+            .with(cube(), ())
+            .spawn();
+
+        let mut pos_ease: Option<EntityId> = None;
+
+        ambient_api::core::messages::Frame::subscribe(move |_| {
+            if random::<f32>() < 0.10 {
+                let pos = entity::get_component(cube, translation()).unwrap();
+                let pos2 = (random::<Vec2>() * 10. - 5.).extend(0.0);
+                let dist = pos2.distance(pos);
+                let speed = 5.0;
+                // if let Some(pos_ease) = pos_ease {
+                //     entity::despawn(pos_ease);
+                // }
+                let now = game_time().as_secs_f32();
+                pos_ease = Some(
+                    Entity::new()
+                        .with(name(), format!("Ease#{}", random::<u8>()))
+                        .with(ease_vec3_a(), pos)
+                        .with(ease_vec3_b(), pos2)
+                        .with(ease_start_time(), now)
+                        .with(ease_end_time(), now + dist / speed)
+                        .with(ease_target_translation_of(), cube)
+                        .spawn(),
+                );
+            }
+        });
+    }
 }
 
 mod ease_demo_2_cancellation {
