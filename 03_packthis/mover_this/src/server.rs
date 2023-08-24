@@ -128,8 +128,9 @@ mod cube_maze_spawning_v1 {
     }
 }
 
-const MAZE_WIDTH: i32 = 15;
-const MAZE_HEIGHT: i32 = 11;
+// these must both be odd numbers, or newly spawned players will get stuck
+const MAZE_WIDTH: i32 = 31;
+const MAZE_HEIGHT: i32 = 21;
 
 mod cube_maze_spawning_v2_maze_generator {
     use ambient_api::{

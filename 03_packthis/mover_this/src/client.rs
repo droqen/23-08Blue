@@ -3,7 +3,9 @@ mod mover_prediction;
 
 #[main]
 pub fn main() {
-    screen_input::setup(camera_factory::spawn_camera());
+    let camera = camera_factory::spawn_camera();
+    screen_input::setup(camera.clone());
+    camera_slowlerp::setup(camera.clone());
     predictive_model_movement::setup();
 
     println!("Hello! Client mover_this says hello.");
@@ -59,6 +61,9 @@ mod predictive_model_movement {
     }
 }
 
+const STARTING_CAMERA_ZOOM: f32 = 0.25;
+const ZOOMED_OUT_CAMERA_POSITION: Vec3 = Vec3::new(0.1, 2.0, 25.0);
+
 mod camera_factory {
     use ambient_api::{
         core::{
@@ -72,14 +77,46 @@ mod camera_factory {
         prelude::*,
     };
 
+    use crate::packages::this::components::c_zoom;
+
     pub fn spawn_camera() -> EntityId {
         Entity::new()
             .with_merge(make_perspective_infinite_reverse_camera())
             .with(aspect_ratio_from_window(), EntityId::resources())
             .with(main_scene(), ())
-            .with(translation(), vec3(0.1, 2.0, 25.0))
+            .with(
+                translation(),
+                crate::ZOOMED_OUT_CAMERA_POSITION * crate::STARTING_CAMERA_ZOOM,
+            )
+            .with(c_zoom(), crate::STARTING_CAMERA_ZOOM)
             .with(lookat_target(), vec3(0., 0., 0.))
             .spawn()
+    }
+}
+
+mod camera_slowlerp {
+    use crate::packages::this::components::{c_zoom, c_zoom_slowlerp, c_zoom_slowlerpvel};
+    use ambient_api::{core::transform::components::translation, prelude::*};
+    pub fn setup(camera: EntityId) {
+        ambient_api::core::messages::Frame::subscribe(move |_| {
+            let (delta, input) = input::get_delta();
+            if delta.mouse_buttons.contains(&MouseButton::Left) {
+                entity::add_component(
+                    camera,
+                    c_zoom_slowlerp(),
+                    1.0 * 0.5
+                        + 0.5
+                            * entity::get_component(camera, c_zoom())
+                                .unwrap_or(crate::STARTING_CAMERA_ZOOM),
+                );
+            }
+        });
+        query((c_zoom(), c_zoom_slowlerp())).each_frame(|cams| {
+            for (cam, (zoom, zoomgoal)) in cams {
+                entity::set_component(cam, c_zoom(), zoom * 0.9 + 0.1 * zoomgoal);
+                entity::set_component(cam, translation(), crate::ZOOMED_OUT_CAMERA_POSITION * zoom);
+            }
+        });
     }
 }
 

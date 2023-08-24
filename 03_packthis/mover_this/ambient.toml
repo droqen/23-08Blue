@@ -44,3 +44,15 @@ target = "Vec2"
 [components.mover_calculated_translation]
 description = "Real-time calculated translation - calculated on serverside and clientside separately"
 type = "Vec3"
+
+[components.c_zoom]
+description = "How zoomed in is the camera"
+type = "F32"
+
+[components.c_zoom_slowlerp]
+description = "Goal for c_zoom, slowly lerps towards"
+type = "F32"
+
+[components.c_zoom_slowlerpvel]
+description = "Vel for slowlerp"
+type = "F32"
