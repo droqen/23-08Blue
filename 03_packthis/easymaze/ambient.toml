@@ -1,0 +1,13 @@
+[package]
+content = {type = "Playable"}
+id = "easymaze"
+name = "easymaze"
+version = "0.0.1"
+
+[dependencies]
+ease = {url = "https://assets.ambient.run/15dL7VboEid2VxbybcPwxM"}
+
+[messages.PlayerMove]
+description = "Player sends a message if they want to move to a target position."
+[messages.PlayerMove.fields]
+target = "Vec2"

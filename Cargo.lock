@@ -1806,6 +1806,13 @@ dependencies = [
 ]
 
 [[package]]
+name = "easymaze"
+version = "0.0.1"
+dependencies = [
+ "ambient_api 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?rev=9bcfdba070f778e28144ab5afcf10d2fed45a538)",
+]
+
+[[package]]
 name = "either"
 version = "1.9.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"

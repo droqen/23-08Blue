@@ -1,0 +1,23 @@
+[package]
+name = "easymaze"
+
+edition = "2021"
+publish = false
+version = "0.0.1"
+
+[dependencies]
+ambient_api = { git = "https://github.com/AmbientRun/Ambient.git", rev = "9bcfdba070f778e28144ab5afcf10d2fed45a538" }
+
+[[bin]]
+name = "client_easymaze"
+path = "src/client.rs"
+required-features = ["client"]
+
+[[bin]]
+name = "server_easymaze"
+path = "src/server.rs"
+required-features = ["server"]
+
+[features]
+client = ["ambient_api/client"]
+server = ["ambient_api/server"]
