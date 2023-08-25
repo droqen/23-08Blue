@@ -139,49 +139,21 @@ mod ease_components {
     use crate::packages::this::components::*;
     use ambient_api::{core::transform::components::translation, prelude::*};
     pub fn setup() {
-        generic_setup::<Vec3>(
+        generic_setup(
             ease_vec3_a(),
             ease_vec3_b(),
             ease_vec3_value(),
             |a, b, d| a.lerp(b, d),
         );
-        // query((
-        //     ease_vec3_a(),
-        //     ease_vec3_b(),
-        //     ease_start_time(),
-        //     ease_end_time(),
-        // ))
-        // .each_frame(|eases| {
-        //     for (ease, (a, b, t1, t2)) in eases {
-        //         let now = game_time().as_secs_f32();
-        //         if now >= t2 {
-        //             entity::add_component(ease, ease_vec3_value(), b);
-        //             entity::remove_components(
-        //                 ease,
-        //                 &[
-        //                     &ease_vec3_a(),
-        //                     &ease_vec3_b(),
-        //                     &ease_start_time(),
-        //                     &ease_end_time(),
-        //                 ],
-        //             );
-        //         } else {
-        //             entity::add_component(
-        //                 ease,
-        //                 ease_vec3_value(),
-        //                 a.lerp(b, invlerp(t1, t2, now).clamp(0.0, 1.0)),
-        //             );
-        //         }
-        //     }
-        // });
-
-        change_query((ease_target_translation_of(), ease_vec3_value()))
-            .track_change(ease_vec3_value())
-            .bind(|eases| {
-                for (ease, (target_with_translation, vec3_value)) in eases {
-                    entity::add_component(target_with_translation, translation(), vec3_value);
-                }
-            });
+        generic_setup(
+            ease_vec2_a(),
+            ease_vec2_b(),
+            ease_vec2_value(),
+            |a, b, d| a.lerp(b, d),
+        );
+        generic_setup(ease_f32_a(), ease_f32_b(), ease_f32_value(), |a, b, d| {
+            lerp(a, b, d)
+        });
     }
 
     fn generic_setup<T: ambient_api::ecs::SupportedValue + 'static>(
@@ -210,11 +182,38 @@ mod ease_components {
             }
         });
     }
-    // fn lerp(from: f32, to: f32, rel: f32) -> f32 {
-    //     ((1. - rel) * from) + (rel * to)
-    // }
+    fn lerp(from: f32, to: f32, rel: f32) -> f32 {
+        ((1. - rel) * from) + (rel * to)
+    }
     fn invlerp(from: f32, to: f32, value: f32) -> f32 {
         (value - from) / (to - from)
+    }
+}
+
+mod ease_autosets {
+    use crate::packages::this::components::*;
+    use ambient_api::{
+        core::transform::components::{scale, translation},
+        prelude::*,
+    };
+
+    pub fn setup() {
+        generic_setup(ease_vec3_value(), ease_autoset_translation(), translation());
+        generic_setup(ease_vec3_value(), ease_autoset_scale(), scale());
+    }
+
+    fn generic_setup<T: ambient_api::ecs::SupportedValue + 'static>(
+        read_component: Component<T>,
+        autoset_target_component: Component<EntityId>,
+        write_component: Component<T>,
+    ) {
+        change_query((read_component, autoset_target_component))
+            .track_change(read_component)
+            .bind(move |eases| {
+                for (ease, (read_value, autoset_target)) in eases {
+                    entity::add_component(autoset_target, write_component, read_value);
+                }
+            });
     }
 }
 
