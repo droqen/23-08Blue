@@ -14,6 +14,7 @@ members = [
   "02_packgames/slowmover_ptt",
   "03_packthis/test",
   "03_packthis/mover_this",
+  "03_packthis/mover_mod_fruit",
   "03_packthis/deploy_test",
   "03_packthis/ease",
   "03_packthis/relationships",
