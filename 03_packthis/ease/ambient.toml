@@ -5,12 +5,12 @@ name = "ease"
 version = "0.0.1"
 
 [components]
-ease_float_a = {type = "F32", attributes = ["Networked", "Debuggable"]}
-ease_float_b = {type = "F32", attributes = ["Networked", "Debuggable"]}
-ease_float_value = {type = "F32"}
+ease_f32_a = {type = "F32", attributes = ["Networked", "Debuggable"]}
+ease_f32_b = {type = "F32", attributes = ["Networked", "Debuggable"]}
+ease_f32_value = {type = "F32", attributes = ["Debuggable"]}
 ease_vec2_a = {type = "Vec2", attributes = ["Networked", "Debuggable"]}
 ease_vec2_b = {type = "Vec2", attributes = ["Networked", "Debuggable"]}
-ease_vec2_value = {type = "Vec2"}
+ease_vec2_value = {type = "Vec2", attributes = ["Debuggable"]}
 ease_vec3_a = {type = "Vec3", attributes = ["Networked", "Debuggable"]}
 ease_vec3_b = {type = "Vec3", attributes = ["Networked", "Debuggable"]}
 ease_vec3_value = {type = "Vec3", attributes = ["Debuggable"]}
@@ -18,6 +18,12 @@ ease_vec3_value = {type = "Vec3", attributes = ["Debuggable"]}
 ease_end_time = {type = "F32", attributes = ["Networked", "Debuggable"]}
 ease_start_time = {type = "F32", attributes = ["Networked", "Debuggable"]}
 
-ease_target_translation_of = {type = "EntityId"}
+ease_filter_paramblend = {type = "F32"}
 
-translation_easer = {type = "EntityId"}
+ease_loop_boomerang = {type = "Bool"}
+ease_loop_repeat = {type = "Bool"}
+
+ease_time_offset = {type = "F32"}# strictly local
+
+ease_autoset_scale = {type = "EntityId"}
+ease_autoset_translation = {type = "EntityId"}
