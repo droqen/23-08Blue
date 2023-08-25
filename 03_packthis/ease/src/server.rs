@@ -139,35 +139,41 @@ mod ease_components {
     use crate::packages::this::components::*;
     use ambient_api::{core::transform::components::translation, prelude::*};
     pub fn setup() {
-        query((
+        generic_setup::<Vec3>(
             ease_vec3_a(),
             ease_vec3_b(),
-            ease_start_time(),
-            ease_end_time(),
-        ))
-        .each_frame(|eases| {
-            for (ease, (a, b, t1, t2)) in eases {
-                let now = game_time().as_secs_f32();
-                if now >= t2 {
-                    entity::add_component(ease, ease_vec3_value(), b);
-                    entity::remove_components(
-                        ease,
-                        &[
-                            &ease_vec3_a(),
-                            &ease_vec3_b(),
-                            &ease_start_time(),
-                            &ease_end_time(),
-                        ],
-                    );
-                } else {
-                    entity::add_component(
-                        ease,
-                        ease_vec3_value(),
-                        a.lerp(b, invlerp(t1, t2, now).clamp(0.0, 1.0)),
-                    );
-                }
-            }
-        });
+            ease_vec3_value(),
+            |a, b, d| a.lerp(b, d),
+        );
+        // query((
+        //     ease_vec3_a(),
+        //     ease_vec3_b(),
+        //     ease_start_time(),
+        //     ease_end_time(),
+        // ))
+        // .each_frame(|eases| {
+        //     for (ease, (a, b, t1, t2)) in eases {
+        //         let now = game_time().as_secs_f32();
+        //         if now >= t2 {
+        //             entity::add_component(ease, ease_vec3_value(), b);
+        //             entity::remove_components(
+        //                 ease,
+        //                 &[
+        //                     &ease_vec3_a(),
+        //                     &ease_vec3_b(),
+        //                     &ease_start_time(),
+        //                     &ease_end_time(),
+        //                 ],
+        //             );
+        //         } else {
+        //             entity::add_component(
+        //                 ease,
+        //                 ease_vec3_value(),
+        //                 a.lerp(b, invlerp(t1, t2, now).clamp(0.0, 1.0)),
+        //             );
+        //         }
+        //     }
+        // });
 
         change_query((ease_target_translation_of(), ease_vec3_value()))
             .track_change(ease_vec3_value())
@@ -176,6 +182,33 @@ mod ease_components {
                     entity::add_component(target_with_translation, translation(), vec3_value);
                 }
             });
+    }
+
+    fn generic_setup<T: ambient_api::ecs::SupportedValue + 'static>(
+        ca: Component<T>,
+        cb: Component<T>,
+        cout: Component<T>,
+        clerp: impl Fn(T, T, f32) -> T + 'static,
+    ) {
+        query((ca, cb, ease_start_time(), ease_end_time())).each_frame(move |eases| {
+            for (ease, (a, b, t1, t2)) in eases {
+                let now = game_time().as_secs_f32()
+                    + entity::get_component(ease, ease_time_offset()).unwrap_or(0.);
+                if now >= t2 {
+                    entity::add_component(ease, cout, b);
+                    entity::remove_components(
+                        ease,
+                        &[&ca, &cb, &ease_start_time(), &ease_end_time()],
+                    );
+                } else {
+                    entity::add_component(
+                        ease,
+                        cout,
+                        clerp(a, b, invlerp(t1, t2, now).clamp(0.0, 1.0)),
+                    );
+                }
+            }
+        });
     }
     // fn lerp(from: f32, to: f32, rel: f32) -> f32 {
     //     ((1. - rel) * from) + (rel * to)
