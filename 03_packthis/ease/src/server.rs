@@ -5,10 +5,10 @@ pub fn main() {
     ease_components::setup();
     ease_autosets::setup();
 
-    default_camera::setup();
+    // default_camera::setup();
     // ease_demo_2_cancellation::setup();
     // ease_demo_3_cancellation_in_messages::setup();
-    ease_demo_4_inout_tween::setup();
+    // ease_demo_4_inout_tween::setup();
 }
 
 mod ease_components {
