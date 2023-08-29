@@ -19,6 +19,7 @@ members = [
   "03_packthis/deploy_test",
   "03_packthis/ease",
   "03_packthis/relationships",
+  "03_packthis/clicks_auto",
   "a_nice_overhead_camera",
   "a_nice_overhead_camera/demo",
   "blue-moon",

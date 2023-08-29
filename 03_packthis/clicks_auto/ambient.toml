@@ -1,0 +1,42 @@
+[package]
+content = {type = "Asset"}
+id = "clicks_auto"
+name = "clicks_auto"
+version = "0.0.1"
+
+[components.clicks_config_camera]
+description = "Camera to use for clicks"
+type = "EntityId"
+
+[components.clicks_config_project_zplane]
+description = "Project the click onto a z plane at this height"
+type = "F32"
+
+[components.click_touch_id]
+description = "To which mouse button is this click referring?"
+type = "U16"
+[components.click_pos_screen]
+description = "Where is the mouse? (Screen position)"
+type = "Vec2"
+[components.click_world_dir]
+description = "Where is the mouse? (Ray dir - requires camera)"
+type = "Vec3"
+[components.click_world_origin]
+description = "Where is the mouse? (Ray origin - requires camera)"
+type = "Vec3"
+[components.click_world_projected]
+description = "Where is the mouse? (Projected onto a plane)"
+type = "Vec3"
+[components.click_start]
+description = "Points to a non-updating click entity --- Unused for now"
+type = "EntityId"
+
+[messages.ConfigureZPlane]
+description = "Configure whether there is a z-plane. Note that once configured the z-plane cannot be removed"
+[messages.ConfigureZPlane.fields]
+z = "F32"
+
+[messages.ConfigureCamera]
+description = "Configure whether there is a camera. Note that once configured the camera cannot be removed"
+[messages.ConfigureCamera.fields]
+camera = "EntityId"
