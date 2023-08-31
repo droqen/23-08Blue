@@ -34,7 +34,7 @@ mod config_setting_messages {
 
 mod turning_mouse_input_into_click_objects {
     use crate::packages::this::components::{click_pos_screen, click_touch_id};
-    use ambient_api::prelude::*;
+    use ambient_api::{core::app::components::name, entity::despawn, prelude::*};
 
     pub fn init() {
         let find_all_clicks = query(click_touch_id()).build();
@@ -44,6 +44,10 @@ mod turning_mouse_input_into_click_objects {
 
             for button_pressed in delta.mouse_buttons {
                 Entity::new()
+                    .with(
+                        name(),
+                        format!("Click #{}", button_to_touch_id(&button_pressed)),
+                    )
                     .with(click_touch_id(), button_to_touch_id(&button_pressed))
                     .with(click_pos_screen(), input.mouse_position)
                     .spawn();
@@ -52,14 +56,19 @@ mod turning_mouse_input_into_click_objects {
             for (click, touch_id) in find_all_clicks.evaluate().iter() {
                 let button = touch_id_to_button(*touch_id);
 
-                if !input.mouse_buttons.contains(&button) {
+                let despawn_after = delta.mouse_buttons_released.contains(&button);
+
+                if !despawn_after && !input.mouse_buttons.contains(&button) {
                     entity::despawn(*click);
+                    println!(
+                        "ERR: A 'mouse button released' event was missed! Despawning bad click"
+                    );
                     continue;
                 }
 
                 entity::set_component(*click, click_pos_screen(), input.mouse_position);
 
-                if delta.mouse_buttons_released.contains(&button) {
+                if despawn_after {
                     entity::despawn(*click);
                 }
             }
@@ -135,7 +144,7 @@ mod spawning_and_despawning_click_start {
         click_pos_screen, click_start, click_touch_id, click_world_dir, click_world_origin,
         click_world_projected, clicks_config_camera, clicks_config_project_zplane,
     };
-    use ambient_api::prelude::*;
+    use ambient_api::{core::app::components::name, prelude::*};
 
     pub fn init() {
         premade_spawn_query_spawn_start(click_pos_screen());
@@ -170,7 +179,16 @@ mod spawning_and_despawning_click_start {
         if let Some(start) = entity::get_component(click, click_start()) {
             entity::add_component(start, component, value);
         } else {
-            let start = Entity::new().with(component, value).spawn();
+            let start = Entity::new()
+                .with(component, value)
+                .with(
+                    name(),
+                    match entity::get_component(click, click_touch_id()) {
+                        None => "Click Start #(?)".into(),
+                        Some(id) => format!("Click Start #{}", id),
+                    },
+                )
+                .spawn();
             entity::add_component(click, click_start(), start);
         }
     }
