@@ -1,10 +1,10 @@
 pub fn client_demo() {
-    default_camera::spawn();
-    client_decorate_sprite_as_cube::init();
+    // default_camera::spawn();
+    // client_decorate_sprite_as_cube::init();
 }
 
 pub fn server_demo() {
-    server_move_emover_around::init();
+    // server_move_emover_around::init();
 }
 
 mod server_move_emover_around {
