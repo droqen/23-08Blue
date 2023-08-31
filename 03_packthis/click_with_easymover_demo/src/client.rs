@@ -28,12 +28,19 @@ pub async fn main() {
 
     packages::clicks_auto::messages::ConfigureZPlane { z: 0.0 }.send_local_broadcast(false);
 
-    spawn_query(packages::clicks_auto::components::click_world_projected()).bind(move |clicks| {
-        for (click, pos) in clicks {
-            packages::this::messages::MovePlayer {
-                pos2: pos.truncate(),
+    spawn_query((
+        packages::clicks_auto::components::click_touch_id(),
+        packages::clicks_auto::components::click_world_projected(),
+    ))
+    .bind(move |clicks| {
+        for (click, (button, pos)) in clicks {
+            // button == 0 means LMB
+            if button == 0 {
+                packages::this::messages::MovePlayer {
+                    pos2: pos.truncate(),
+                }
+                .send_server_reliable();
             }
-            .send_server_reliable();
         }
     });
 
