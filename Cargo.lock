@@ -2401,6 +2401,13 @@ dependencies = [
 ]
 
 [[package]]
+name = "easymover_blockable"
+version = "0.0.1"
+dependencies = [
+ "ambient_api 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?rev=06ac0e6e9cac07ac362e77444a13b145f4341f66)",
+]
+
+[[package]]
 name = "either"
 version = "1.9.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
