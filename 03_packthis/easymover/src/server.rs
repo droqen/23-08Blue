@@ -17,8 +17,10 @@ mod easymover_create_ease {
     pub fn init() {
         spawn_query(effect_spawn_emover_at()).bind(|emovers| {
             for (mover, pos) in emovers {
-                let ease = crate::vec2_point_to_point::make(pos + vec2(0.1, 0.0), pos, 1.0).spawn();
+                let ease = crate::vec2_point_to_point::make_still(pos).spawn();
                 entity::add_component(mover, emover_ease(), ease);
+                entity::add_component(mover, emover_landgoal(), pos);
+                entity::add_component_if_required(mover, emover_movespeed(), 1.0);
                 entity::remove_component(mover, effect_spawn_emover_at());
             }
         });
@@ -27,13 +29,11 @@ mod easymover_create_ease {
 
 mod easymover_alter_ease_on_goal_change {
 
-    const EASYMOVER_SPEED: f32 = 1.0;
-
     use crate::{
         packages::{ease::components::*, this::components::*},
         vec2_point_to_point,
     };
-    use ambient_api::prelude::*;
+    use ambient_api::{core::app::components::name, prelude::*};
     pub fn init() {
         change_query((emover_ease(), emover_landgoal(), emover_movespeed()))
             .track_change(emover_landgoal())
@@ -42,15 +42,6 @@ mod easymover_alter_ease_on_goal_change {
                     crate::vec2_point_to_point::effect_ease_goto(ease, goal, speed);
                 }
             });
-        spawn_query(effect_spawn_emover_at()).bind(|emovers| {
-            for (mover, pos) in emovers {
-                let ease = crate::vec2_point_to_point::make_still(pos).spawn();
-                entity::add_component(mover, emover_ease(), ease);
-                entity::add_component(mover, emover_landgoal(), pos);
-                entity::add_component_if_required(mover, emover_movespeed(), 1.0);
-                entity::remove_component(mover, effect_spawn_emover_at());
-            }
-        });
     }
 }
 
