@@ -1,0 +1,8 @@
+[package]
+content = {type = "Mod"}
+id = "easymover_blockable"
+name = "easymover_blockable"
+version = "0.0.1"
+
+[dependencies]
+easymover = {path = "../easymover"}

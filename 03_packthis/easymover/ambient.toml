@@ -18,3 +18,7 @@ emover_movespeed = {description = "Ground speed of emover (units per second). Po
 # esprite is clientside.
 esprite_landpos = {description = "Clientside: Esprite's ground position", type = "Vec2", attributes = ["Debuggable"]}
 esprite_mover = {description = "Clientside: Esprite's emover", type = "EntityId"}
+
+# TODO: allow for the removal of this query
+# [messages.RemoveLandgoalChangeQuery]
+# [messages.RemoveLandgoalChangeQuery.fields]
