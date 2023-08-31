@@ -1,31 +1,14 @@
 use ambient_api::prelude::*;
 
 mod both;
+mod usage;
 
 #[main]
 pub fn main() {
     easymover_create_ease::init();
     easymover_alter_ease_on_goal_change::init();
-    demo::init();
+    usage::server_demo();
     both::init_all();
-}
-
-mod demo {
-    use crate::packages::this::components::*;
-    use ambient_api::prelude::*;
-    pub fn init() {
-        let emover = Entity::new()
-            .with(effect_spawn_emover_at(), vec2(5., 5.))
-            .spawn();
-        run_async(async move {
-            loop {
-                sleep(1.).await;
-                let new_landgoal = random::<Vec2>() * 10. - 5.;
-                println!("Move entity to {:?}", new_landgoal);
-                entity::add_component(emover, emover_landgoal(), new_landgoal);
-            }
-        })
-    }
 }
 
 mod easymover_create_ease {

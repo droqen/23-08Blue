@@ -1,69 +1,16 @@
 use ambient_api::prelude::*;
 
 mod both;
+mod usage;
 
 #[main]
 pub fn main() {
     add_sprite_to_emovers::init();
     sprite_update_landpos::init();
-    default_camera::spawn();
-    demo::init();
+    usage::client_demo();
     both::init_all();
     packages::ease::messages::ConfigureClientTimeOffset { time_offset: 0.5 }
         .send_local_broadcast(false);
-}
-
-mod default_camera {
-    use ambient_api::{
-        core::{
-            app::components::main_scene,
-            camera::{
-                components::aspect_ratio_from_window,
-                concepts::make_perspective_infinite_reverse_camera,
-            },
-            transform::components::{lookat_target, translation},
-        },
-        prelude::*,
-    };
-
-    pub fn spawn() -> EntityId {
-        Entity::new()
-            .with_merge(make_perspective_infinite_reverse_camera())
-            .with(aspect_ratio_from_window(), EntityId::resources())
-            .with(main_scene(), ())
-            .with(translation(), Vec3::ONE * 5.)
-            .with(lookat_target(), vec3(0., 0., 0.))
-            .spawn()
-    }
-}
-
-mod demo {
-    use crate::packages::this::components::*;
-    use ambient_api::{
-        core::{
-            primitives::components::cube,
-            transform::{components::translation, concepts::make_transformable},
-        },
-        prelude::*,
-    };
-
-    pub fn init() {
-        spawn_query(esprite_landpos()).bind(|esprites| {
-            for (sprite, landpos) in esprites {
-                entity::add_components(
-                    sprite,
-                    make_transformable()
-                        .with(cube(), ())
-                        .with(translation(), landpos.extend(0.5)),
-                );
-            }
-        });
-        query(esprite_landpos()).each_frame(|esprites| {
-            for (sprite, landpos) in esprites {
-                entity::add_component(sprite, translation(), landpos.extend(0.5));
-            }
-        });
-    }
 }
 
 mod add_sprite_to_emovers {
