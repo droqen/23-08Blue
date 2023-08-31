@@ -27,7 +27,7 @@ mod ease_components {
         });
     }
 
-    fn generic_setup<T: ambient_api::ecs::SupportedValue + 'static>(
+    fn generic_setup<T: ambient_api::ecs::SupportedValue + 'static + std::cmp::PartialEq>(
         ca: Component<T>,
         cb: Component<T>,
         cout: Component<T>,
@@ -37,8 +37,12 @@ mod ease_components {
             for (ease, (a, b, t1, t2)) in eases {
                 let now = game_time().as_secs_f32()
                     + entity::get_component(ease, ease_time_offset()).unwrap_or(0.);
+                if a == b {
+                    entity::add_component(ease, cout, b);
+                    return;
+                }
                 if t2 <= t1 {
-                    println!("Entity {ease:?} has ease_start_time after ease_end_time"); // should i use DURATION instead?
+                    println!("Entity {ease:?} has non-positive duration and a != b");
                     return;
                 }
                 let mut d = invlerp(t1, t2, now);

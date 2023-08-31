@@ -27,3 +27,8 @@ ease_time_offset = {type = "F32"}# strictly local
 
 ease_autoset_scale = {type = "EntityId"}
 ease_autoset_translation = {type = "EntityId"}
+
+[messages.ConfigureClientTimeOffset]
+description = "Sets time_offset of all eases on client. One-time usage for now"
+[messages.ConfigureClientTimeOffset.fields]
+time_offset = "F32"
