@@ -1,31 +1,39 @@
 pub fn client_demo() {
-    // default_camera::spawn();
-    // client_decorate_sprite_as_cube::init();
+    default_camera::spawn();
+    client_decorate_sprite_as_cube::init();
 }
 
 pub fn server_demo() {
-    // server_move_emover_around::init();
+    server_move_emover_around::init();
 }
 
 mod server_move_emover_around {
+
+    // This shows how to spawn an emover and how to move one.
+
     use crate::packages::this::components::*;
     use ambient_api::prelude::*;
     pub fn init() {
         let emover = Entity::new()
             .with(effect_spawn_emover_at(), vec2(-5., -5.))
+            .with(emover_movespeed(), 5.0)
             .spawn();
         run_async(async move {
             loop {
-                sleep(1.).await;
-                let new_landgoal = random::<Vec2>() * 10. - 5.;
-                println!("Move entity to {:?}", new_landgoal);
-                entity::add_component(emover, emover_landgoal(), new_landgoal);
+                sleep(2.).await;
+                let landgoal = random::<Vec2>() * 10. - 5.;
+                println!("Move entity to {:?}", landgoal);
+                entity::add_component(emover, emover_landgoal(), landgoal);
             }
         })
     }
 }
 
 mod client_decorate_sprite_as_cube {
+
+    // By default, each Serverside emover has a Clientside esprite, but it is pure data, without a visual or even a `translation` component.
+    // This mod adds the minimal implementation necessary to see what is going on.
+
     use crate::packages::this::components::*;
     use ambient_api::{
         core::{
