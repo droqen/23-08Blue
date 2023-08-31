@@ -35,18 +35,19 @@ mod easymover_alter_ease_on_goal_change {
     };
     use ambient_api::prelude::*;
     pub fn init() {
-        change_query((emover_ease(), emover_landgoal()))
+        change_query((emover_ease(), emover_landgoal(), emover_movespeed()))
             .track_change(emover_landgoal())
             .bind(|emovers| {
-                for (mover, (ease, goal)) in emovers {
-                    crate::vec2_point_to_point::effect_ease_goto(ease, goal, EASYMOVER_SPEED);
+                for (mover, (ease, goal, speed)) in emovers {
+                    crate::vec2_point_to_point::effect_ease_goto(ease, goal, speed);
                 }
             });
         spawn_query(effect_spawn_emover_at()).bind(|emovers| {
             for (mover, pos) in emovers {
-                let ease = crate::vec2_point_to_point::make(pos, pos, EASYMOVER_SPEED).spawn();
+                let ease = crate::vec2_point_to_point::make_still(pos).spawn();
                 entity::add_component(mover, emover_ease(), ease);
                 entity::add_component(mover, emover_landgoal(), pos);
+                entity::add_component_if_required(mover, emover_movespeed(), 1.0);
                 entity::remove_component(mover, effect_spawn_emover_at());
             }
         });
@@ -58,6 +59,14 @@ mod vec2_point_to_point {
         ease_end_time, ease_start_time, ease_vec2_a, ease_vec2_b, ease_vec2_value,
     };
     use ambient_api::{core::app::components::name, prelude::*};
+    pub fn make_still(ab: Vec2) -> Entity {
+        Entity::new()
+            .with(name(), "Ease Vec2".into())
+            .with(ease_vec2_a(), ab)
+            .with(ease_vec2_b(), ab)
+            .with(ease_start_time(), 0.0)
+            .with(ease_end_time(), 0.0)
+    }
     pub fn make(a: Vec2, b: Vec2, speed: f32) -> Entity {
         let start = game_time().as_secs_f32();
         let dur = a.distance(b) / speed;
