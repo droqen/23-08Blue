@@ -1,5 +1,5 @@
 [package]
-content = {type = "Playable"}
+content = {type = "Asset"}
 id = "instant_camera"
 name = "instant_camera"
 version = "0.0.1"
