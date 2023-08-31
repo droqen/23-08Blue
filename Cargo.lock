@@ -2217,6 +2217,13 @@ dependencies = [
 ]
 
 [[package]]
+name = "click_with_easymover_demo"
+version = "0.0.1"
+dependencies = [
+ "ambient_api 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?rev=06ac0e6e9cac07ac362e77444a13b145f4341f66)",
+]
+
+[[package]]
 name = "clicks_auto"
 version = "0.0.1"
 dependencies = [
@@ -2783,6 +2790,13 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "7a5bbe824c507c5da5956355e86a746d82e0e1464f65d862cc5e71da70e94b2c"
 dependencies = [
  "cfg-if",
+]
+
+[[package]]
+name = "instant_camera"
+version = "0.0.1"
+dependencies = [
+ "ambient_api 0.3.0-dev (git+https://github.com/AmbientRun/Ambient.git?rev=06ac0e6e9cac07ac362e77444a13b145f4341f66)",
 ]
 
 [[package]]

@@ -5,7 +5,7 @@ name = "easymover"
 version = "0.0.1"
 
 [dependencies]
-ease = {path = "../ease"}
+ease = {path = "../ease", deployment = "3RL5e6HWec4CoLs3NwtGZi" }
 
 [components]
 # emover is serverside.

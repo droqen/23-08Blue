@@ -1,0 +1,8 @@
+[package]
+content = {type = "Playable"}
+id = "instant_camera"
+name = "instant_camera"
+version = "0.0.1"
+
+[components]
+is_instant_camera = {type = "Empty"}

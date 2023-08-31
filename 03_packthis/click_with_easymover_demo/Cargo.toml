@@ -1,0 +1,23 @@
+[package]
+name = "click_with_easymover_demo"
+
+edition = "2021"
+publish = false
+version = "0.0.1"
+
+[dependencies]
+ambient_api = { git = "https://github.com/AmbientRun/Ambient.git", rev = "06ac0e6e9cac07ac362e77444a13b145f4341f66" }
+
+[[bin]]
+name = "client_click_with_easymover_demo"
+path = "src/client.rs"
+required-features = ["client"]
+
+[[bin]]
+name = "server_click_with_easymover_demo"
+path = "src/server.rs"
+required-features = ["server"]
+
+[features]
+client = ["ambient_api/client"]
+server = ["ambient_api/server"]

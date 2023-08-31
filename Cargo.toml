@@ -22,6 +22,8 @@ members = [
   "03_packthis/relationships",
   "03_packthis/clicks_auto",
   "03_packthis/click_with_ease_demo",
+  "03_packthis/click_with_easymover_demo",
+  "03_packthis/instant_camera",
   "a_nice_overhead_camera",
   "a_nice_overhead_camera/demo",
   "blue-moon",
