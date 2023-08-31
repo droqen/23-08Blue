@@ -9,6 +9,11 @@ version = "0.0.1"
 ambient_api = {git = "https://github.com/AmbientRun/Ambient.git", rev = "06ac0e6e9cac07ac362e77444a13b145f4341f66"}
 
 [[bin]]
+name = "client_easymover_blockable"
+path = "src/client.rs"
+required-features = ["client"]
+
+[[bin]]
 name = "server_easymover_blockable"
 path = "src/server.rs"
 required-features = ["server"]

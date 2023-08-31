@@ -6,3 +6,7 @@ version = "0.0.1"
 
 [dependencies]
 easymover = {path = "../easymover"}
+
+[components]
+effect_goto_vec2 = {description = "Go to this point (blockable)", type = "Vec2"}
+emover_blockable_radius = {description = "'Blockable' radius of easymover's faux-hitbox (hit-capsule)", type = "F32"}
