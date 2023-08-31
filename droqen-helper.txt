@@ -1,9 +1,0 @@
-UPDATE TO LATEST AMBIENT 'MAIN', now that ENUM-SUPPORT is merged in...
-
-cargo install --git https://github.com/AmbientRun/Ambient.git ambient --locked --force 
-ambient
-
-UPDATED TO SOME SAFE AMBIENT 'MAIN'
-
-cargo cf install --git-revision 475e0cbf1
-ambient-475e0cbf1
