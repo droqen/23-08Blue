@@ -1,5 +1,5 @@
 [package]
-content = {type = "Mod"}
+content = {type = "Incomplete"}
 id = "easymover_blockable"
 name = "easymover_blockable"
 version = "0.0.1"
