@@ -6,7 +6,7 @@ mod usage;
 #[main]
 pub fn main() {
     easymover_create_ease::init();
-    easymover_alter_ease_on_goal_change::init();
+    easymover_handle_landgoal_change::init();
     usage::server_demo();
     both::init_all();
 }
@@ -27,7 +27,7 @@ mod easymover_create_ease {
     }
 }
 
-mod easymover_alter_ease_on_goal_change {
+mod easymover_handle_landgoal_change {
 
     use crate::{
         packages::{ease::components::*, this::components::*},
