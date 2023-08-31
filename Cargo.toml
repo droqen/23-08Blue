@@ -13,6 +13,7 @@ members = [
   "02_packgames/maze_field",
   "02_packgames/slowmover_ptt",
   "03_packthis/easymaze",
+  "03_packthis/easymover",
   "03_packthis/test",
   "03_packthis/mover_this",
   "03_packthis/mover_mod_fruit",

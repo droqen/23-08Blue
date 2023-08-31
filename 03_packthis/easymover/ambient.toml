@@ -1,0 +1,19 @@
+[package]
+content = {type = "Asset"}
+id = "easymover"
+name = "easymover"
+version = "0.0.1"
+
+[dependencies]
+ease = {path = "../ease"}
+
+[components]
+# emover is serverside.
+effect_spawn_emover_at = {type = "Vec2"}
+emover_ease = {attributes = ["Networked", "Debuggable"], description = "Ease entity of emover (ease vec2)", type = "EntityId"}
+emover_landgoal = {description = "Ground position of emover's goal position, just set this to move", type = "Vec2"}
+# emover_landpos = {description = "Ground position of emover", type = "Vec2"} # this was just an alias for ease's position. it's not needed... but handy
+
+# esprite is clientside.
+esprite_landpos = {description = "Clientside: Esprite's ground position", type = "Vec2", attributes = ["Debuggable"]}
+esprite_mover = {description = "Clientside: Esprite's emover", type = "EntityId"}
