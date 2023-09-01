@@ -5,22 +5,22 @@ mod usage;
 #[main]
 pub fn main() {
     usage::server_demo();
-    handle_effect_goto_vec2::init();
+    handle_effect_blockable_move::init();
 }
 
-mod handle_effect_goto_vec2 {
+mod handle_effect_blockable_move {
     use crate::packages::{
         easymover::components::{
             emover_landgoal, emover_landpos, emover_movespeed, emover_posdriver_ease,
         },
-        this::components::{effect_goto_vec2, emover_blockable_radius},
+        this::components::{effect_blockable_move, emover_blockable_radius},
     };
     use ambient_api::prelude::*;
 
     const RAYCAST_ZHEIGHT: f32 = 0.1;
 
     pub fn init() {
-        spawn_query((emover_landpos(), effect_goto_vec2()))
+        spawn_query((emover_landpos(), effect_blockable_move()))
             // .requires((emover_posdriver_ease(), emover_movespeed()))
             .bind(|movers| {
                 for (mover, (landpos, goal)) in movers {
@@ -54,7 +54,7 @@ mod handle_effect_goto_vec2 {
                         // stop movin - have no goal
                         entity::remove_component(mover, emover_landgoal());
                     }
-                    entity::remove_component(mover, effect_goto_vec2());
+                    entity::remove_component(mover, effect_blockable_move());
                 }
             });
     }

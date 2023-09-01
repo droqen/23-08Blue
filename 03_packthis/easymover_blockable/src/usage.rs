@@ -1,12 +1,12 @@
 pub fn server_demo() {
-    server_move_emover_around::init();
+    // server_move_emover_around::init();
     // spawn_automatic_mover::Init();
     // spawn_basic_obstacle::init();
 }
 
 pub fn client_demo() {
-    decorate_sprite_as_cube::init();
-    default_camera::spawn();
+    // decorate_sprite_as_cube::init();
+    // default_camera::spawn();
 }
 
 mod spawn_automatic_mover {
@@ -49,9 +49,10 @@ mod decorate_sprite_as_cube {
 
 mod server_move_emover_around {
 
-    // This shows how to spawn an emover and how to move one.
+    // This shows how to spawn an emover_blockable and how to move one.
 
     use crate::packages::easymover::components::*;
+    use crate::packages::this::components::*;
     use ambient_api::prelude::*;
     pub fn init() {
         let emover = Entity::new()
@@ -62,8 +63,8 @@ mod server_move_emover_around {
             loop {
                 sleep(2.).await;
                 let landgoal = random::<Vec2>() * 10. - 5.;
-                println!("Move entity to {:?}", landgoal);
-                entity::add_component(emover, emover_landgoal(), landgoal);
+                println!("Move entity (blockable) to {:?}", landgoal);
+                entity::add_component(emover, effect_blockable_move(), landgoal);
             }
         })
     }
