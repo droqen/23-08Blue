@@ -14,14 +14,12 @@ pub fn main() {
 }
 
 mod add_sprite_to_emovers {
-    use crate::both::helpers::get_landpos;
     use crate::packages::this::components::*;
     use ambient_api::core::app::components::name;
     use ambient_api::prelude::*;
     pub fn init() {
-        spawn_query(()).requires(emover_ease()).bind(|emovers| {
-            for (mover, _) in emovers {
-                let landpos = get_landpos(mover).unwrap_or_default();
+        spawn_query(emover_landpos()).bind(|emovers| {
+            for (mover, landpos) in emovers {
                 Entity::new()
                     .with(name(), "Sprite".into())
                     .with(esprite_landpos(), landpos)
@@ -33,13 +31,12 @@ mod add_sprite_to_emovers {
 }
 
 mod sprite_update_landpos {
-    use crate::both::helpers::get_landpos;
     use crate::packages::this::components::*;
     use ambient_api::prelude::*;
     pub fn init() {
         query(esprite_mover()).each_frame(|sprites| {
             for (sprite, mover) in sprites {
-                let landpos = get_landpos(mover).unwrap_or_default();
+                let landpos = entity::get_component(mover, emover_landpos()).unwrap_or_default();
                 entity::add_component(sprite, esprite_landpos(), landpos);
             }
         });

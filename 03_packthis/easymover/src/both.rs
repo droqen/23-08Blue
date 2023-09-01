@@ -1,29 +1,17 @@
 pub fn init_all() {
-    // easemover_animated_by_ease::init(); // unused
+    landpos_driven::init(); // unused
 }
 
-// mod easymover_animated_by_ease {
-//     use crate::packages::{ease::components::*, this::components::*};
-//     use ambient_api::prelude::*;
-//     pub fn init() {
-//         query(emover_ease()).each_frame(|emovers| {
-//             for (mover, ease) in emovers {
-//                 if let Some(ease_value) = entity::get_component(ease, ease_vec2_value()) {
-//                     entity::add_component(mover, emover_landpos(), ease_value);
-//                 }
-//                 // else no vec2 exists
-//             }
-//         });
-//     }
-// }
-
-pub mod helpers {
+mod landpos_driven {
     use crate::packages::{ease::components::*, this::components::*};
-    use ambient_api::prelude::*;
-    pub fn get_landpos(emover: EntityId) -> Option<Vec2> {
-        if let Some(ease) = entity::get_component(emover, emover_ease()) {
-            return entity::get_component(ease, ease_vec2_value());
-        }
-        return None;
+    use ambient_api::{entity::despawn, prelude::*};
+    pub fn init() {
+        change_query((ease_propagate_landpos_to(), ease_vec2_value()))
+            .track_change(ease_vec2_value())
+            .bind(|eases| {
+                for (ease, (emover, landpos)) in eases {
+                    entity::add_component(emover, emover_landpos(), landpos);
+                }
+            });
     }
 }

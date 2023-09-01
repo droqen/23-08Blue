@@ -1,12 +1,14 @@
 [package]
-content = {type = "Incomplete"}
+content = {type = "Mod"}
 id = "easymover_blockable"
 name = "easymover_blockable"
 version = "0.0.1"
 
 [dependencies]
+ease = {path = "../ease"}
 easymover = {path = "../easymover"}
 
 [components]
 effect_goto_vec2 = {description = "Go to this point (blockable)", type = "Vec2"}
-emover_blockable_radius = {description = "'Blockable' radius of easymover's faux-hitbox (hit-capsule)", type = "F32"}
+# emover_blockable_knockback = {description = "When moving into something solid, how much to get knocked back. Default 0.", type = "F32"}
+emover_blockable_radius = {description = "'Blockable' radius of easymover's faux-hitbox (hit-capsule). Default 0.", type = "F32"}

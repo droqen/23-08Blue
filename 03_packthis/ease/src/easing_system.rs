@@ -8,7 +8,7 @@ pub fn setup() {
 
 mod ease_components {
     use crate::packages::this::components::*;
-    use ambient_api::{core::transform::components::translation, prelude::*};
+    use ambient_api::{core::transform::components::translation, entity::despawn, prelude::*};
     pub fn setup() {
         generic_setup(
             ease_vec3_a(),
@@ -37,10 +37,14 @@ mod ease_components {
             for (ease, (a, b, t1, t2)) in eases {
                 let now = game_time().as_secs_f32()
                     + entity::get_component(ease, ease_time_offset()).unwrap_or(0.);
-                if a == b {
+
+                if t1 == 0.0 && t2 == 0.0 {
                     entity::add_component(ease, cout, b);
+                    entity::add_component(ease, ease_easing(), false);
+                    entity::add_component(ease, ease_finished(), true);
                     return;
                 }
+
                 if t2 <= t1 {
                     println!("Entity {ease:?} has non-positive duration and a != b");
                     return;
@@ -49,6 +53,9 @@ mod ease_components {
 
                 if d < 0. {
                     d = 0.; // right?
+
+                    entity::add_component(ease, ease_easing(), false);
+                    entity::add_component(ease, ease_finished(), false);
                 }
 
                 if d > 1. {
@@ -66,6 +73,9 @@ mod ease_components {
                     } else {
                         d = 1.;
                     }
+
+                    entity::add_component(ease, ease_easing(), false);
+                    entity::add_component(ease, ease_finished(), true);
                 }
 
                 if d > 0. && d < 1. {
@@ -73,6 +83,9 @@ mod ease_components {
                     {
                         d = d * d / (2. * (d * d - d) + 1.); // https://stackoverflow.com/a/13462135
                     }
+
+                    entity::add_component(ease, ease_easing(), true);
+                    entity::add_component(ease, ease_finished(), false);
                 }
 
                 entity::add_component(ease, cout, clerp(a, b, d));

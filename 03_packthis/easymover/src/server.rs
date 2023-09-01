@@ -5,23 +5,22 @@ mod usage;
 
 #[main]
 pub fn main() {
-    easymover_create_ease::init();
+    easymover_spawning_effect::init();
     easymover_handle_landgoal_change::init();
     usage::server_demo();
     both::init_all();
 }
 
-mod easymover_create_ease {
-    use crate::packages::{ease::components::*, this::components::*};
+mod easymover_spawning_effect {
+    use crate::{packages::this::components::*, vec2_landgoal_ease};
     use ambient_api::prelude::*;
     pub fn init() {
         spawn_query(effect_spawn_emover_at()).bind(|emovers| {
             for (mover, pos) in emovers {
-                let ease = crate::vec2_point_to_point::make_still(pos).spawn();
-                entity::add_component(mover, emover_ease(), ease);
-                entity::add_component(mover, emover_landgoal(), pos);
+                entity::add_component(mover, emover_landpos(), pos);
                 entity::add_component_if_required(mover, emover_movespeed(), 1.0);
                 entity::remove_component(mover, effect_spawn_emover_at());
+                vec2_landgoal_ease::effect_stop_moving(mover);
             }
         });
     }
@@ -29,50 +28,83 @@ mod easymover_create_ease {
 
 mod easymover_handle_landgoal_change {
 
-    use crate::{
-        packages::{ease::components::*, this::components::*},
-        vec2_point_to_point,
-    };
-    use ambient_api::{core::app::components::name, prelude::*};
+    use crate::packages::this::components::*;
+    use ambient_api::prelude::*;
     pub fn init() {
-        change_query((emover_ease(), emover_landgoal(), emover_movespeed()))
+        change_query((emover_landpos(), emover_landgoal(), emover_movespeed()))
             .track_change(emover_landgoal())
             .bind(|emovers| {
-                for (mover, (ease, goal, speed)) in emovers {
-                    crate::vec2_point_to_point::effect_ease_goto(ease, goal, speed);
+                for (mover, (_landpos, goal, speed)) in emovers {
+                    crate::vec2_landgoal_ease::effect_goto_target(mover, goal);
+                }
+            });
+        despawn_query(emover_landgoal())
+            .requires(emover_landpos())
+            .bind(|emovers| {
+                for (mover, _) in emovers {
+                    crate::vec2_landgoal_ease::effect_stop_moving(mover);
                 }
             });
     }
 }
 
-mod vec2_point_to_point {
-    use crate::packages::ease::components::{
-        ease_end_time, ease_start_time, ease_vec2_a, ease_vec2_b, ease_vec2_value,
+mod vec2_landgoal_ease {
+
+    const DEFAULT_MOVESPEED: f32 = 1.0;
+
+    use std::thread::current;
+
+    use crate::packages::{
+        ease::components::{
+            ease_end_time, ease_start_time, ease_vec2_a, ease_vec2_b, ease_vec2_value,
+        },
+        this::components::{
+            ease_propagate_landpos_to, emover_landpos, emover_movespeed, emover_posdriver_ease,
+        },
     };
     use ambient_api::{core::app::components::name, prelude::*};
-    pub fn make_still(ab: Vec2) -> Entity {
-        Entity::new()
-            .with(name(), "Ease Vec2".into())
-            .with(ease_vec2_a(), ab)
-            .with(ease_vec2_b(), ab)
-            .with(ease_start_time(), 0.0)
-            .with(ease_end_time(), 0.0)
+
+    pub fn effect_stop_moving(mover: EntityId) {
+        let pos = entity::get_component(mover, emover_landpos()).unwrap();
+        entity::set_components(
+            get_ease(mover),
+            Entity::new()
+                // .with(ease_vec2_a(), pos)
+                .with(ease_vec2_b(), pos)
+                .with(ease_start_time(), 0.)
+                .with(ease_end_time(), 0.),
+        );
     }
-    pub fn make(a: Vec2, b: Vec2, speed: f32) -> Entity {
-        let start = game_time().as_secs_f32();
+    pub fn effect_goto_target(mover: EntityId, b: Vec2) {
+        let speed = entity::get_component(mover, emover_movespeed()).unwrap_or(DEFAULT_MOVESPEED);
+        let a = entity::get_component(mover, emover_landpos()).unwrap();
+        let now = game_time().as_secs_f32();
         let dur = a.distance(b) / speed;
-        Entity::new()
-            .with(name(), "Ease Vec2".into())
-            .with(ease_vec2_a(), a)
-            .with(ease_vec2_b(), b)
-            .with(ease_start_time(), start)
-            .with(ease_end_time(), start + dur.max(0.01))
+        entity::set_components(
+            get_ease(mover),
+            Entity::new()
+                .with(ease_vec2_a(), a)
+                .with(ease_vec2_b(), b)
+                .with(ease_start_time(), now)
+                .with(ease_end_time(), now + dur)
+                .with(ease_propagate_landpos_to(), mover),
+        );
     }
-    pub fn effect_ease_goto(ease: EntityId, goto_target: Vec2, speed: f32) {
-        let here = match entity::get_component(ease, ease_vec2_value()) {
-            None => Vec2::ZERO,
-            Some(pos) => pos,
-        };
-        entity::add_components(ease, make(here, goto_target, speed));
+    fn get_ease(mover: EntityId) -> EntityId {
+        if let Some(ease) = entity::get_component(mover, emover_posdriver_ease()) {
+            ease
+        } else {
+            let starting_pos = entity::get_component(mover, emover_landpos()).unwrap();
+            let ease = Entity::new()
+                .with(name(), "Ease Vec2".into())
+                .with(ease_vec2_a(), starting_pos)
+                .with(ease_vec2_b(), starting_pos)
+                .with(ease_start_time(), 0.)
+                .with(ease_end_time(), 0.)
+                .with(ease_propagate_landpos_to(), mover)
+                .spawn();
+            entity::add_component(mover, emover_posdriver_ease(), ease);
+            ease
+        }
     }
 }

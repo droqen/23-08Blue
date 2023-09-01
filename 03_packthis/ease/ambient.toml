@@ -18,6 +18,9 @@ ease_vec3_value = {type = "Vec3", attributes = ["Debuggable"]}
 ease_end_time = {type = "F32", attributes = ["Networked", "Debuggable"]}
 ease_start_time = {type = "F32", attributes = ["Networked", "Debuggable"]}
 
+ease_easing = {type = "Bool"}
+ease_finished = {type = "Bool"}
+
 ease_filter_paramblend = {type = "F32"}
 
 ease_loop_boomerang = {type = "Bool"}
