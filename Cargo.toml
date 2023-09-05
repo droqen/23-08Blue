@@ -26,6 +26,7 @@ members = [
   "03_packthis/click_with_easymover_demo",
   "03_packthis/click_with_obstacles_demo",
   "03_packthis/instant_camera",
+  "03_packthis/player_score_display",
   "a_nice_overhead_camera",
   "a_nice_overhead_camera/demo",
   "blue-moon",
