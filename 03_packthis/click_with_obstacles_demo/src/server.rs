@@ -6,6 +6,7 @@ pub fn main() {
     players_are_blockable_emovers::init();
     players_have_player_score::init();
     handle_move_message::init();
+    pickups::init();
 }
 
 mod create_obstacles {
@@ -82,6 +83,55 @@ mod players_have_player_score {
             for (plr, _) in plrs {
                 entity::add_component(plr, name(), "Score Haver".into());
                 entity::add_component(plr, player_score(), 13);
+            }
+        });
+    }
+}
+
+mod pickups {
+    use crate::packages::{
+        easymover::components::emover_landpos, player_score_display::components::player_score,
+        this::components::is_pickup,
+    };
+    use ambient_api::{
+        core::{
+            primitives::components::cube,
+            transform::{
+                components::{rotation, scale, translation},
+                concepts::make_transformable,
+            },
+        },
+        prelude::*,
+    };
+    pub fn init() {
+        // spawn pickups
+        for x in -5..5 {
+            for y in -5..5 {
+                Entity::new()
+                    .with_merge(make_transformable())
+                    .with(translation(), vec3(x as f32, y as f32, 0.0))
+                    .with(rotation(), Quat::from_rotation_z(0.8))
+                    .with(scale(), Vec3::splat(0.15))
+                    .with(is_pickup(), ())
+                    .with(cube(), ())
+                    .spawn();
+            }
+        }
+
+        // let players pick em up:
+
+        let find_pickups = query(translation()).requires(is_pickup()).build();
+        query(emover_landpos()).each_frame(move |movers| {
+            let pickups = find_pickups.evaluate();
+            for (mover, moverpos2) in movers {
+                for (pickup, pickpos3) in &pickups {
+                    if moverpos2.distance(pickpos3.truncate()) < 0.25 {
+                        entity::despawn(*pickup);
+                        entity::mutate_component_with_default(mover, player_score(), 1, |score| {
+                            *score = *score + 1
+                        });
+                    }
+                }
             }
         });
     }

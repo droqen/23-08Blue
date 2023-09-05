@@ -14,3 +14,6 @@ player_score_display = {path = '../player_score_display'}
 [messages.MovePlayerBlockable]
 description = "A left click from the player sends a Move message to the server. Stops if there's a wall."
 fields = {pos2 = "Vec2"}
+
+[components]
+is_pickup = {type = "Empty"}

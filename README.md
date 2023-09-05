@@ -17,9 +17,9 @@ Packages created since the 'this' package change was made.
 Let's just wrap this up...
 - [x] implement blockable (done! arghhh, the raycast distance thing: https://github.com/AmbientRun/Ambient/issues/797)
 - [X] display player score
-- [ ] implement pickups
-    - [ ] spawn pickups
-    - [ ] change player score on pickup
+- [X] implement pickups
+    - [X] spawn pickups
+    - [X] change player score on pickup
 - [ ] change serverside player 'level' component according to player score thresholds
     - [ ] client zoom by player level
     - [ ] player movement speed by player level
