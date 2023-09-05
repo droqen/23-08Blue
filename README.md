@@ -21,7 +21,11 @@ Let's just wrap this up...
     - [X] spawn pickups
     - [X] change player score on pickup
 - [X] change serverside player 'level' component according to player score thresholds
-    - [ ] client zoom by player level
+    - [-] client zoom by player level --> NOT A SMALL TASK. REVISIT LATER MAYBE?
+        - [ ] track camera and 'my' player entity
+        - [ ] camera follows player entity
+        - [ ] on player level change, change camera follow behaviour (pull 'up')
+        - [ ] generate maze
     - [X] player movement speed by player level
     - [X] sprite according to player level
 
