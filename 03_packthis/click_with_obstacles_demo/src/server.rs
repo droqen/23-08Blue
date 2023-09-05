@@ -4,7 +4,7 @@ use ambient_api::prelude::*;
 pub fn main() {
     create_obstacles::init();
     players_are_blockable_emovers::init();
-    players_have_player_score::init();
+    // players_have_player_score::init();
     handle_move_message::init();
     pickups::init();
 }
@@ -72,21 +72,21 @@ mod handle_move_message {
     }
 }
 
-mod players_have_player_score {
-    use crate::packages::player_score_display::components::player_score;
-    use ambient_api::{
-        core::{app::components::name, player::components::is_player},
-        prelude::*,
-    };
-    pub fn init() {
-        spawn_query(()).requires(is_player()).bind(|plrs| {
-            for (plr, _) in plrs {
-                entity::add_component(plr, name(), "Score Haver".into());
-                entity::add_component(plr, player_score(), 13);
-            }
-        });
-    }
-}
+// mod players_have_player_score {
+//     use crate::packages::player_score_display::components::player_score;
+//     use ambient_api::{
+//         core::{app::components::name, player::components::is_player},
+//         prelude::*,
+//     };
+//     pub fn init() {
+//         spawn_query(()).requires(is_player()).bind(|plrs| {
+//             for (plr, _) in plrs {
+//                 entity::add_component(plr, name(), "Score Haver".into());
+//                 entity::add_component(plr, player_score(), 13);
+//             }
+//         });
+//     }
+// }
 
 mod pickups {
     use crate::packages::{
