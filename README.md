@@ -13,6 +13,18 @@ Packages created since the 'this' package change was made.
 - `instant_camera` -- convenience package that spawns a clientside camera at 5,5,5 looking at 0,0,0 (the default Ambient camera)
 - `clicks_auto` -- when the player uses the mouse or its buttons, creates simpler / more accessible clientside objects. must be passed a `camera`
 
+### TODO Sept 5
+Let's just wrap this up...
+- [x] implement blockable (done! arghhh, the raycast distance thing: https://github.com/AmbientRun/Ambient/issues/797)
+- [ ] display player score
+- [ ] implement pickups
+    - [ ] spawn pickups
+    - [ ] change player score on pickup
+- [ ] change serverside player 'level' component according to player score thresholds
+    - [ ] client zoom by player level
+    - [ ] player movement speed by player level
+    - [ ] sprite according to player level
+
 # 01_messembers
 Experimenting with using messages for triggering ember functionality, rather than having embers start on their own.
 I regard this as a very successful experiment.
