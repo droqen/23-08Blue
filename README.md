@@ -23,7 +23,7 @@ Let's just wrap this up...
 - [X] change serverside player 'level' component according to player score thresholds
     - [ ] client zoom by player level
     - [ ] player movement speed by player level
-    - [ ] sprite according to player level
+    - [X] sprite according to player level
 
 # 01_messembers
 Experimenting with using messages for triggering ember functionality, rather than having embers start on their own.

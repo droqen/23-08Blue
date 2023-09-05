@@ -5,8 +5,30 @@ pub fn main() {
     configure_clicky_camera::init();
     packages::clicks_auto::messages::ConfigureZPlane { z: 0.0 }.send_local_broadcast(false);
     decorate_sprite_as_sphere::init();
+    scale_sprite_by_player_level::init();
     on_click_send_move_message::init();
     esprites_have_score_and_score_position::init();
+    black_ground::init();
+}
+
+mod black_ground {
+    use ambient_api::{
+        core::{
+            primitives::components::quad,
+            rendering::components::color,
+            transform::{components::scale, concepts::make_transformable},
+        },
+        prelude::*,
+    };
+
+    pub fn init() {
+        Entity::new()
+            .with_merge(make_transformable())
+            .with(scale(), Vec3::splat(1000.0))
+            .with(color(), vec4(0., 0., 0., 1.))
+            .with(quad(), ())
+            .spawn();
+    }
 }
 
 mod configure_clicky_camera {
@@ -48,7 +70,10 @@ mod decorate_sprite_as_sphere {
     use ambient_api::{
         core::{
             primitives::concepts::make_sphere,
-            transform::{components::translation, concepts::make_transformable},
+            transform::{
+                components::{scale, translation},
+                concepts::make_transformable,
+            },
         },
         prelude::*,
     };
@@ -60,13 +85,36 @@ mod decorate_sprite_as_sphere {
                     sprite,
                     make_transformable()
                         .with_merge(make_sphere())
-                        .with(translation(), landpos.extend(0.5)),
+                        .with(translation(), landpos.extend(0.))
+                        .with(scale(), Vec3::splat(0.2)),
                 );
             }
         });
         query(esprite_landpos()).each_frame(|esprites| {
             for (sprite, landpos) in esprites {
-                entity::add_component(sprite, translation(), landpos.extend(0.5));
+                entity::add_component(sprite, translation(), landpos.extend(0.));
+            }
+        });
+    }
+}
+
+mod scale_sprite_by_player_level {
+    use ambient_api::{core::transform::components::scale, prelude::*};
+
+    use crate::packages::{easymover::components::esprite_mover, this::components::player_level};
+
+    pub fn init() {
+        query(esprite_mover()).each_frame(|sprites| {
+            for (sprite, mover) in sprites {
+                let desired_scale = match entity::get_component(mover, player_level()).unwrap_or(0)
+                {
+                    0 => 0.2,
+                    1 => 0.5,
+                    2 | _ => 1.0,
+                };
+                entity::mutate_component(sprite, scale(), move |scale| {
+                    *scale = scale.lerp(Vec3::splat(desired_scale), 0.1)
+                });
             }
         });
     }
