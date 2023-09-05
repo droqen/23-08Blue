@@ -5,7 +5,7 @@ name = "player_score_display"
 version = "0.0.1"
 
 [components]
-player_score = {description = "Player has a score number", type = "U32"}
+player_score = {attributes = ["Debuggable", "Networked"], description = "Player has a score number", type = "U32"}
 player_score_position = {attributes = ["Debuggable", "Networked"], description = "Position of the player's score (world)", type = "Vec3"}
 score_config_camera = {type = "EntityId"}
 

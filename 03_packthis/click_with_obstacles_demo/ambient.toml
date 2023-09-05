@@ -9,6 +9,7 @@ clicks_auto = {path = '../clicks_auto'}
 easymover = {path = '../easymover'}
 easymover_blockable = {path = '../easymover_blockable'}
 instant_camera = {path = '../instant_camera'}
+player_score_display = {path = '../player_score_display'}
 
 [messages.MovePlayerBlockable]
 description = "A left click from the player sends a Move message to the server. Stops if there's a wall."

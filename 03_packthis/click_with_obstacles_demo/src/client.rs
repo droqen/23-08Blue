@@ -6,6 +6,7 @@ pub fn main() {
     packages::clicks_auto::messages::ConfigureZPlane { z: 0.0 }.send_local_broadcast(false);
     decorate_sprite_as_sphere::init();
     on_click_send_move_message::init();
+    esprites_have_score_and_score_position::init();
 }
 
 mod configure_clicky_camera {
@@ -86,6 +87,26 @@ mod on_click_send_move_message {
                         pos2: pos.truncate(),
                     }
                     .send_server_reliable();
+                }
+            }
+        });
+    }
+}
+
+mod esprites_have_score_and_score_position {
+    use crate::packages::{
+        easymover::components::esprite_mover,
+        player_score_display::components::{player_score, player_score_position},
+    };
+    use ambient_api::{core::transform::components::translation, prelude::*};
+    pub fn init() {
+        query((translation(), esprite_mover())).each_frame(|sprites| {
+            for (sprite, (pos, mover)) in sprites {
+                if let Some(mover_score) = entity::get_component(mover, player_score()) {
+                    entity::add_component(sprite, player_score(), mover_score);
+                    entity::add_component(sprite, player_score_position(), pos);
+                } else {
+                    println!("Parent mover does not have player_score component (it is expected)");
                 }
             }
         });

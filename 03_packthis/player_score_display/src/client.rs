@@ -12,17 +12,17 @@ mod display_player_scores {
     };
     use ambient_api::{core::transform::components::translation, prelude::*};
     pub fn init() {
-        spawn_query(score_config_camera()).bind(|cameras| {
-            for (camera, _) in cameras {
+        spawn_query(score_config_camera()).bind(|cfgs| {
+            for (_cfg, camera) in cfgs {
                 ScoreUI::el(camera).spawn_interactive();
             }
         });
-        let find_config_camera = query(score_config_camera()).build();
-        ambient_api::core::messages::Frame::subscribe(move |_| {
-            if let Some(camera_result) = find_config_camera.evaluate().first() {
-                let camera: EntityId = camera_result.1;
-            }
-        });
+        // let find_config_camera = query(score_config_camera()).build();
+        // ambient_api::core::messages::Frame::subscribe(move |_| {
+        //     if let Some(camera_result) = find_config_camera.evaluate().first() {
+        //         let camera: EntityId = camera_result.1;
+        //     }
+        // });
     }
 
     // DISPLAYS SCORE TEXT above players who have score > 0

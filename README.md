@@ -16,7 +16,7 @@ Packages created since the 'this' package change was made.
 ### TODO Sept 5
 Let's just wrap this up...
 - [x] implement blockable (done! arghhh, the raycast distance thing: https://github.com/AmbientRun/Ambient/issues/797)
-- [ ] display player score
+- [X] display player score
 - [ ] implement pickups
     - [ ] spawn pickups
     - [ ] change player score on pickup
