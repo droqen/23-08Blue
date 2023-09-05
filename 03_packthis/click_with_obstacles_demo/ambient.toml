@@ -1,0 +1,15 @@
+[package]
+content = {type = "Playable"}
+id = "click_with_obstacles_demo"
+name = "click_with_obstacles_demo"
+version = "0.0.1"
+
+[dependencies]
+clicks_auto = {path = '../clicks_auto'}
+easymover = {path = '../easymover'}
+easymover_blockable = {path = '../easymover_blockable'}
+instant_camera = {path = '../instant_camera'}
+
+[messages.MovePlayerBlockable]
+description = "A left click from the player sends a Move message to the server. Stops if there's a wall."
+fields = {pos2 = "Vec2"}
