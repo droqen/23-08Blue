@@ -5,6 +5,7 @@ pub fn main() {
     create_obstacles::init();
     players_are_blockable_emovers::init();
     // players_have_player_score::init();
+    player_level_scaling_stats::init();
     handle_move_message::init();
     pickups::init();
     score_increases_level::init();
@@ -91,8 +92,9 @@ mod handle_move_message {
 
 mod pickups {
     use crate::packages::{
-        easymover::components::emover_landpos, player_score_display::components::player_score,
-        this::components::is_pickup,
+        easymover::components::emover_landpos,
+        player_score_display::components::player_score,
+        this::components::{is_pickup, player_pickup_radius},
     };
     use ambient_api::{
         core::{
@@ -122,17 +124,64 @@ mod pickups {
         // let players pick em up:
 
         let find_pickups = query(translation()).requires(is_pickup()).build();
-        query(emover_landpos()).each_frame(move |movers| {
+        query((emover_landpos(), player_pickup_radius())).each_frame(move |movers| {
             let pickups = find_pickups.evaluate();
-            for (mover, moverpos2) in movers {
+            for (mover, (moverpos2, pickup_radius)) in movers {
                 for (pickup, pickpos3) in &pickups {
-                    if moverpos2.distance(pickpos3.truncate()) < 0.25 {
+                    if moverpos2.distance(pickpos3.truncate()) < pickup_radius {
                         entity::despawn(*pickup);
                         entity::mutate_component_with_default(mover, player_score(), 1, |score| {
                             *score = *score + 1
                         });
                     }
                 }
+            }
+        });
+    }
+}
+
+mod player_level_scaling_stats {
+    use crate::packages::{
+        easymover::components::{emover_landgoal, emover_movespeed},
+        easymover_blockable::components::emover_blockable_radius,
+        this::components::{player_level, player_pickup_radius},
+    };
+    use ambient_api::{core::player::components::is_player, prelude::*};
+    pub fn init() {
+        change_query(player_level())
+            .track_change(player_level())
+            .bind(|players| {
+                for (player, level) in players {
+                    match level {
+                        0 => entity::add_components(
+                            player,
+                            Entity::new()
+                                .with(player_pickup_radius(), 0.15)
+                                .with(emover_blockable_radius(), 0.15)
+                                .with(emover_movespeed(), 0.3),
+                        ),
+                        1 => entity::add_components(
+                            player,
+                            Entity::new()
+                                .with(player_pickup_radius(), 0.35)
+                                .with(emover_blockable_radius(), 0.35)
+                                .with(emover_movespeed(), 0.7),
+                        ),
+                        2 | _ => entity::add_components(
+                            player,
+                            Entity::new()
+                                .with(player_pickup_radius(), 0.60)
+                                .with(emover_blockable_radius(), 0.60)
+                                .with(emover_movespeed(), 1.5),
+                        ),
+                    };
+                    // stop mid-move
+                    entity::remove_component(player, emover_landgoal());
+                }
+            });
+        spawn_query(()).requires(is_player()).bind(|plrs| {
+            for (plr, _) in plrs {
+                entity::add_component(plr, player_level(), 0);
             }
         });
     }

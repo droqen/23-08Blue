@@ -22,7 +22,7 @@ Let's just wrap this up...
     - [X] change player score on pickup
 - [X] change serverside player 'level' component according to player score thresholds
     - [ ] client zoom by player level
-    - [ ] player movement speed by player level
+    - [X] player movement speed by player level
     - [X] sprite according to player level
 
 # 01_messembers
