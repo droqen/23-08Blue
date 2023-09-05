@@ -43,8 +43,6 @@ mod super_cheap_shapecast {
         })
         .min_by(|a, b| a.partial_cmp(b).expect("Tried to compare a NaN"));
 
-        dbg!(closest_hit_dist);
-
         match closest_hit_dist {
             None | Some(INFINITE_NOCOLLISION) => None,
             Some(0.) => Some(here2),
