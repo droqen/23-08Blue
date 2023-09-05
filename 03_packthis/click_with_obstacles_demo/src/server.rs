@@ -7,6 +7,7 @@ pub fn main() {
     // players_have_player_score::init();
     handle_move_message::init();
     pickups::init();
+    score_increases_level::init();
 }
 
 mod create_obstacles {
@@ -134,5 +135,33 @@ mod pickups {
                 }
             }
         });
+    }
+}
+
+mod score_increases_level {
+    use crate::packages::{
+        player_score_display::components::player_score, this::components::player_level,
+    };
+    use ambient_api::prelude::*;
+    pub fn init() {
+        change_query(player_score())
+            .track_change(player_score())
+            .bind(|players| {
+                for (player, score) in players {
+                    match entity::get_component(player, player_level()).unwrap_or(0) {
+                        0 => {
+                            if score >= 3 {
+                                entity::add_component(player, player_level(), 1);
+                            }
+                        }
+                        1 => {
+                            if score >= 10 {
+                                entity::add_component(player, player_level(), 2);
+                            }
+                        }
+                        _ => {} // no more level ups
+                    };
+                }
+            });
     }
 }

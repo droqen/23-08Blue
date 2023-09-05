@@ -20,7 +20,7 @@ Let's just wrap this up...
 - [X] implement pickups
     - [X] spawn pickups
     - [X] change player score on pickup
-- [ ] change serverside player 'level' component according to player score thresholds
+- [X] change serverside player 'level' component according to player score thresholds
     - [ ] client zoom by player level
     - [ ] player movement speed by player level
     - [ ] sprite according to player level

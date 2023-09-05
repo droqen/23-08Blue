@@ -17,3 +17,5 @@ fields = {pos2 = "Vec2"}
 
 [components]
 is_pickup = {type = "Empty"}
+player_level = {attributes = ["Debuggable", "Networked"], type = "U8"}# default: 0?
+# player_pickup_radius = {attributes = ["Debuggable", "Networked"], type = "U8"}# default: 0?
